@@ -1,0 +1,70 @@
+{
+  "$comment": "画风注册表。这是你自己维护的适配层——vendor/ 下的上游仓库 git pull 不会碰它。新增画风只改这个文件，不改 SKILL.md。",
+  "version": 1,
+  "styles": [
+    {
+      "id": "guizang-social-card",
+      "label": "귀장社交卡片（杂志 / 瑞士网格）",
+      "render_mode": "html-screenshot",
+      "vendor_path": "vendor/guizang-social-card-skill",
+      "upstream": "https://github.com/op7418/guizang-social-card-skill",
+      "invoke": "读取 vendor/guizang-social-card-skill/SKILL.md 并按其流程执行",
+      "auto_trigger": false,
+      "$comment_auto_trigger": "务必保持 false。上游 description 含触发词『做一套小红书图文』，若装进 skills 目录会抢走调度权。仅以 vendor 目录方式按路径读取。",
+      "needs": ["title", "body_blocks", "theme", "layout"],
+      "text_fidelity": "exact",
+      "supports_reserved_area": true,
+      "reserved_area_method": "CSS 空 div，位置像素级可控",
+      "requires": ["node", "npm"],
+      "good_for": ["图表对比", "多字备忘录干货", "参数说明表格"],
+      "notes": "文字由 CSS 渲染，不会写错字。需要精确文案或密集参数表时优先选它。"
+    },
+    {
+      "id": "gathered-scenes-zine",
+      "label": "拼贴纸艺 zine 海报",
+      "render_mode": "image-gen",
+      "vendor_path": "vendor/gathered-scenes-zine-skill",
+      "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "invoke": "$scenes-gathered-zine-v1-3",
+      "auto_trigger": false,
+      "needs": ["image_prompt", "source_photo"],
+      "text_fidelity": "approximate",
+      "supports_reserved_area": true,
+      "reserved_area_method": "prompt 描述留白区域，位置不精确，需人工核验",
+      "requires": ["image-gen"],
+      "good_for": ["氛围封面", "实拍照片再创作"],
+      "notes": "输入需要一张源照片。文字由生图模型绘制，必须走 text_on_image 人工核对。"
+    },
+    {
+      "id": "native-image-gen",
+      "label": "Codex 原生生图（无外部 skill）",
+      "render_mode": "image-gen",
+      "vendor_path": null,
+      "upstream": null,
+      "invoke": "直接调用 Codex 内置图像生成",
+      "auto_trigger": false,
+      "needs": ["image_prompt"],
+      "text_fidelity": "approximate",
+      "supports_reserved_area": true,
+      "reserved_area_method": "prompt 描述留白区域，位置不精确，需人工核验",
+      "requires": ["image-gen"],
+      "good_for": ["实拍风配图", "场景图", "无现成画风 skill 时的兜底"],
+      "notes": "默认兜底选项。GPT Image 2 中文渲染质量可用，但文字内容仍不保证准确。"
+    }
+  ],
+  "render_modes": {
+    "html-screenshot": {
+      "desc": "HTML/CSS 模板经无头浏览器截图出 PNG",
+      "spec_fields_required": ["images[].content"],
+      "spec_fields_ignored": ["images[].prompt"],
+      "text_accuracy": "像素级精确，无需人工核对文字"
+    },
+    "image-gen": {
+      "desc": "prompt 交给生图模型出 PNG",
+      "spec_fields_required": ["images[].prompt", "images[].text_on_image"],
+      "spec_fields_ignored": ["images[].content"],
+      "text_accuracy": "不保证，必须人工核对 text_on_image 清单"
+    }
+  },
+  "$comment_extending": "新增画风的步骤：(1) git clone 到 vendor/ (2) 在 styles[] 加一条 (3) 若其 render_mode 是新的，在 render_modes 加一条并说明 spec 字段差异。SKILL.md 与 post-spec schema 都不需要改。"
+}

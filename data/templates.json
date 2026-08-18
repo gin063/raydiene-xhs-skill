@@ -1,0 +1,1172 @@
+[
+  {
+    "tpl_id": 1,
+    "tpl_name": "价格段图表对比+成本拆解",
+    "img_category": "图表对比",
+    "title": "800-4000全价位充电桩选购指南（速通版）",
+    "url": "https://www.xiaohongshu.com/explore/69314801000000001e012507?xsec_token=MBAJvWVyPE024ToO5mhbR_ZioDVKVKqgzfd9qKehMnATk=&xsec_source=pc_pgyexport",
+    "body_struct": "马斯克理论开头+明确需求",
+    "img_struct": "图表对比+成本拆解+销量榜单",
+    "engagement": {
+      "likes": 156,
+      "saves": 62,
+      "comments": 30
+    },
+    "row": 3,
+    "char_count": 821,
+    "tags": [
+      "充电桩",
+      "雷迪恩充电桩",
+      "充电桩品牌推荐",
+      "特斯拉充电桩",
+      "小米充电桩"
+    ],
+    "voice": "first-principles",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare",
+      "cost-breakdown"
+    ],
+    "conversion": null,
+    "note_file": "notes/003-800_4000全价位充电桩选购指南_速通版_.txt"
+  },
+  {
+    "tpl_id": 3,
+    "tpl_name": "安装图标注参数",
+    "img_category": "经验分享",
+    "title": "过来人真心建议：不安全的充电桩千万别碰！",
+    "url": "https://www.xiaohongshu.com/explore/6a44c5f2000000001003cff2?xsec_token=MBSlaEeUkMLguDjt__hXK0AtGpJFieYkJO8JYKVAEVmjI=&xsec_source=pc_pgyexport",
+    "body_struct": "警告劣质桩不要买+批发渠道拆解成本+原理说明+各产品参数罗列",
+    "img_struct": "安装对比图",
+    "engagement": {
+      "likes": 13,
+      "saves": 14,
+      "comments": 7
+    },
+    "row": 4,
+    "char_count": 491,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "公牛充电桩",
+      "雷迪恩充电桩",
+      "家用充电桩",
+      "充电桩推荐家用",
+      "雷迪恩充电桩"
+    ],
+    "voice": "persona-match-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "spec-table",
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/004-过来人真心建议_不安全的充电桩千万别碰_.txt"
+  },
+  {
+    "tpl_id": 3,
+    "tpl_name": "安装图标注参数",
+    "img_category": "图表对比",
+    "title": "户外安装家用充电桩，选购要当心",
+    "url": "https://www.xiaohongshu.com/explore/6a3e1df40000000021020967?xsec_token=WB-z-J2DKIoTvzuyvzEeNK-bte_cWp_Czr25LnNUdvi3Y=&xsec_source=pc_ad",
+    "body_struct": "痛点+利他+解决方案",
+    "img_struct": "图表对比+参数说明表格+单张安张图产品植入",
+    "engagement": {
+      "likes": 17,
+      "saves": 13,
+      "comments": 12
+    },
+    "row": 5,
+    "char_count": 417,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩推荐家用",
+      "3c充电桩",
+      "公牛充电桩",
+      "雷迪恩充电桩",
+      "小米充电桩",
+      "理想充电桩"
+    ],
+    "voice": "structured-guide",
+    "placement": "medium",
+    "body_carries": "image-dependent",
+    "art": [
+      "chart-compare",
+      "spec-table",
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/005-户外安装家用充电桩_选购要当心.txt"
+  },
+  {
+    "tpl_id": 4,
+    "tpl_name": "全拆机对比",
+    "img_category": "实拍对比",
+    "title": "花费1W+的3C充电桩超硬核测评&选购指南",
+    "url": "https://www.xiaohongshu.com/explore/6a462d2b0000000011006477?xsec_token=MBSZaPFtGtXYj45_7qsVYh5h5EVgKjbm5PzYMP82aHGIA=&xsec_source=pc_pgyexport",
+    "body_struct": "讲原理+对比",
+    "img_struct": "图表对比20项",
+    "engagement": {
+      "likes": 16,
+      "saves": 8,
+      "comments": 11
+    },
+    "row": 6,
+    "char_count": 905,
+    "tags": [
+      "家用充电桩",
+      "雷迪恩充电桩",
+      "充电桩",
+      "3C认证",
+      "充电桩避坑",
+      "3c充电桩",
+      "公牛充电桩"
+    ],
+    "voice": "hardcore-review",
+    "placement": "medium",
+    "body_carries": "image-dependent",
+    "art": [
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/006-花费1W_的3C充电桩超硬核测评_选购指南.txt"
+  },
+  {
+    "tpl_id": 4,
+    "tpl_name": "全拆机对比",
+    "img_category": "实拍对比",
+    "title": "10台充电桩，耗费过万，20项测评，选购必看",
+    "url": "https://www.xiaohongshu.com/explore/6a02ee3c000000003502e86b?xsec_token=MB5_f2uHz0Ps4AIw0QVodpOKhkJLiov7Zgai1UoQMqetM=&xsec_source=pc_pgyexport",
+    "body_struct": "拆机开头+参数对比+置顶评论",
+    "img_struct": "全景实拍+纸箱汇总图+MCU继电器文字说明+图表对比",
+    "engagement": {
+      "likes": 385,
+      "saves": 297,
+      "comments": 104
+    },
+    "row": 7,
+    "char_count": 900,
+    "tags": [
+      "充电桩",
+      "充电桩推荐家用",
+      "3c充电桩",
+      "雷迪恩充电桩",
+      "公牛充电桩"
+    ],
+    "voice": "hardcore-review",
+    "placement": "medium",
+    "body_carries": "image-dependent",
+    "art": [
+      "teardown-photo",
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/007-10台充电桩_耗费过万_20项测评_选购必看.txt"
+  },
+  {
+    "tpl_id": 6,
+    "tpl_name": "经典图表对比",
+    "img_category": "图表对比",
+    "title": "买充电桩怕踩雷？这样选择越看越满意！",
+    "url": "https://www.xiaohongshu.com/explore/69aa963f000000001d024309?xsec_token=MB4eZJr4mnIa-m77ApDO5KVRsXjbfMTPKOVVN9MB0caS0=&xsec_source=pc_pgyexport",
+    "body_struct": "选购思路",
+    "img_struct": "图表对比+参数说明表格+雷迪恩安装图介绍",
+    "engagement": {
+      "likes": 122,
+      "saves": 51,
+      "comments": 26
+    },
+    "row": 8,
+    "char_count": 210,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "公牛充电桩",
+      "特斯拉充电桩",
+      "小米充电桩"
+    ],
+    "voice": "structured-guide",
+    "placement": "soft",
+    "body_carries": "image-dependent",
+    "art": [
+      "chart-compare",
+      "spec-table"
+    ],
+    "quality_flag": "正文疑似截断，仅210字且末尾无收束，不要当模板用",
+    "conversion": null,
+    "note_file": "notes/008-买充电桩怕踩雷_这样选择越看越满意_.txt"
+  },
+  {
+    "tpl_id": 6,
+    "tpl_name": "经典图表对比",
+    "img_category": "图表对比",
+    "title": "5年老司机真心建议，热门家用充电桩这样买!",
+    "url": "https://www.xiaohongshu.com/explore/6a4f50e90000000006037d98?xsec_token=MBaJg7Jq4syXW_20fC3M5zyo8xp8PxUEccCWTK89N4iBg=&xsec_source=pc_pgyexport",
+    "body_struct": "选购思路+安装思路",
+    "img_struct": "图表对比+参数说明表格+雷迪恩安装图介绍",
+    "engagement": {
+      "likes": 24,
+      "saves": 18,
+      "comments": 11
+    },
+    "row": 9,
+    "char_count": 808,
+    "tags": [
+      "充电桩",
+      "充电桩推荐家用",
+      "雷迪恩充电桩",
+      "充电桩安装教程",
+      "3c充电桩",
+      "充电桩选购推荐"
+    ],
+    "voice": "structured-guide",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare",
+      "spec-table",
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/009-5年老司机真心建议_热门家用充电桩这样买_.txt"
+  },
+  {
+    "tpl_id": 6,
+    "tpl_name": "经典图表对比",
+    "img_category": "图表对比",
+    "title": "别乱买充电桩了！看完这篇不花冤枉钱",
+    "url": "https://www.xiaohongshu.com/explore/6a54a7df000000002101a808?xsec_token=WBCTugPJ1u4RfdIqrkOYawZ3aHkbEBOVOCWYX6Mb2lpC4=&xsec_source=pc_ad",
+    "body_struct": "选购思路",
+    "img_struct": "选购思路文字图+图表对比+单张安装图植入",
+    "engagement": {
+      "likes": 31,
+      "saves": 15,
+      "comments": 18
+    },
+    "row": 10,
+    "char_count": 855,
+    "tags": [
+      "充电桩",
+      "充电桩",
+      "充电桩推荐家用",
+      "雷迪恩充电桩",
+      "3c充电桩",
+      "充电桩选购推荐"
+    ],
+    "voice": "structured-guide",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "memo-text",
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/010-别乱买充电桩了_看完这篇不花冤枉钱.txt"
+  },
+  {
+    "tpl_id": 6,
+    "tpl_name": "经典图表对比",
+    "img_category": "图表对比",
+    "title": "别再盲目花钱了，3c家用充电桩这么选才对✅",
+    "url": "https://www.xiaohongshu.com/explore/69df4a170000000021010477?xsec_token=MBk1bXFELQdQ86jWTu5RUY8Eq7ucXaP_Dq_C6BmkSP0kk=&xsec_source=pc_pgyexport",
+    "body_struct": "选购思路+安装流程",
+    "img_struct": "图表对比+参数说明表格+安装流程表格+安装对比图",
+    "engagement": {
+      "likes": 8,
+      "saves": 8,
+      "comments": 8
+    },
+    "row": 11,
+    "char_count": 539,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩家用推荐",
+      "雷迪恩充电桩",
+      "理想充电桩",
+      "小米充电桩",
+      "充电桩安装教程"
+    ],
+    "voice": "structured-guide",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare",
+      "spec-table",
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/011-别再盲目花钱了_3c家用充电桩这么选才对_.txt"
+  },
+  {
+    "tpl_id": 6,
+    "tpl_name": "经典图表对比",
+    "img_category": "图表对比",
+    "title": "原来是这款赢了，26年机皇榜最全版",
+    "url": "https://www.xiaohongshu.com/explore/6a1e960c000000003701db00?xsec_token=MBLcKqTB3ueENUrfewULslUwp67I1T-l2I9yody7Ls2jc=&xsec_source=pc_pgyexport",
+    "body_struct": "选购思路+需求匹配+单品推荐",
+    "img_struct": "图表对比+选购思路单张文字版+雷迪恩安装图介绍",
+    "engagement": {
+      "likes": 39,
+      "saves": 18,
+      "comments": 18
+    },
+    "row": 12,
+    "char_count": 591,
+    "tags": [
+      "充电桩",
+      "充电桩推荐家用",
+      "雷迪恩充电桩",
+      "公牛充电桩",
+      "3c充电桩",
+      "充电桩选购推荐",
+      "充电桩安装教程"
+    ],
+    "voice": "persona-match-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare",
+      "memo-text",
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/012-原来是这款赢了_26年机皇榜最全版.txt"
+  },
+  {
+    "tpl_id": 7,
+    "tpl_name": "亲测1V1",
+    "img_category": "经验分享",
+    "title": "亲测：我的900块充电桩vs邻居的千元款",
+    "url": "https://www.xiaohongshu.com/explore/69a92dd30000000015039930?xsec_token=MBRsgJG2s0OLhg5PULQuUHRZ4kIBxu3me6bUTELILv8WI=&xsec_source=pc_pgyexport",
+    "body_struct": "各方面对比描述",
+    "img_struct": "简单实拍图",
+    "engagement": {
+      "likes": 51,
+      "saves": 41,
+      "comments": 47
+    },
+    "row": 13,
+    "char_count": 707,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩"
+    ],
+    "voice": "head-to-head",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/013-亲测_我的900块充电桩vs邻居的千元款.txt"
+  },
+  {
+    "tpl_id": 7,
+    "tpl_name": "亲测1V1",
+    "img_category": "经验分享",
+    "title": "亲测：我的百元充电桩pk朋友的千元充电桩",
+    "url": "https://www.xiaohongshu.com/explore/69cb8f25000000001a032a2f?xsec_token=MBLQvdHuEWzAaOC3pRie-5jhsYq2JDu6vb-v3PFSczUQs=&xsec_source=pc_pgyexport",
+    "body_struct": "各方面对比描述",
+    "img_struct": "简单实拍图",
+    "engagement": {
+      "likes": 53,
+      "saves": 33,
+      "comments": 59
+    },
+    "row": 14,
+    "char_count": 799,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "理想充电桩",
+      "雷迪恩充电桩",
+      "雷迪恩磐石pro",
+      "充电桩推荐家用",
+      "家用充电桩"
+    ],
+    "voice": "head-to-head",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/014-亲测_我的百元充电桩pk朋友的千元充电桩.txt"
+  },
+  {
+    "tpl_id": 7,
+    "tpl_name": "亲测1V1",
+    "img_category": "经验分享",
+    "title": "亲测：我的900元充电桩vs邻居的千元款",
+    "url": "https://www.xiaohongshu.com/explore/6a16b819000000003501cc78?xsec_token=MBWmatO52DqDmaEwxWk782eim53D7qQ__E0YB6oD1thxc=&xsec_source=pc_pgyexport",
+    "body_struct": "各方面对比描述",
+    "img_struct": "简单实拍图",
+    "engagement": {
+      "likes": 23,
+      "saves": 15,
+      "comments": 12
+    },
+    "row": 15,
+    "char_count": 611,
+    "tags": [
+      "雷迪恩充电桩",
+      "特斯拉充电桩",
+      "充电桩推荐家用",
+      "充电桩"
+    ],
+    "voice": "head-to-head",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/015-亲测_我的900元充电桩vs邻居的千元款.txt"
+  },
+  {
+    "tpl_id": 9,
+    "tpl_name": "对拆",
+    "img_category": "实拍对比",
+    "title": "充电桩榜单前四，自用比较",
+    "url": "https://www.xiaohongshu.com/explore/69bbccd4000000001d01e4df?xsec_token=MBkHLOVs1GU1Ks8-QLc5S-3_vI5K91gVKS0a92Vh1CJUM=&xsec_source=pc_pgyexport",
+    "body_struct": "拆机开头+外观+硬件+枪头各维度大家的表现对比",
+    "img_struct": "简单拆机图拼图",
+    "engagement": {
+      "likes": 26,
+      "saves": 18,
+      "comments": 20
+    },
+    "row": 16,
+    "char_count": 1124,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "公牛充电桩",
+      "能效充电桩"
+    ],
+    "voice": "hardcore-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "teardown-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/016-充电桩榜单前四_自用比较.txt"
+  },
+  {
+    "tpl_id": 9,
+    "tpl_name": "对拆",
+    "img_category": "实拍对比",
+    "title": "特斯拉、公牛、雷迪恩、挚达充电桩前四对拆",
+    "url": "https://www.xiaohongshu.com/explore/6a0acab9000000003502fa53?xsec_token=MBMA5ECHNZji3hgUjOdqZkCKXi-WF8qCk0LugTyHKkli8=&xsec_source=pc_pgyexport",
+    "body_struct": "拆机开头+各维度对比+结论推荐",
+    "img_struct": "主板+枪头实拍图",
+    "engagement": {
+      "likes": 10,
+      "saves": 10,
+      "comments": 6
+    },
+    "row": 17,
+    "char_count": 921,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "公牛充电桩",
+      "雷迪恩",
+      "家用充电桩",
+      "充电桩推荐家用",
+      "特斯拉充电桩"
+    ],
+    "voice": "hardcore-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "teardown-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/017-特斯拉_公牛_雷迪恩_挚达充电桩前四对拆.txt"
+  },
+  {
+    "tpl_id": 9,
+    "tpl_name": "对拆",
+    "img_category": "实拍对比",
+    "title": "销量前三的充电桩全拆了🔧差价2000差在哪",
+    "url": "https://www.xiaohongshu.com/explore/6a19699c00000000350310fc?xsec_token=MBhAdZ_9A1B9mMArZXRKyCk-iIqFux7VObaojWtZE8NmI=&xsec_source=pc_pgyexport",
+    "body_struct": "科普充电桩原理+引出重要的原件+原件对比+置顶评论",
+    "img_struct": "产品单张展示",
+    "engagement": {
+      "likes": 47,
+      "saves": 20,
+      "comments": 14
+    },
+    "row": 18,
+    "char_count": 487,
+    "tags": [
+      "充电桩",
+      "充电桩推荐家用",
+      "家用充电桩",
+      "雷迪恩充电桩",
+      "3c充电桩"
+    ],
+    "voice": "hardcore-review",
+    "placement": "medium",
+    "body_carries": "self-contained",
+    "art": [
+      "product-single",
+      "teardown-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/018-销量前三的充电桩全拆了_差价2000差在哪.txt"
+  },
+  {
+    "tpl_id": 11,
+    "tpl_name": "骂醒干货",
+    "img_category": "多字图表干货",
+    "title": "26年买充电桩的！骂醒一个算一个😅",
+    "url": "https://www.xiaohongshu.com/explore/69fb12a100000000230173ad?xsec_token=MBeCbY8T85Qb5BSEt2DTo8OmCDoP8cTZi3DSu5TtFnckc=&xsec_source=pc_pgyexport",
+    "body_struct": "故事背景（踩了很多坑）+产品推荐",
+    "img_struct": "备忘录多字干货（筛选标准）",
+    "engagement": {
+      "likes": 408,
+      "saves": 559,
+      "comments": 104
+    },
+    "row": 19,
+    "char_count": 361,
+    "tags": [
+      "充电桩避坑",
+      "3C认证",
+      "雷迪恩充电桩",
+      "家用充电桩",
+      "充电桩",
+      "电动车电池"
+    ],
+    "voice": "nanny-guide",
+    "placement": "soft",
+    "body_carries": "image-dependent",
+    "art": [
+      "memo-text"
+    ],
+    "conversion": null,
+    "note_file": "notes/019-26年买充电桩的_骂醒一个算一个_.txt"
+  },
+  {
+    "tpl_id": 12,
+    "tpl_name": "多字各流程干货",
+    "img_category": "多字图表干货",
+    "title": "给电车车主的装桩建议",
+    "url": "https://www.xiaohongshu.com/explore/6a3503af000000000f031637?xsec_token=MBcsVGWPZ5BBNl_T8RcFvPoNT-u6PomTWEGX_a4OJmTTg=&xsec_source=pc_pgyexport",
+    "body_struct": "一张图片内容的列举+产品植入",
+    "img_struct": "选购+报装+验收的内容",
+    "engagement": {
+      "likes": 19,
+      "saves": 24,
+      "comments": 10
+    },
+    "row": 20,
+    "char_count": 617,
+    "tags": [
+      "家用充电桩",
+      "充电桩安装",
+      "充电桩避坑",
+      "充电桩3C认证",
+      "雷迪恩充电桩",
+      "新能源车",
+      "家充桩",
+      "购桩攻略"
+    ],
+    "voice": "nanny-guide",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "memo-text"
+    ],
+    "conversion": null,
+    "note_file": "notes/020-给电车车主的装桩建议.txt"
+  },
+  {
+    "tpl_id": 12,
+    "tpl_name": "多字各流程干货",
+    "img_category": "多字图表干货",
+    "title": "618听劝‼️5-6月买家用充电桩的注意了🚨",
+    "url": "https://www.xiaohongshu.com/explore/6a042cc7000000000702914f?xsec_token=MBfun6zIKOWaR4FVZICZHU-MLwefL8hf14XOhzRLUt850=&xsec_source=pc_pgyexport",
+    "body_struct": "人群痛点（小白越看越乱）+衔接利他（终于搞懂了，希望大家不走弯路）\n+安装流程详解+产品推荐",
+    "img_struct": "多字说明背景+多字申请电表流程+选购参数多字+多字产品介绍+多字验收细节+加多字安装避坑",
+    "engagement": {
+      "likes": 634,
+      "saves": 1124,
+      "comments": 85
+    },
+    "row": 21,
+    "char_count": 817,
+    "tags": [
+      "家用充电桩",
+      "新能源车",
+      "充电桩推荐",
+      "雷迪恩充电桩",
+      "汽车充电桩",
+      "新能源生活",
+      "充电桩避坑",
+      "自建房充电桩",
+      "电车充电",
+      "充电桩"
+    ],
+    "voice": "nanny-guide",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "memo-text"
+    ],
+    "conversion": null,
+    "note_file": "notes/021-618听劝_5_6月买家用充电桩的注意了_.txt"
+  },
+  {
+    "tpl_id": 12,
+    "tpl_name": "多字各流程干货",
+    "img_category": "多字图表干货",
+    "title": "本人新手，决定要买家用充电桩了‼️",
+    "url": "https://www.xiaohongshu.com/explore/6a101b230000000035020322?xsec_token=MBeuNjWFjJ8mcbhP95yQTVPC0sPf4kfAKVjUmVMoZre3U=&xsec_source=pc_pgyexport",
+    "body_struct": "痛点+利他+部分内容总结+产品植入",
+    "img_struct": "安装电表+核心参数+配置&功能+产品植入+安装注意事项+验收+长期维护",
+    "engagement": {
+      "likes": 211,
+      "saves": 373,
+      "comments": 14
+    },
+    "row": 22,
+    "char_count": 451,
+    "tags": [
+      "家用充电桩",
+      "雷迪恩充电桩",
+      "充电桩",
+      "3C认证",
+      "汽车充电桩",
+      "充电桩避坑",
+      "新能源生活",
+      "电车充电",
+      "充电桩选购",
+      "充电桩推荐"
+    ],
+    "voice": "nanny-guide",
+    "placement": "hard",
+    "body_carries": "image-dependent",
+    "art": [
+      "memo-text",
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/022-本人新手_决定要买家用充电桩了_.txt"
+  },
+  {
+    "tpl_id": 13,
+    "tpl_name": "好物分享类型",
+    "img_category": "单张图表对比",
+    "title": "家用充电桩榜单前四🚗自用大测评！",
+    "url": "https://www.xiaohongshu.com/explore/6a0c003f0000000036002e3c?xsec_token=MBed2J2N8rro4yaE5aQxqrTb9kDG5Vx45fQ4csL4vhY0E=&xsec_source=pc_pgyexport",
+    "body_struct": "人群痛点+衔接+产品推荐+选购思路介绍",
+    "img_struct": "产品单张介绍",
+    "engagement": {
+      "likes": 52,
+      "saves": 33,
+      "comments": 35
+    },
+    "row": 23,
+    "char_count": 561,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "新能源汽车",
+      "家用充电桩",
+      "3C认证",
+      "汽车充电桩",
+      "充电桩避坑"
+    ],
+    "voice": "first-person-journey",
+    "placement": "hard",
+    "body_carries": "image-dependent",
+    "art": [
+      "product-single",
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/023-家用充电桩榜单前四_自用大测评_.txt"
+  },
+  {
+    "tpl_id": 13,
+    "tpl_name": "好物分享类型",
+    "img_category": "单张图表对比",
+    "title": "买前不看必后悔！家用充电桩选购攻略",
+    "url": "https://www.xiaohongshu.com/explore/6a1d418d000000003601eb09?xsec_token=MBKMyErWFJRvTybO0wNm3OWvfVXSUOAoVVzXwBmpAZyZ0=&xsec_source=pc_pgyexport",
+    "body_struct": "痛点+利他+核心指标+安装避坑+产品植入",
+    "img_struct": "产品单张介绍",
+    "engagement": {
+      "likes": 35,
+      "saves": 11,
+      "comments": 17
+    },
+    "row": 24,
+    "char_count": 392,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩推荐家用",
+      "雷迪恩充电桩"
+    ],
+    "voice": "structured-guide",
+    "placement": "medium",
+    "body_carries": "self-contained",
+    "art": [
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/024-买前不看必后悔_家用充电桩选购攻略.txt"
+  },
+  {
+    "tpl_id": 14,
+    "tpl_name": "30件事干货",
+    "img_category": "多字图表干货",
+    "title": "装充电桩后才知道的30件事，新手避坑指南",
+    "url": "https://www.xiaohongshu.com/explore/6a2bd25500000000220261ee?xsec_token=MBWAkyBB9DD6RE6HxY_U-QGGE8LtuK_DubZVn3TTHC2tA=&xsec_source=pc_pgyexport",
+    "body_struct": "利他+单品",
+    "img_struct": "30项文字介绍（涉及到所有事项",
+    "engagement": {
+      "likes": 199,
+      "saves": 311,
+      "comments": 37
+    },
+    "row": 25,
+    "char_count": 301,
+    "tags": [
+      "家用充电桩",
+      "充电桩避坑",
+      "充电桩推荐家用",
+      "3c充电桩",
+      "雷迪恩充电桩",
+      "新能源车",
+      "提车必备",
+      "充电桩选购"
+    ],
+    "voice": "nanny-guide",
+    "placement": "medium",
+    "body_carries": "image-dependent",
+    "art": [
+      "memo-text"
+    ],
+    "conversion": null,
+    "note_file": "notes/025-装充电桩后才知道的30件事_新手避坑指南.txt"
+  },
+  {
+    "tpl_id": 15,
+    "tpl_name": "强对比（图表+单张对比)",
+    "img_category": "图表对比",
+    "title": "4款家用充电桩横评｜哪款更适合你🔌",
+    "url": "https://www.xiaohongshu.com/explore/6a31562d000000001102d557?xsec_token=MBNgG46E-gNqOV5I_eNl4pyRdMkWKdsggXnYnKPxCzuZU=&xsec_source=pc_pgyexport",
+    "body_struct": "痛点+利他+各品牌的参数+适用人群",
+    "img_struct": "单张图参数列举+点评",
+    "engagement": {
+      "likes": 8,
+      "saves": 10,
+      "comments": 12
+    },
+    "row": 26,
+    "char_count": 912,
+    "tags": [
+      "家用充电桩",
+      "充电桩怎么选",
+      "充电桩对比",
+      "公牛充电桩",
+      "雷迪恩充电桩",
+      "理想充电桩",
+      "3c充电桩",
+      "新能源车"
+    ],
+    "voice": "persona-match-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "spec-table",
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/026-4款家用充电桩横评_哪款更适合你_.txt"
+  },
+  {
+    "tpl_id": 16,
+    "tpl_name": "单维度对比",
+    "img_category": "图表对比",
+    "title": "5款家用充电桩，极限5选1🔌",
+    "url": "https://www.xiaohongshu.com/explore/6a438fdc000000001702a0be?xsec_token=MBOZRhGN2Ut_NNbZveMme-UOz-m1bumlCjvWPV-TD5DIM=&xsec_source=pc_pgyexport",
+    "body_struct": "分维度参数罗列对比",
+    "img_struct": "分维度对比，高级图表",
+    "engagement": {
+      "likes": 15,
+      "saves": 15,
+      "comments": 26
+    },
+    "row": 27,
+    "char_count": 831,
+    "tags": [
+      "雷迪恩充电桩",
+      "充电桩",
+      "充电桩推荐家用",
+      "公牛充电桩",
+      "充电桩安装教程",
+      "充电桩选购推荐"
+    ],
+    "voice": "persona-match-review",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/027-5款家用充电桩_极限5选1_.txt"
+  },
+  {
+    "tpl_id": 18,
+    "tpl_name": "偏UGC安装内容",
+    "img_category": "经验分享",
+    "title": "安充电桩距离电表太远？（已解决，超省钱版",
+    "url": "https://www.xiaohongshu.com/explore/6a71a6c40000000035016ec0?xsec_token=MBrWKFNHAsiSeZQ2uOXVFu58iAs9Q2bbIUJWRj9MjG-F8=&xsec_source=pc_pgyexport",
+    "body_struct": "素人视角说安装流程步骤核心的",
+    "img_struct": "步骤的是实拍图和截图",
+    "engagement": {
+      "likes": 97,
+      "saves": 183,
+      "comments": 48
+    },
+    "row": 28,
+    "char_count": 981,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩安装",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "家用充电桩安装",
+      "电车"
+    ],
+    "voice": "first-person-journey",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo",
+      "screenshot"
+    ],
+    "conversion": null,
+    "note_file": "notes/028-安充电桩距离电表太远_已解决_超省钱版.txt"
+  },
+  {
+    "tpl_id": 21,
+    "tpl_name": "雷迪恩全系列介绍",
+    "img_category": "单张图表对比",
+    "title": "雷迪恩充电桩家族，一篇找到你的本命那台⚡",
+    "url": "https://www.xiaohongshu.com/explore/6a61e4e60000000011019b98?xsec_token=MBT5Nijje17u5Rc_dVUgNt6ThtLMjn2B_6ddaT4pzxvQY=&xsec_source=pc_pgyexport",
+    "body_struct": "痛点+利他",
+    "img_struct": "单张图多字介绍各产品",
+    "engagement": {
+      "likes": 15,
+      "saves": 7,
+      "comments": 15
+    },
+    "row": 29,
+    "char_count": 238,
+    "tags": [
+      "家用充电桩",
+      "充电桩",
+      "雷迪恩充电桩",
+      "充电新选择",
+      "3C认证",
+      "家用充电桩推荐"
+    ],
+    "voice": "persona-match-review",
+    "placement": "hard",
+    "body_carries": "image-dependent",
+    "art": [
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/029-雷迪恩充电桩家族_一篇找到你的本命那台_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "普通人装家用充电桩做的一些小攻略",
+    "url": "https://www.xiaohongshu.com/explore/6a68722e000000001c00d516?xsec_token=WB7Zt1xVk4dhkBiaaaLMXH4eBjG8kXuj2uIAPe2z_3ND0=&xsec_source=pc_ad",
+    "body_struct": "购买安装流程+产品植入",
+    "img_struct": "安装实拍图",
+    "engagement": {
+      "likes": 125,
+      "saves": 135,
+      "comments": 24
+    },
+    "row": 30,
+    "char_count": 991,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩安装",
+      "雷迪恩充电桩",
+      "充电桩推荐家用",
+      "充电桩品牌推荐",
+      "3C认证充电桩",
+      "新能源"
+    ],
+    "voice": "structured-guide",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo",
+      "screenshot"
+    ],
+    "conversion": null,
+    "note_file": "notes/030-普通人装家用充电桩做的一些小攻略.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "装充电桩后很难和用商充的朋友产生共情了",
+    "url": "https://www.xiaohongshu.com/discovery/item/698c488b000000000c035aae?source=webshare&xhsshare=pc_web&xsec_token=ABHVO5l5w695rltwRfWTEjv2aRFbTPu_G8FDa8-1Jt1CY=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 31,
+    "char_count": 1055,
+    "tags": [
+      "电车充电",
+      "充电桩",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "充电",
+      "电动汽车"
+    ],
+    "voice": "meme-remix",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/031-装充电桩后很难和用商充的朋友产生共情了.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "邻居说充电桩有辐射，不让装怎么办？",
+    "url": "https://www.xiaohongshu.com/discovery/item/69a69c600000000022033789?source=webshare&xhsshare=pc_web&xsec_token=ABzF6uEYKG3lYKyVWYP6Dk2fmW5xn7yPMkobhvNxMea-M=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 32,
+    "char_count": 1042,
+    "tags": [
+      "充电桩",
+      "辐射",
+      "家用充电桩",
+      "雷迪恩充电桩",
+      "充电",
+      "新能源",
+      "邻居"
+    ],
+    "voice": "conflict-story",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/032-邻居说充电桩有辐射_不让装怎么办_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "没人觉得家用充电桩充的电更纯吗？",
+    "url": "https://www.xiaohongshu.com/discovery/item/69c63496000000001b002406?source=webshare&xhsshare=pc_web&xsec_token=AB2oTuATwSOpjeDYh4u-MvHUjnN2taGuL_BnK1yLXSPc0=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 33,
+    "char_count": 965,
+    "tags": [
+      "充电桩",
+      "充电桩品牌推荐",
+      "公牛充电桩",
+      "雷迪恩充电桩",
+      "新能源",
+      "充电",
+      "快充"
+    ],
+    "voice": "meme-remix",
+    "placement": "medium",
+    "body_carries": "self-contained",
+    "art": [
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/033-没人觉得家用充电桩充的电更纯吗_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "后悔了，没有家充桩真的不能买电车😭",
+    "url": "https://www.xiaohongshu.com/discovery/item/6a4cbaa9000000001101f9b3?source=webshare&xhsshare=pc_web&xsec_token=LBGO2ZnD0mMzqZvgHt8JLnw3xbYm97CnGHqdh4KCcA7Dk=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 34,
+    "char_count": 860,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩安装",
+      "充电桩品牌推荐",
+      "雷迪恩充电桩",
+      "家用充电桩安装",
+      "充电桩安装流程"
+    ],
+    "voice": "first-person-journey",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo",
+      "screenshot"
+    ],
+    "conversion": null,
+    "note_file": "notes/034-后悔了_没有家充桩真的不能买电车_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "充电桩装上后，我和师傅都沉默了......",
+    "url": "https://www.xiaohongshu.com/discovery/item/6a0ac9f80000000035022744?source=webshare&xhsshare=pc_web&xsec_token=LBSdnWdI3---joJHUjsqIQci3P-JdjxM1yRxOsG-dD8qo=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 35,
+    "char_count": 1059,
+    "tags": [
+      "家用充电桩",
+      "充电桩",
+      "雷迪恩充电桩",
+      "充电桩品牌推荐",
+      "公牛充电桩",
+      "充电桩安装",
+      "家用充电桩品牌推荐"
+    ],
+    "voice": "conflict-story",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/035-充电桩装上后_我和师傅都沉默了_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "装家充被邻居道德绑架：为了孩子你必须拆了",
+    "url": "https://www.xiaohongshu.com/discovery/item/69c63b8600000000230253d0?source=webshare&xhsshare=pc_web&xsec_token=ABf3TJCI6F1ZFUEV4-Jqsu2X2BiM8MFYwP15-CH-17rVM=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 36,
+    "char_count": 928,
+    "tags": [
+      "充电桩",
+      "充电桩安装",
+      "用电安全",
+      "儿童安全隐患",
+      "安全",
+      "邻居",
+      "雷迪恩充电桩",
+      "和谐邻里关系",
+      "新能源汽车"
+    ],
+    "voice": "conflict-story",
+    "placement": "soft",
+    "body_carries": "self-contained",
+    "art": [
+      "install-photo"
+    ],
+    "conversion": null,
+    "note_file": "notes/036-装家充被邻居道德绑架_为了孩子你必须拆了.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "再冷漠的人买到这样的充电桩都会笑出声吧…",
+    "url": "https://www.xiaohongshu.com/discovery/item/6a4f56b2000000000f031b64?source=webshare&xhsshare=pc_web&xsec_token=ABOrv6-qEnZEYwjXmXb8Z-MbdWOAeBNjgAQqI40zeX3MU=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 37,
+    "char_count": 1009,
+    "tags": [
+      "充电桩",
+      "家用充电桩",
+      "充电桩品牌推荐",
+      "充电桩安装",
+      "雷迪恩充电桩",
+      "家用充电桩品牌推荐",
+      "电车"
+    ],
+    "voice": "meme-remix",
+    "placement": "hard",
+    "body_carries": "self-contained",
+    "art": [
+      "product-single"
+    ],
+    "conversion": null,
+    "note_file": "notes/037-再冷漠的人买到这样的充电桩都会笑出声吧_.txt"
+  },
+  {
+    "tpl_id": 22,
+    "tpl_name": "偏UGC内容",
+    "img_category": "经验分享",
+    "title": "物业逼交2000装桩费？吃哑巴亏？附维权攻略",
+    "url": "https://www.xiaohongshu.com/discovery/item/69d4a934000000001d01bd61?source=webshare&xhsshare=pc_web&xsec_token=ABLRYGVnauH2l-nlnHax05tiAUXM5KF7TLyQU7e-2cES8=&xsec_source=pc_share",
+    "body_struct": null,
+    "img_struct": null,
+    "engagement": null,
+    "row": 38,
+    "char_count": 1044,
+    "tags": [
+      "雷迪恩充电桩",
+      "充电桩",
+      "充电桩品牌推荐",
+      "充电桩维权",
+      "安装充电桩",
+      "第三方充电桩",
+      "3C认证充电桩",
+      "装桩攻略",
+      "业主维权"
+    ],
+    "voice": "conflict-story",
+    "placement": "medium",
+    "body_carries": "self-contained",
+    "art": [
+      "chart-compare"
+    ],
+    "conversion": null,
+    "note_file": "notes/038-物业逼交2000装桩费_吃哑巴亏_附维权攻略.txt"
+  }
+]

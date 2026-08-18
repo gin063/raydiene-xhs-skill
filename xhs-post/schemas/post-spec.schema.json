@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "post-spec",
+  "description": "调度 skill 的唯一产出，画风 skill 的唯一输入。改动本文件 = 破坏契约，需同步 registry 与两侧文档。",
+  "type": "object",
+  "required": ["meta", "axes", "copy", "images"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["workflow"],
+      "properties": {
+        "workflow": {
+          "enum": ["new", "rewrite"],
+          "description": "new=写新内容；rewrite=爆文库复写。两条流程逻辑不同，见 references/workflows/"
+        },
+        "source_template_id": {
+          "type": ["integer", "null"],
+          "description": "rewrite 时必填，指向 data/templates.json 的 tpl_id"
+        },
+        "source_note_file": { "type": ["string", "null"] },
+        "created": { "type": "string" }
+      }
+    },
+    "axes": {
+      "type": "object",
+      "description": "三条正交轴。混用会导致新增画风时被迫重写文风文档。",
+      "required": ["voice", "art_style", "placement"],
+      "properties": {
+        "voice": {
+          "type": "string",
+          "description": "叙事骨架 id，取值见 references/voices/_index.md"
+        },
+        "art_style": {
+          "type": "string",
+          "description": "画风 id，必须存在于 styles.registry.json"
+        },
+        "placement": {
+          "enum": ["soft", "medium", "hard"],
+          "description": "植入强度。soft=结尾一句带过；medium=参数清单；hard=竞品并列后落到雷迪恩"
+        },
+        "rationale": {
+          "type": "string",
+          "description": "为什么选这三个值。人工复盘和后续调优要看这段，不能省。"
+        }
+      }
+    },
+    "copy": {
+      "type": "object",
+      "required": ["title", "body", "tags"],
+      "properties": {
+        "title": { "type": "string", "maxLength": 20 },
+        "body": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^#" },
+          "minItems": 4,
+          "maxItems": 10
+        }
+      }
+    },
+    "images": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["role", "index", "render_mode"],
+        "properties": {
+          "role": { "enum": ["cover", "page"] },
+          "index": { "type": "integer", "minimum": 1 },
+          "render_mode": { "enum": ["html-screenshot", "image-gen"] },
+          "prompt": {
+            "type": "string",
+            "description": "image-gen 模式必填。要渲染的文字必须用「」精确括出并单独成行。"
+          },
+          "text_on_image": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "image-gen 模式必填。图上应当出现的文字清单，交付后供人工逐条核对——生图模型会写错字。"
+          },
+          "content": {
+            "type": "object",
+            "description": "html-screenshot 模式必填。结构化内容，字段随画风而定，见该画风 vendor 目录下的文档。"
+          },
+          "reserved_area": {
+            "type": ["object", "null"],
+            "description": "需要后期人工贴实拍产品图的留白区",
+            "properties": {
+              "desc": { "type": "string" },
+              "purpose": { "enum": ["product-photo", "logo", "other"] }
+            }
+          }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "description": "合规自查，写入交付 md 供人工确认",
+      "properties": {
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "item": { "type": "string" },
+              "status": { "enum": ["pass", "needs-human", "fail"] },
+              "note": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "conversion": {
+      "type": ["object", "null"],
+      "description": "预留。发布后回填 uuid 追踪到的搜索/进店转化数据，用于反向调优 voice 与 placement 的选择。互动量不填在这里。",
+      "properties": {
+        "searches": { "type": "integer" },
+        "store_visits": { "type": "integer" },
+        "measured_at": { "type": "string" }
+      }
+    }
+  }
+}
