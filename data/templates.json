@@ -12,6 +12,7 @@
       "saves": 62,
       "comments": 30
     },
+    "tier": "S",
     "row": 3,
     "char_count": 821,
     "tags": [
@@ -29,6 +30,7 @@
       "cost-breakdown"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/003-800_4000全价位充电桩选购指南_速通版_.txt"
   },
@@ -45,6 +47,7 @@
       "saves": 14,
       "comments": 7
     },
+    "tier": "B",
     "row": 4,
     "char_count": 491,
     "tags": [
@@ -64,6 +67,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/004-过来人真心建议_不安全的充电桩千万别碰_.txt"
   },
@@ -80,6 +84,7 @@
       "saves": 13,
       "comments": 12
     },
+    "tier": "S",
     "row": 5,
     "char_count": 417,
     "tags": [
@@ -101,6 +106,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/005-户外安装家用充电桩_选购要当心.txt"
   },
@@ -117,6 +123,7 @@
       "saves": 8,
       "comments": 11
     },
+    "tier": "A",
     "row": 6,
     "char_count": 905,
     "tags": [
@@ -135,6 +142,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/006-花费1W_的3C充电桩超硬核测评_选购指南.txt"
   },
@@ -151,6 +159,7 @@
       "saves": 297,
       "comments": 104
     },
+    "tier": "S",
     "row": 7,
     "char_count": 900,
     "tags": [
@@ -168,6 +177,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/007-10台充电桩_耗费过万_20项测评_选购必看.txt"
   },
@@ -184,6 +194,7 @@
       "saves": 51,
       "comments": 26
     },
+    "tier": "A",
     "row": 8,
     "char_count": 210,
     "tags": [
@@ -203,6 +214,7 @@
       "spec-table"
     ],
     "polish": "mixed",
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/008-买充电桩怕踩雷_这样选择越看越满意_.txt"
   },
@@ -219,6 +231,7 @@
       "saves": 18,
       "comments": 11
     },
+    "tier": "A",
     "row": 9,
     "char_count": 808,
     "tags": [
@@ -238,6 +251,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/009-5年老司机真心建议_热门家用充电桩这样买_.txt"
   },
@@ -254,6 +268,7 @@
       "saves": 15,
       "comments": 18
     },
+    "tier": "S",
     "row": 10,
     "char_count": 855,
     "tags": [
@@ -272,6 +287,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/010-别乱买充电桩了_看完这篇不花冤枉钱.txt"
   },
@@ -288,6 +304,7 @@
       "saves": 8,
       "comments": 8
     },
+    "tier": "S",
     "row": 11,
     "char_count": 539,
     "tags": [
@@ -308,6 +325,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/011-别再盲目花钱了_3c家用充电桩这么选才对_.txt"
   },
@@ -324,6 +342,7 @@
       "saves": 18,
       "comments": 18
     },
+    "tier": "S",
     "row": 12,
     "char_count": 591,
     "tags": [
@@ -344,6 +363,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/012-原来是这款赢了_26年机皇榜最全版.txt"
   },
@@ -360,6 +380,7 @@
       "saves": 41,
       "comments": 47
     },
+    "tier": "S",
     "row": 13,
     "char_count": 707,
     "tags": [
@@ -374,6 +395,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/013-亲测_我的900块充电桩vs邻居的千元款.txt"
   },
@@ -390,6 +412,7 @@
       "saves": 33,
       "comments": 59
     },
+    "tier": "S",
     "row": 14,
     "char_count": 799,
     "tags": [
@@ -408,6 +431,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/014-亲测_我的百元充电桩pk朋友的千元充电桩.txt"
   },
@@ -424,6 +448,7 @@
       "saves": 15,
       "comments": 12
     },
+    "tier": "A",
     "row": 15,
     "char_count": 611,
     "tags": [
@@ -439,6 +464,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/015-亲测_我的900元充电桩vs邻居的千元款.txt"
   },
@@ -455,6 +481,7 @@
       "saves": 18,
       "comments": 20
     },
+    "tier": "A",
     "row": 16,
     "char_count": 1124,
     "tags": [
@@ -471,6 +498,7 @@
       "teardown-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/016-充电桩榜单前四_自用比较.txt"
   },
@@ -487,6 +515,7 @@
       "saves": 10,
       "comments": 6
     },
+    "tier": "S",
     "row": 17,
     "char_count": 921,
     "tags": [
@@ -506,6 +535,7 @@
       "teardown-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/017-特斯拉_公牛_雷迪恩_挚达充电桩前四对拆.txt"
   },
@@ -522,6 +552,7 @@
       "saves": 20,
       "comments": 14
     },
+    "tier": "S",
     "row": 18,
     "char_count": 487,
     "tags": [
@@ -539,6 +570,7 @@
       "teardown-photo"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/018-销量前三的充电桩全拆了_差价2000差在哪.txt"
   },
@@ -555,6 +587,7 @@
       "saves": 559,
       "comments": 104
     },
+    "tier": "S",
     "row": 19,
     "char_count": 361,
     "tags": [
@@ -572,6 +605,7 @@
       "memo-text"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/019-26年买充电桩的_骂醒一个算一个_.txt"
   },
@@ -588,6 +622,7 @@
       "saves": 24,
       "comments": 10
     },
+    "tier": "S",
     "row": 20,
     "char_count": 617,
     "tags": [
@@ -607,6 +642,7 @@
       "memo-text"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/020-给电车车主的装桩建议.txt"
   },
@@ -623,6 +659,7 @@
       "saves": 1124,
       "comments": 85
     },
+    "tier": "S",
     "row": 21,
     "char_count": 817,
     "tags": [
@@ -644,6 +681,7 @@
       "memo-text"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/021-618听劝_5_6月买家用充电桩的注意了_.txt"
   },
@@ -660,6 +698,7 @@
       "saves": 373,
       "comments": 14
     },
+    "tier": "S",
     "row": 22,
     "char_count": 451,
     "tags": [
@@ -682,6 +721,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/022-本人新手_决定要买家用充电桩了_.txt"
   },
@@ -698,6 +738,7 @@
       "saves": 33,
       "comments": 35
     },
+    "tier": "S",
     "row": 23,
     "char_count": 561,
     "tags": [
@@ -718,6 +759,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/023-家用充电桩榜单前四_自用大测评_.txt"
   },
@@ -734,6 +776,7 @@
       "saves": 11,
       "comments": 17
     },
+    "tier": "A",
     "row": 24,
     "char_count": 392,
     "tags": [
@@ -749,6 +792,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/024-买前不看必后悔_家用充电桩选购攻略.txt"
   },
@@ -765,6 +809,7 @@
       "saves": 311,
       "comments": 37
     },
+    "tier": "S",
     "row": 25,
     "char_count": 301,
     "tags": [
@@ -784,6 +829,7 @@
       "memo-text"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/025-装充电桩后才知道的30件事_新手避坑指南.txt"
   },
@@ -800,6 +846,7 @@
       "saves": 10,
       "comments": 12
     },
+    "tier": "S",
     "row": 26,
     "char_count": 912,
     "tags": [
@@ -820,6 +867,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/026-4款家用充电桩横评_哪款更适合你_.txt"
   },
@@ -836,6 +884,7 @@
       "saves": 15,
       "comments": 26
     },
+    "tier": "A",
     "row": 27,
     "char_count": 831,
     "tags": [
@@ -853,6 +902,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/027-5款家用充电桩_极限5选1_.txt"
   },
@@ -869,6 +919,7 @@
       "saves": 183,
       "comments": 48
     },
+    "tier": "S",
     "row": 28,
     "char_count": 981,
     "tags": [
@@ -888,6 +939,7 @@
       "screenshot"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/028-安充电桩距离电表太远_已解决_超省钱版.txt"
   },
@@ -904,6 +956,7 @@
       "saves": 7,
       "comments": 15
     },
+    "tier": "A",
     "row": 29,
     "char_count": 238,
     "tags": [
@@ -921,6 +974,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/029-雷迪恩充电桩家族_一篇找到你的本命那台_.txt"
   },
@@ -937,6 +991,7 @@
       "saves": 135,
       "comments": 24
     },
+    "tier": "A",
     "row": 30,
     "char_count": 991,
     "tags": [
@@ -957,6 +1012,7 @@
       "screenshot"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/030-普通人装家用充电桩做的一些小攻略.txt"
   },
@@ -969,6 +1025,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 31,
     "char_count": 1055,
     "tags": [
@@ -986,6 +1043,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/031-装充电桩后很难和用商充的朋友产生共情了.txt"
   },
@@ -998,6 +1056,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 32,
     "char_count": 1042,
     "tags": [
@@ -1016,6 +1075,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/032-邻居说充电桩有辐射_不让装怎么办_.txt"
   },
@@ -1028,6 +1088,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 33,
     "char_count": 965,
     "tags": [
@@ -1046,6 +1107,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/033-没人觉得家用充电桩充的电更纯吗_.txt"
   },
@@ -1058,6 +1120,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": "S",
     "row": 34,
     "char_count": 860,
     "tags": [
@@ -1077,6 +1140,7 @@
       "screenshot"
     ],
     "polish": null,
+    "track": "conversion",
     "conversion": null,
     "note_file": "notes/034-后悔了_没有家充桩真的不能买电车_.txt"
   },
@@ -1089,6 +1153,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 35,
     "char_count": 1059,
     "tags": [
@@ -1107,6 +1172,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/035-充电桩装上后_我和师傅都沉默了_.txt"
   },
@@ -1119,6 +1185,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 36,
     "char_count": 928,
     "tags": [
@@ -1139,6 +1206,7 @@
       "install-photo"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/036-装家充被邻居道德绑架_为了孩子你必须拆了.txt"
   },
@@ -1151,6 +1219,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 37,
     "char_count": 1009,
     "tags": [
@@ -1169,6 +1238,7 @@
       "product-single"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/037-再冷漠的人买到这样的充电桩都会笑出声吧_.txt"
   },
@@ -1181,6 +1251,7 @@
     "body_struct": null,
     "img_struct": null,
     "engagement": null,
+    "tier": null,
     "row": 38,
     "char_count": 1044,
     "tags": [
@@ -1201,6 +1272,7 @@
       "chart-compare"
     ],
     "polish": null,
+    "track": "nurture",
     "conversion": null,
     "note_file": "notes/038-物业逼交2000装桩费_吃哑巴亏_附维权攻略.txt"
   }

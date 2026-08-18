@@ -13,7 +13,10 @@ from pathlib import Path
 import openpyxl
 
 COLS = ["tpl_id", "tpl_name", "img_category", "title", "url",
-        "body_struct", "img_struct", "full_text", "engagement"]
+        "body_struct", "img_struct", "full_text", "engagement", "tier"]
+
+# 养号轨：不背转化 KPI，其 tier 无参考意义
+NURTURE_VOICES = {"conflict-story", "meme-remix"}
 
 
 def parse_engagement(s):
@@ -42,7 +45,7 @@ def main():
     ws = openpyxl.load_workbook(xlsx, data_only=True).worksheets[0]
     records = []
     for r in range(3, ws.max_row + 1):
-        vals = [ws.cell(r, c).value for c in range(1, 10)]
+        vals = [ws.cell(r, c).value for c in range(1, 11)]
         if not any(vals):
             continue
         rec = dict(zip(COLS, vals))
@@ -53,7 +56,11 @@ def main():
         # 三轴标注来自 data/labels.json，与 xlsx 解耦
         rec.update(labels.get(str(r), {"voice": None, "placement": None,
                                        "body_carries": None, "art": None}))
-        rec["conversion"] = None     # 转化数据，拿到后回填
+        rec["tier"] = str(rec["tier"] or "").strip() or None   # S/A/B 转化分级
+        rec["track"] = "nurture" if rec.get("voice") in NURTURE_VOICES else "conversion"
+        if rec["track"] == "nurture":
+            rec["tier"] = None       # 养号轨不背转化 KPI，tier 不可比
+        rec["conversion"] = None     # 具体转化数值，拿到后回填
         records.append(rec)
 
     for rec in records:
