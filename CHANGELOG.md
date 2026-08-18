@@ -1,5 +1,54 @@
 # CHANGELOG — 小红书图文生成 skill
 
+## 2026-08-18 · 语料三轴标注 + 文风库开工
+
+**做了什么**
+
+- 通读 36 篇全文，**按中文内容重判分类**（原表分类不采信，见下）
+- 新增 `data/labels.json`：36 篇 × 四个维度（voice / placement / body_carries / art）全覆盖标注
+- `ingest_notes.py` 增加 labels merge，标注与 xlsx 解耦——xlsx 加行重跑不会丢标注
+- `references/voices/_index.md`：文风选择矩阵
+- 两份文风规格样例：`nanny-guide.md`（干货型）、`conflict-story.md`（情绪型）
+- `git init` + 首次提交
+
+**重判结果：原表「爆文分类」列已弃用**
+
+原分类 5 个值中 4 个（图表对比 / 实拍对比 / 多字图表干货 / 单张图表对比）描述的是**配图形式**，不是文风。真正的文风信号在「正文结构」列。按内容重判后得到 9 个 voice：
+
+| voice | 样本 | | voice | 样本 |
+|---|---|---|---|---|
+| structured-guide | 7 | | head-to-head | 3 |
+| persona-match-review | 5 | | first-person-journey | 3 |
+| hardcore-review | 5 | | meme-remix | 3 |
+| nanny-guide | 5 | | first-principles | 1 |
+| conflict-story | 4 | | | |
+
+**新发现**
+
+1. **模板 22（原「偏UGC内容」8 篇）确认是杂物抽屉**，已拆成 conflict-story(3) + meme-remix(3) + first-person-journey(1) + 另1篇。这 8 篇原本零标注，现已全部覆盖。
+2. **新增第四个维度 `body_carries`**（正文自足 27 / 依赖图 9）。`image-dependent` 是 nanny-guide 拿高收藏的核心手法：正文压到 300 字只留钩子和产品结论，干货全推到图上（样本 019/022/025）。这个维度原表完全没有，但它直接决定配图要生成多少内容。
+3. **placement 分布 hard 18 / soft 10 / medium 8**——硬植入占一半。合理性待转化数据验证，数据到位前不设默认值。
+4. **`first-principles` 只有 1 个样本**（行3 马斯克第一性原理），规格置信度低，已在 index 标注。它是唯一一篇几乎不带货却建立专业权威的，值得补样本。
+5. **行 8「买充电桩怕踩雷」正文疑似截断**（仅 210 字，末尾无收束），已打 `quality_flag`，不要当模板。
+
+**未验证**
+
+- 9 个 voice 的切分粒度是否合适，尤其 `structured-guide`(7) 是否该再拆
+- 两份文风规格的格式是否够用——待用户确认后再产出剩余 7 份
+
+**下一步**
+
+1. 用户确认文风规格格式 → 补齐剩余 7 份
+2. `references/workflows/new-post.md` + `rewrite.md`
+3. `xhs-post/SKILL.md` 主体
+4. `scripts/validate_post.py` + `install.ps1`
+
+**GitHub 状态**
+
+本地仓库已建（`xhs-skill/`，独立于 `app/`），首次提交完成。**远程未建**：本会话无 GitHub 连接器、无 `gh` CLI，无法代建仓库。系统级 Git Credential Manager 可用，用户手动建空仓后 `git push` 会弹浏览器授权。
+
+---
+
 ## 2026-08-18 · 打地基
 
 **做了什么**
