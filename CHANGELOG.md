@@ -1,5 +1,52 @@
 # CHANGELOG — 小红书图文生成 skill
 
+## 2026-08-18 · 框架主体完成
+
+**做了什么**
+
+框架已可运行，缺的是内容（7 份 voice 规格）。
+
+- `SKILL.md` 调度主体：分流（新写/复写）→ 四段闸（PLAN→DRAFT→IMAGE PLAN→RENDER）→ references 索引
+- `references/selling-points.md` **新增卖点轴**：7 个卖点 + 卖点×voice 搭配 + 竞品诚实对照 + 不能打的卖点
+- `references/image-plan.md` 配图三步决策，含 photo-real 分支
+- `references/cover.md` 封面独立建模，4 种套路 + 复写时的可改/不可改边界
+- `references/workflows/new-post.md` + `rewrite.md`
+- `styles.registry.json` v2：并入 v1 的 10 种配图风格，新增 `photo-real` render_mode
+- `scripts/validate_post.py`：把 compliance 里可机器判定的做成自动检查
+- schema 增加 `axes.track` / `axes.selling_point` / `images[].production_notes` / `meta.source_images`
+
+**关键决策与理由**
+
+1. **卖点是 PLAN 的第一个决策，先于 voice。** 用户指出「根据目的宣传不同卖点，会影响整体行文逻辑和配图风格」。卖点定不下来后面全是猜，所以决策顺序固定为 轨道→卖点→文风→植入→承载度→配图。
+
+2. **新增 `photo-real` render_mode。** 36 篇里实拍图占比很高。实拍图**不出 prompt**，出 `production_notes`（怎么加工已有照片）+ `text_on_image`（图上文本仍由模型生成，那是文案工作）。这是原 html/image-gen 二分法覆盖不到的第三种。
+
+3. **v1 的 10 种配图风格直接注册进 registry，而不是我看图反推。** 那是实操踩出来的知识，比从 178 张图归纳准。配图只用于抽查验证。
+
+4. **复写的封面策略：小改不重做。** 原封面的视觉记忆是爆款资产，重做等于扔掉。定了可改（配色/字体/图标/文案/产品图角度）与不可改（构图/相对位置/信息层级/排布方式）的边界。原则：扫一眼像同一系列，逐帧比对是两张图。
+
+5. **复写不能跳过合规复查。** 「原文能发说明没问题」这个假设不成立——原文可能本来就踩线、监管口径会变、脱敏规则已于今日变更（雷迪恩本品改为 `雷*恩`）、618 可能藏在原配图里。
+
+**已验证**
+
+- ✅ `validate_post.py` 用故意违规的样本测过，10 项 FAIL 全部命中（极限词/618/攻击性词/品牌未脱敏/降配泄露/rationale 空/photo-real 缺字段）
+- ✅ 产品 xlsx 结构确认：6 组 42 个参数行 × 13 个产品列。`运行内存 224k→144K`、`I/O 80个→53个` 印证了 v1 的「不暴露降配」规则
+
+**未验证**
+
+- ❌ 整套流程未跑过一次真实产出
+- ❌ `polish` 轴仍 35/36 为 null（改用 registry 的风格映射，未逐张标注 178 张配图）
+- ❌ vendor/ 下两个外部 skill 尚未 clone
+- ❌ Codex 侧实际读取的 skills 路径未确认
+
+**下一步**
+
+1. 补齐 7 份 voice 规格（含 v1 的配图张数与 prompt 要点），并按双轨/tier 发现重写已有的 2 份
+2. 跑一次端到端真实产出做验收
+3. clone vendor/ 两个外部 skill，写 install 脚本部署到 Codex 侧
+
+---
+
 ## 2026-08-18 · 语料三轴标注 + 文风库开工
 
 **做了什么**

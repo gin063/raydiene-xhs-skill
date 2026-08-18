@@ -38,13 +38,25 @@
         },
         "created": {
           "type": "string"
+        },
+        "source_images": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "rewrite 时填，原文配图路径。复写要求封面小改不重做。"
         }
       }
     },
     "axes": {
       "type": "object",
-      "description": "三条正交轴。混用会导致新增画风时被迫重写文风文档。",
+      "description": "六条独立的轴。混用会导致新增画风时被迫重写文风文档。",
       "required": [
+        "track",
+        "selling_point",
         "voice",
         "art_style",
         "placement",
@@ -70,7 +82,7 @@
         },
         "rationale": {
           "type": "string",
-          "description": "为什么选这三个值。人工复盘和后续调优要看这段，不能省。"
+          "description": "每条轴为什么选这个值。转化数据回流时这是唯一的归因依据，不能省。"
         },
         "polish": {
           "enum": [
@@ -87,6 +99,17 @@
             "image-only"
           ],
           "description": "正文承载度。image-only 是成立的独立形态而非残缺；选它时配图内容设计是主要工作量。"
+        },
+        "track": {
+          "enum": [
+            "conversion",
+            "nurture"
+          ],
+          "description": "转化轨 / 养号轨。养号轨(conflict-story, meme-remix)不背转化 KPI，其 tier 不可与转化轨比较。"
+        },
+        "selling_point": {
+          "type": "string",
+          "description": "主打卖点，取值见 references/selling-points.md。这是 PLAN 的第一个决策——卖点决定行文逻辑和配图形式，必须先于 voice 定下。"
         }
       }
     },
@@ -139,7 +162,8 @@
           "render_mode": {
             "enum": [
               "html-screenshot",
-              "image-gen"
+              "image-gen",
+              "photo-real"
             ]
           },
           "prompt": {
@@ -151,7 +175,7 @@
             "items": {
               "type": "string"
             },
-            "description": "image-gen 模式必填。图上应当出现的文字清单，交付后供人工逐条核对——生图模型会写错字。"
+            "description": "image-gen 与 photo-real 模式必填。图上应出现的文字清单：生图模型会写错字，实拍图需人工排字，两者都以此为准。"
           },
           "content": {
             "type": "object",
@@ -182,6 +206,10 @@
               "ugc-raw"
             ],
             "description": "可选，覆盖 axes.polish。同一篇里不同图可以不同质感（行8 实测：参数大表规整 + 产品图实拍叠字 + 榜单用电商截图）。"
+          },
+          "production_notes": {
+            "type": "string",
+            "description": "photo-real 模式必填。实拍图不出 prompt——这里写怎么把已有照片加工成配图（取哪个角度、加什么 emoji、文字块放哪）。图上要用的文本仍填 text_on_image。"
           }
         }
       }

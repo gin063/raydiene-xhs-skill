@@ -1,70 +1,139 @@
 {
-  "$comment": "画风注册表。这是你自己维护的适配层——vendor/ 下的上游仓库 git pull 不会碰它。新增画风只改这个文件，不改 SKILL.md。",
-  "version": 1,
-  "styles": [
-    {
-      "id": "guizang-social-card",
-      "label": "귀장社交卡片（杂志 / 瑞士网格）",
-      "render_mode": "html-screenshot",
-      "vendor_path": "vendor/guizang-social-card-skill",
-      "upstream": "https://github.com/op7418/guizang-social-card-skill",
-      "invoke": "读取 vendor/guizang-social-card-skill/SKILL.md 并按其流程执行",
-      "auto_trigger": false,
-      "$comment_auto_trigger": "务必保持 false。上游 description 含触发词『做一套小红书图文』，若装进 skills 目录会抢走调度权。仅以 vendor 目录方式按路径读取。",
-      "needs": ["title", "body_blocks", "theme", "layout"],
-      "text_fidelity": "exact",
-      "supports_reserved_area": true,
-      "reserved_area_method": "CSS 空 div，位置像素级可控",
-      "requires": ["node", "npm"],
-      "good_for": ["图表对比", "多字备忘录干货", "参数说明表格"],
-      "notes": "文字由 CSS 渲染，不会写错字。需要精确文案或密集参数表时优先选它。"
-    },
-    {
-      "id": "gathered-scenes-zine",
-      "label": "拼贴纸艺 zine 海报",
-      "render_mode": "image-gen",
-      "vendor_path": "vendor/gathered-scenes-zine-skill",
-      "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
-      "invoke": "$scenes-gathered-zine-v1-3",
-      "auto_trigger": false,
-      "needs": ["image_prompt", "source_photo"],
-      "text_fidelity": "approximate",
-      "supports_reserved_area": true,
-      "reserved_area_method": "prompt 描述留白区域，位置不精确，需人工核验",
-      "requires": ["image-gen"],
-      "good_for": ["氛围封面", "实拍照片再创作"],
-      "notes": "输入需要一张源照片。文字由生图模型绘制，必须走 text_on_image 人工核对。"
-    },
-    {
-      "id": "native-image-gen",
-      "label": "Codex 原生生图（无外部 skill）",
-      "render_mode": "image-gen",
-      "vendor_path": null,
-      "upstream": null,
-      "invoke": "直接调用 Codex 内置图像生成",
-      "auto_trigger": false,
-      "needs": ["image_prompt"],
-      "text_fidelity": "approximate",
-      "supports_reserved_area": true,
-      "reserved_area_method": "prompt 描述留白区域，位置不精确，需人工核验",
-      "requires": ["image-gen"],
-      "good_for": ["实拍风配图", "场景图", "无现成画风 skill 时的兜底"],
-      "notes": "默认兜底选项。GPT Image 2 中文渲染质量可用，但文字内容仍不保证准确。"
-    }
-  ],
+  "$comment": "画风注册表 = 适配层。vendor/ 下的上游仓库 git pull 不会碰它。新增画风只改本文件，SKILL.md 与 post-spec schema 都不用动。",
+  "version": 2,
+
   "render_modes": {
     "html-screenshot": {
       "desc": "HTML/CSS 模板经无头浏览器截图出 PNG",
       "spec_fields_required": ["images[].content"],
-      "spec_fields_ignored": ["images[].prompt"],
-      "text_accuracy": "像素级精确，无需人工核对文字"
+      "text_accuracy": "像素级精确，无需人工核对文字",
+      "note": "HTML 不等于精致。CSS 可以渲染很土的备忘录截图、聊天框、手写体，而文字仍然准。"
     },
     "image-gen": {
       "desc": "prompt 交给生图模型出 PNG",
       "spec_fields_required": ["images[].prompt", "images[].text_on_image"],
-      "spec_fields_ignored": ["images[].content"],
-      "text_accuracy": "不保证，必须人工核对 text_on_image 清单"
+      "text_accuracy": "不保证，必须逐条核对 text_on_image"
+    },
+    "photo-real": {
+      "desc": "实拍照片或现成截图，人工后期加工",
+      "spec_fields_required": ["images[].production_notes", "images[].text_on_image"],
+      "text_accuracy": "人工排字，准确",
+      "note": "不出 prompt。产出『制作指导』告诉人怎么加工已有照片，以及图上要用的文本。文本仍由模型生成。"
     }
   },
-  "$comment_extending": "新增画风的步骤：(1) git clone 到 vendor/ (2) 在 styles[] 加一条 (3) 若其 render_mode 是新的，在 render_modes 加一条并说明 spec 字段差异。SKILL.md 与 post-spec schema 都不需要改。"
+
+  "styles": [
+    {
+      "id": "ios-memo", "label": "iOS 备忘录",
+      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "visual": "浅暖白 #f7f3ea + 近黑字 + 橙 ✅ + 细虚线分隔 + 宽行距，扁平干净",
+      "art": ["memo-text"],
+      "good_for": ["nanny-guide", "first-person-journey"],
+      "pros": "真实感强、信息量大", "cons": "不高级",
+      "prompt_style": "iOS Notes app aesthetic, warm off-white background #f7f3ea, near-black text, orange checkmarks, thin dashed separators, generous line spacing, flat and clean."
+    },
+    {
+      "id": "warm-journal", "label": "暖黄手账测评",
+      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "visual": "#FBF6EC 底 + 明黄 #F5C518 + 粉橘 #FFB3A7",
+      "art": ["memo-text", "product-single"],
+      "good_for": ["first-person-journey", "head-to-head"],
+      "pros": "亲和、女性向", "cons": "偏轻，撑不住硬核参数"
+    },
+    {
+      "id": "swiss-ikb", "label": "瑞士风 × IKB 蓝",
+      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "visual": "#002FA7 大色块 + 无衬线 + 强网格",
+      "art": ["chart-compare", "spec-table"],
+      "good_for": ["hardcore-review", "persona-match-review"],
+      "pros": "专业、克制", "cons": "偏冷",
+      "vendor_path": "vendor/guizang-social-card-skill",
+      "note": "guizang skill 的 Swiss 视觉系统可直接复用"
+    },
+    {
+      "id": "liquid-glass", "label": "液态玻璃 Apple 风",
+      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "visual": "米白底 + #2d9ed0 半透明磨砂玻璃面板 + 柔性内发光 + 大留白",
+      "art": ["product-single", "spec-table"],
+      "good_for": ["persona-match-review"],
+      "pros": "高级、科技感", "cons": "排版要求高",
+      "prompt_style": "ultra-minimal premium tech, off-white base, semi-transparent frosted liquid-glass panels in ocean blue #2d9ed0, soft inner glow, subtle edge highlights, generous negative space, Apple product page aesthetic, soft diffused shadows.",
+      "tip": "同色多块时用透明度阶梯（12%→25%）做『入门→旗舰』的层次递进"
+    },
+    {
+      "id": "note-app-screenshot", "label": "笔记 App 截图",
+      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "visual": "品牌色顶栏 + 细灰工具栏 + 白色网格画布",
+      "art": ["memo-text", "chart-compare"],
+      "good_for": ["nanny-guide", "structured-guide"],
+      "pros": "有梗、亲切", "cons": "略山寨感",
+      "warning": "工具栏小图标容易画糊。糊了就裁掉工具栏，或用自备 SVG 补"
+    },
+    {
+      "id": "spec-table-card", "label": "参数表格卡",
+      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "visual": "左表头右数据，可转置为品牌为行、维度为列",
+      "art": ["spec-table"],
+      "good_for": ["hardcore-review", "persona-match-review"],
+      "pros": "信息权威", "cons": "单独用枯燥",
+      "content_schema": "fixed",
+      "note": "固定字段结构。参数自动比对产品 xlsx，并自动执行『不暴露降配』。转置版方便左侧贴产品图。"
+    },
+    {
+      "id": "product-card", "label": "精美产品卡",
+      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "visual": "产品图 + 定位胶囊 + 特性标签 + 编号优势列表",
+      "art": ["product-single"],
+      "good_for": ["persona-match-review"],
+      "pros": "好看、易复用", "cons": "需官方产品图",
+      "content_schema": "fixed"
+    },
+    {
+      "id": "cart-screenshot", "label": "购物车截图",
+      "render_mode": "photo-real", "polish": "ugc-raw",
+      "visual": "电商界面 + SKU 下方粉色短评",
+      "art": ["screenshot"],
+      "good_for": ["first-person-journey", "nanny-guide"],
+      "pros": "真实、种草强", "cons": "每条短评 ≤16 字/行",
+      "warning": "电商截图极易夹带 618 字样与真实订单号，必须遮挡"
+    },
+    {
+      "id": "chat-screenshot", "label": "微信聊天 / 文字截图",
+      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "visual": "对话气泡或纯文字截图",
+      "art": ["screenshot"],
+      "good_for": ["conflict-story", "meme-remix"],
+      "pros": "强真实感", "cons": "零品牌露出"
+    },
+    {
+      "id": "photo-realistic", "label": "写实摄影",
+      "render_mode": "photo-real", "polish": "ugc-raw",
+      "visual": "iPhone 抓拍感，低饱和，弱构图",
+      "art": ["install-photo", "teardown-photo", "product-single"],
+      "good_for": ["first-person-journey", "head-to-head", "conflict-story"],
+      "pros": "生活感、可信度最高", "cons": "需实拍素材",
+      "note": "首选真实照片。无素材时可 image-gen，但禁止生成竞品外观。"
+    },
+
+    {
+      "id": "gathered-scenes-zine", "label": "拼贴纸艺 zine 海报",
+      "render_mode": "image-gen", "polish": "pgc-polished",
+      "vendor_path": "vendor/gathered-scenes-zine-skill",
+      "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "invoke": "$scenes-gathered-zine-v1-3",
+      "art": ["install-photo"],
+      "good_for": [],
+      "note": "需要一张源照片。文字由模型绘制，必须走 text_on_image 核对。目前无匹配场景，备用。"
+    },
+    {
+      "id": "native-image-gen", "label": "Codex 原生生图（兜底）",
+      "render_mode": "image-gen", "polish": "mixed",
+      "vendor_path": null,
+      "art": ["*"],
+      "note": "无匹配画风时的兜底。GPT Image 2 中文可用但仍会写错，必须核对。"
+    }
+  ],
+
+  "$comment_auto_trigger": "vendor/ 下的外部 skill 一律不装进 ~/.codex/skills 或 ~/.claude/skills。guizang 上游 description 含触发词『做一套小红书图文』，装进 skills 目录会静默抢走调度权——照样出图，但文风选择、卖点决策、合规自查全部跳过且不报错。只以 vendor 目录按路径读取。",
+  "$comment_extending": "新增画风：(1) 需要外部代码则 git clone 到 vendor/ (2) 在 styles[] 加一条，填 render_mode / polish / art / good_for (3) 若引入新 render_mode，在 render_modes 加一条并说明 spec 字段差异。"
 }
