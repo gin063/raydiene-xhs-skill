@@ -1,139 +1,272 @@
 {
   "$comment": "画风注册表 = 适配层。vendor/ 下的上游仓库 git pull 不会碰它。新增画风只改本文件，SKILL.md 与 post-spec schema 都不用动。",
-  "version": 2,
-
+  "version": 3,
   "render_modes": {
     "html-screenshot": {
       "desc": "HTML/CSS 模板经无头浏览器截图出 PNG",
-      "spec_fields_required": ["images[].content"],
+      "spec_fields_required": [
+        "images[].content"
+      ],
       "text_accuracy": "像素级精确，无需人工核对文字",
       "note": "HTML 不等于精致。CSS 可以渲染很土的备忘录截图、聊天框、手写体，而文字仍然准。"
     },
     "image-gen": {
       "desc": "prompt 交给生图模型出 PNG",
-      "spec_fields_required": ["images[].prompt", "images[].text_on_image"],
+      "spec_fields_required": [
+        "images[].prompt",
+        "images[].text_on_image"
+      ],
       "text_accuracy": "不保证，必须逐条核对 text_on_image"
     },
     "photo-real": {
       "desc": "实拍照片或现成截图，人工后期加工",
-      "spec_fields_required": ["images[].production_notes", "images[].text_on_image"],
+      "spec_fields_required": [
+        "images[].production_notes",
+        "images[].text_on_image"
+      ],
       "text_accuracy": "人工排字，准确",
       "note": "不出 prompt。产出『制作指导』告诉人怎么加工已有照片，以及图上要用的文本。文本仍由模型生成。"
     }
   },
-
   "styles": [
     {
-      "id": "ios-memo", "label": "iOS 备忘录",
-      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "id": "ios-memo",
+      "label": "iOS 备忘录",
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
       "visual": "浅暖白 #f7f3ea + 近黑字 + 橙 ✅ + 细虚线分隔 + 宽行距，扁平干净",
-      "art": ["memo-text"],
-      "good_for": ["nanny-guide", "first-person-journey"],
-      "pros": "真实感强、信息量大", "cons": "不高级",
+      "art": [
+        "memo-text"
+      ],
+      "good_for": [
+        "nanny-guide",
+        "first-person-journey"
+      ],
+      "pros": "真实感强、信息量大",
+      "cons": "不高级",
       "prompt_style": "iOS Notes app aesthetic, warm off-white background #f7f3ea, near-black text, orange checkmarks, thin dashed separators, generous line spacing, flat and clean."
     },
     {
-      "id": "warm-journal", "label": "暖黄手账测评",
-      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "id": "warm-journal",
+      "label": "暖黄手账测评",
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
       "visual": "#FBF6EC 底 + 明黄 #F5C518 + 粉橘 #FFB3A7",
-      "art": ["memo-text", "product-single"],
-      "good_for": ["first-person-journey", "head-to-head"],
-      "pros": "亲和、女性向", "cons": "偏轻，撑不住硬核参数"
+      "art": [
+        "memo-text",
+        "product-single"
+      ],
+      "good_for": [
+        "first-person-journey",
+        "head-to-head"
+      ],
+      "pros": "亲和、女性向",
+      "cons": "偏轻，撑不住硬核参数"
     },
     {
-      "id": "swiss-ikb", "label": "瑞士风 × IKB 蓝",
-      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "id": "swiss-ikb",
+      "label": "瑞士风 × IKB 蓝",
+      "render_mode": "html-screenshot",
+      "polish": "pgc-polished",
       "visual": "#002FA7 大色块 + 无衬线 + 强网格",
-      "art": ["chart-compare", "spec-table"],
-      "good_for": ["hardcore-review", "persona-match-review"],
-      "pros": "专业、克制", "cons": "偏冷",
+      "art": [
+        "chart-compare",
+        "spec-table"
+      ],
+      "good_for": [
+        "hardcore-review",
+        "persona-match-review"
+      ],
+      "pros": "专业、克制",
+      "cons": "偏冷",
       "vendor_path": "vendor/guizang-social-card-skill",
       "note": "guizang skill 的 Swiss 视觉系统可直接复用"
     },
     {
-      "id": "liquid-glass", "label": "液态玻璃 Apple 风",
-      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "id": "liquid-glass",
+      "label": "液态玻璃 Apple 风",
+      "render_mode": "html-screenshot",
+      "polish": "pgc-polished",
       "visual": "米白底 + #2d9ed0 半透明磨砂玻璃面板 + 柔性内发光 + 大留白",
-      "art": ["product-single", "spec-table"],
-      "good_for": ["persona-match-review"],
-      "pros": "高级、科技感", "cons": "排版要求高",
+      "art": [
+        "product-single",
+        "spec-table"
+      ],
+      "good_for": [
+        "persona-match-review"
+      ],
+      "pros": "高级、科技感",
+      "cons": "排版要求高",
       "prompt_style": "ultra-minimal premium tech, off-white base, semi-transparent frosted liquid-glass panels in ocean blue #2d9ed0, soft inner glow, subtle edge highlights, generous negative space, Apple product page aesthetic, soft diffused shadows.",
       "tip": "同色多块时用透明度阶梯（12%→25%）做『入门→旗舰』的层次递进"
     },
     {
-      "id": "note-app-screenshot", "label": "笔记 App 截图",
-      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "id": "note-app-screenshot",
+      "label": "笔记 App 截图",
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
       "visual": "品牌色顶栏 + 细灰工具栏 + 白色网格画布",
-      "art": ["memo-text", "chart-compare"],
-      "good_for": ["nanny-guide", "structured-guide"],
-      "pros": "有梗、亲切", "cons": "略山寨感",
+      "art": [
+        "memo-text",
+        "chart-compare"
+      ],
+      "good_for": [
+        "nanny-guide",
+        "structured-guide"
+      ],
+      "pros": "有梗、亲切",
+      "cons": "略山寨感",
       "warning": "工具栏小图标容易画糊。糊了就裁掉工具栏，或用自备 SVG 补"
     },
     {
-      "id": "spec-table-card", "label": "参数表格卡",
-      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "id": "spec-table-card",
+      "label": "参数表格卡",
+      "render_mode": "html-screenshot",
+      "polish": "pgc-polished",
       "visual": "左表头右数据，可转置为品牌为行、维度为列",
-      "art": ["spec-table"],
-      "good_for": ["hardcore-review", "persona-match-review"],
-      "pros": "信息权威", "cons": "单独用枯燥",
+      "art": [
+        "spec-table"
+      ],
+      "good_for": [
+        "hardcore-review",
+        "persona-match-review"
+      ],
+      "pros": "信息权威",
+      "cons": "单独用枯燥",
       "content_schema": "fixed",
       "note": "固定字段结构。参数自动比对产品 xlsx，并自动执行『不暴露降配』。转置版方便左侧贴产品图。"
     },
     {
-      "id": "product-card", "label": "精美产品卡",
-      "render_mode": "html-screenshot", "polish": "pgc-polished",
+      "id": "product-card",
+      "label": "精美产品卡",
+      "render_mode": "html-screenshot",
+      "polish": "pgc-polished",
       "visual": "产品图 + 定位胶囊 + 特性标签 + 编号优势列表",
-      "art": ["product-single"],
-      "good_for": ["persona-match-review"],
-      "pros": "好看、易复用", "cons": "需官方产品图",
+      "art": [
+        "product-single"
+      ],
+      "good_for": [
+        "persona-match-review"
+      ],
+      "pros": "好看、易复用",
+      "cons": "需官方产品图",
       "content_schema": "fixed"
     },
     {
-      "id": "cart-screenshot", "label": "购物车截图",
-      "render_mode": "photo-real", "polish": "ugc-raw",
+      "id": "cart-screenshot",
+      "label": "购物车截图",
+      "render_mode": "photo-real",
+      "polish": "ugc-raw",
       "visual": "电商界面 + SKU 下方粉色短评",
-      "art": ["screenshot"],
-      "good_for": ["first-person-journey", "nanny-guide"],
-      "pros": "真实、种草强", "cons": "每条短评 ≤16 字/行",
+      "art": [
+        "screenshot"
+      ],
+      "good_for": [
+        "first-person-journey",
+        "nanny-guide"
+      ],
+      "pros": "真实、种草强",
+      "cons": "每条短评 ≤16 字/行",
       "warning": "电商截图极易夹带 618 字样与真实订单号，必须遮挡"
     },
     {
-      "id": "chat-screenshot", "label": "微信聊天 / 文字截图",
-      "render_mode": "html-screenshot", "polish": "ugc-raw",
+      "id": "chat-screenshot",
+      "label": "微信聊天 / 文字截图",
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
       "visual": "对话气泡或纯文字截图",
-      "art": ["screenshot"],
-      "good_for": ["conflict-story", "meme-remix"],
-      "pros": "强真实感", "cons": "零品牌露出"
+      "art": [
+        "screenshot"
+      ],
+      "good_for": [
+        "conflict-story",
+        "meme-remix"
+      ],
+      "pros": "强真实感",
+      "cons": "零品牌露出"
     },
     {
-      "id": "photo-realistic", "label": "写实摄影",
-      "render_mode": "photo-real", "polish": "ugc-raw",
+      "id": "photo-realistic",
+      "label": "写实摄影",
+      "render_mode": "photo-real",
+      "polish": "ugc-raw",
       "visual": "iPhone 抓拍感，低饱和，弱构图",
-      "art": ["install-photo", "teardown-photo", "product-single"],
-      "good_for": ["first-person-journey", "head-to-head", "conflict-story"],
-      "pros": "生活感、可信度最高", "cons": "需实拍素材",
+      "art": [
+        "install-photo",
+        "teardown-photo",
+        "product-single"
+      ],
+      "good_for": [
+        "first-person-journey",
+        "head-to-head",
+        "conflict-story"
+      ],
+      "pros": "生活感、可信度最高",
+      "cons": "需实拍素材",
       "note": "首选真实照片。无素材时可 image-gen，但禁止生成竞品外观。"
     },
-
     {
-      "id": "gathered-scenes-zine", "label": "拼贴纸艺 zine 海报",
-      "render_mode": "image-gen", "polish": "pgc-polished",
+      "id": "gathered-scenes-zine",
+      "label": "拼贴纸艺 zine 海报",
+      "render_mode": "image-gen",
+      "polish": "pgc-polished",
       "vendor_path": "vendor/gathered-scenes-zine-skill",
       "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
       "invoke": "$scenes-gathered-zine-v1-3",
-      "art": ["install-photo"],
+      "art": [
+        "install-photo"
+      ],
       "good_for": [],
-      "note": "需要一张源照片。文字由模型绘制，必须走 text_on_image 核对。目前无匹配场景，备用。"
+      "note": "需要一张源照片。文字由模型绘制，必须走 text_on_image 核对。目前无匹配场景，备用。 与 gc-minimal-zine-poster 定位重叠，两者均属氛围海报，与充电桩测评/攻略调性冲突。"
     },
     {
-      "id": "native-image-gen", "label": "Codex 原生生图（兜底）",
-      "render_mode": "image-gen", "polish": "mixed",
+      "id": "native-image-gen",
+      "label": "Codex 原生生图（兜底）",
+      "render_mode": "image-gen",
+      "polish": "mixed",
       "vendor_path": null,
-      "art": ["*"],
+      "art": [
+        "*"
+      ],
       "note": "无匹配画风时的兜底。GPT Image 2 中文可用但仍会写错，必须核对。"
     }
   ],
-
   "$comment_auto_trigger": "vendor/ 下的外部 skill 一律不装进 ~/.codex/skills 或 ~/.claude/skills。guizang 上游 description 含触发词『做一套小红书图文』，装进 skills 目录会静默抢走调度权——照样出图，但文风选择、卖点决策、合规自查全部跳过且不报错。只以 vendor 目录按路径读取。",
-  "$comment_extending": "新增画风：(1) 需要外部代码则 git clone 到 vendor/ (2) 在 styles[] 加一条，填 render_mode / polish / art / good_for (3) 若引入新 render_mode，在 render_modes 加一条并说明 spec 字段差异。"
+  "$comment_extending": "新增画风：(1) 需要外部代码则 git clone 到 vendor/ (2) 在 styles[] 加一条，填 render_mode / polish / art / good_for (3) 若引入新 render_mode，在 render_modes 加一条并说明 spec 字段差异。",
+  "resources": {
+    "$comment": "非画风类外部资源。不注册为 style，因为它们不产出某一种视觉风格。",
+    "gpt-image-2-style-library": {
+      "kind": "prompt 风格库",
+      "upstream": "https://github.com/freestylefly/awesome-gpt-image-2",
+      "vendor_path": "vendor/awesome-gpt-image-2",
+      "license": "MIT",
+      "content": "520+ 逆向工程 prompt 案例（信息图52 / 海报排版82 / UI73 / 摄影75），20+ 工业模板，含中文解释模块支持",
+      "when": "需要一种现有 styles[] 覆盖不到的视觉方向时，来这里查参考，抄结构与风格措辞后填入业务变量。不是每次配图都要来。"
+    },
+    "humanizer-zh": {
+      "kind": "文案后处理",
+      "upstream": "https://github.com/op7418/Humanizer-zh",
+      "vendor_path": "vendor/humanizer-zh",
+      "license": "MIT",
+      "content": "24 项中文 AI 痕迹检测与改写",
+      "when": "DRAFT 之后强制执行。用法与小红书语境豁免清单见 references/humanize.md。"
+    }
+  },
+  "evaluated_rejected": [
+    {
+      "id": "gc-minimal-zine-poster",
+      "upstream": "https://github.com/LiamGvchi/gc-minimal-zine-poster",
+      "date": "2026-08-18",
+      "verdict": "不接入",
+      "reason": "3:5 竖幅（非小红书 3:4）；70–90% 负空间承载不了任何参数；README 明确『不适合商业产品推广』；与 vendor 已有的 gathered-scenes-zine 定位重叠。"
+    },
+    {
+      "id": "ian-xiaohei-illustrations",
+      "upstream": "https://github.com/helloianneo/ian-xiaohei-illustrations",
+      "date": "2026-08-18",
+      "verdict": "备选，不进常规池",
+      "reason": "16:9 横版与小红书 3:4 冲突，且其构图系统（大留白、主体占40-60%）按横版设计，强行竖排会散；文字承载弱（README 自述『中文越短越稳定』），参数表用不了。",
+      "conditional_use": "唯一可能场景：first-principles 类讲原理的抽象概念可视化（如『充电桩=会判断的开关』）。用前须先解决比例问题。"
+    }
+  ]
 }
