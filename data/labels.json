@@ -1,42 +1,351 @@
 {
-  "$comment": "三轴人工/模型标注，按 xlsx 行号索引。与 xlsx 解耦——重跑 ingest_notes.py 时会 merge 进 templates.json，不会丢。原表『爆文分类』列已弃用（那列描述的是配图形式，不是文风）。",
-  "axes_version": 1,
+  "$comment": "三轴→四轴标注，按 xlsx 行号索引。原表『爆文分类』列已弃用（描述的是配图形式不是文风）。body_carries 三档：self-contained 正文自足 / image-led 正文含钩子与结论但干货在图上 / image-only 正文仅配文。polish 轴目前几乎全为 null——除行8外未见过任何一篇的实际配图，不做无依据标注。",
+  "axes_version": 2,
   "labels": {
-    "3":  { "voice": "first-principles",     "placement": "soft",   "body_carries": "self-contained",  "art": ["chart-compare", "cost-breakdown"] },
-    "4":  { "voice": "persona-match-review", "placement": "hard",   "body_carries": "self-contained",  "art": ["spec-table", "install-photo"] },
-    "5":  { "voice": "structured-guide",     "placement": "medium", "body_carries": "image-dependent", "art": ["chart-compare", "spec-table", "install-photo"] },
-    "6":  { "voice": "hardcore-review",      "placement": "medium", "body_carries": "image-dependent", "art": ["chart-compare"] },
-    "7":  { "voice": "hardcore-review",      "placement": "medium", "body_carries": "image-dependent", "art": ["teardown-photo", "chart-compare"] },
-    "8":  { "voice": "structured-guide",     "placement": "soft",   "body_carries": "image-dependent", "art": ["chart-compare", "spec-table"], "quality_flag": "正文疑似截断，仅210字且末尾无收束，不要当模板用" },
-    "9":  { "voice": "structured-guide",     "placement": "soft",   "body_carries": "self-contained",  "art": ["chart-compare", "spec-table", "install-photo"] },
-    "10": { "voice": "structured-guide",     "placement": "soft",   "body_carries": "self-contained",  "art": ["memo-text", "chart-compare"] },
-    "11": { "voice": "structured-guide",     "placement": "soft",   "body_carries": "self-contained",  "art": ["chart-compare", "spec-table", "install-photo"] },
-    "12": { "voice": "persona-match-review", "placement": "hard",   "body_carries": "self-contained",  "art": ["chart-compare", "memo-text", "install-photo"] },
-    "13": { "voice": "head-to-head",         "placement": "hard",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "14": { "voice": "head-to-head",         "placement": "hard",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "15": { "voice": "head-to-head",         "placement": "hard",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "16": { "voice": "hardcore-review",      "placement": "hard",   "body_carries": "self-contained",  "art": ["teardown-photo"] },
-    "17": { "voice": "hardcore-review",      "placement": "hard",   "body_carries": "self-contained",  "art": ["teardown-photo"] },
-    "18": { "voice": "hardcore-review",      "placement": "medium", "body_carries": "self-contained",  "art": ["product-single", "teardown-photo"] },
-    "19": { "voice": "nanny-guide",          "placement": "soft",   "body_carries": "image-dependent", "art": ["memo-text"] },
-    "20": { "voice": "nanny-guide",          "placement": "hard",   "body_carries": "self-contained",  "art": ["memo-text"] },
-    "21": { "voice": "nanny-guide",          "placement": "hard",   "body_carries": "self-contained",  "art": ["memo-text"] },
-    "22": { "voice": "nanny-guide",          "placement": "hard",   "body_carries": "image-dependent", "art": ["memo-text", "product-single"] },
-    "23": { "voice": "first-person-journey", "placement": "hard",   "body_carries": "image-dependent", "art": ["product-single", "chart-compare"] },
-    "24": { "voice": "structured-guide",     "placement": "medium", "body_carries": "self-contained",  "art": ["product-single"] },
-    "25": { "voice": "nanny-guide",          "placement": "medium", "body_carries": "image-dependent", "art": ["memo-text"] },
-    "26": { "voice": "persona-match-review", "placement": "hard",   "body_carries": "self-contained",  "art": ["spec-table", "product-single"] },
-    "27": { "voice": "persona-match-review", "placement": "hard",   "body_carries": "self-contained",  "art": ["chart-compare"] },
-    "28": { "voice": "first-person-journey", "placement": "soft",   "body_carries": "self-contained",  "art": ["install-photo", "screenshot"] },
-    "29": { "voice": "persona-match-review", "placement": "hard",   "body_carries": "image-dependent", "art": ["product-single"] },
-    "30": { "voice": "structured-guide",     "placement": "hard",   "body_carries": "self-contained",  "art": ["install-photo", "screenshot"] },
-    "31": { "voice": "meme-remix",           "placement": "soft",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "32": { "voice": "conflict-story",       "placement": "soft",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "33": { "voice": "meme-remix",           "placement": "medium", "body_carries": "self-contained",  "art": ["product-single"] },
-    "34": { "voice": "first-person-journey", "placement": "hard",   "body_carries": "self-contained",  "art": ["install-photo", "screenshot"] },
-    "35": { "voice": "conflict-story",       "placement": "hard",   "body_carries": "self-contained",  "art": ["product-single"] },
-    "36": { "voice": "conflict-story",       "placement": "soft",   "body_carries": "self-contained",  "art": ["install-photo"] },
-    "37": { "voice": "meme-remix",           "placement": "hard",   "body_carries": "self-contained",  "art": ["product-single"] },
-    "38": { "voice": "conflict-story",       "placement": "medium", "body_carries": "self-contained",  "art": ["chart-compare"] }
-  }
+    "3": {
+      "voice": "first-principles",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare",
+        "cost-breakdown"
+      ],
+      "polish": null
+    },
+    "4": {
+      "voice": "persona-match-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "spec-table",
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "5": {
+      "voice": "structured-guide",
+      "placement": "medium",
+      "body_carries": "image-led",
+      "art": [
+        "chart-compare",
+        "spec-table",
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "6": {
+      "voice": "hardcore-review",
+      "placement": "medium",
+      "body_carries": "image-led",
+      "art": [
+        "chart-compare"
+      ],
+      "polish": null
+    },
+    "7": {
+      "voice": "hardcore-review",
+      "placement": "medium",
+      "body_carries": "image-led",
+      "art": [
+        "teardown-photo",
+        "chart-compare"
+      ],
+      "polish": null
+    },
+    "8": {
+      "voice": "structured-guide",
+      "placement": "soft",
+      "body_carries": "image-only",
+      "art": [
+        "chart-compare",
+        "spec-table"
+      ],
+      "polish": "mixed"
+    },
+    "9": {
+      "voice": "structured-guide",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare",
+        "spec-table",
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "10": {
+      "voice": "structured-guide",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "memo-text",
+        "chart-compare"
+      ],
+      "polish": null
+    },
+    "11": {
+      "voice": "structured-guide",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare",
+        "spec-table",
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "12": {
+      "voice": "persona-match-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare",
+        "memo-text",
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "13": {
+      "voice": "head-to-head",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "14": {
+      "voice": "head-to-head",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "15": {
+      "voice": "head-to-head",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "16": {
+      "voice": "hardcore-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "teardown-photo"
+      ],
+      "polish": null
+    },
+    "17": {
+      "voice": "hardcore-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "teardown-photo"
+      ],
+      "polish": null
+    },
+    "18": {
+      "voice": "hardcore-review",
+      "placement": "medium",
+      "body_carries": "self-contained",
+      "art": [
+        "product-single",
+        "teardown-photo"
+      ],
+      "polish": null
+    },
+    "19": {
+      "voice": "nanny-guide",
+      "placement": "soft",
+      "body_carries": "image-led",
+      "art": [
+        "memo-text"
+      ],
+      "polish": null
+    },
+    "20": {
+      "voice": "nanny-guide",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "memo-text"
+      ],
+      "polish": null
+    },
+    "21": {
+      "voice": "nanny-guide",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "memo-text"
+      ],
+      "polish": null
+    },
+    "22": {
+      "voice": "nanny-guide",
+      "placement": "hard",
+      "body_carries": "image-led",
+      "art": [
+        "memo-text",
+        "product-single"
+      ],
+      "polish": null
+    },
+    "23": {
+      "voice": "first-person-journey",
+      "placement": "hard",
+      "body_carries": "image-led",
+      "art": [
+        "product-single",
+        "chart-compare"
+      ],
+      "polish": null
+    },
+    "24": {
+      "voice": "structured-guide",
+      "placement": "medium",
+      "body_carries": "self-contained",
+      "art": [
+        "product-single"
+      ],
+      "polish": null
+    },
+    "25": {
+      "voice": "nanny-guide",
+      "placement": "medium",
+      "body_carries": "image-led",
+      "art": [
+        "memo-text"
+      ],
+      "polish": null
+    },
+    "26": {
+      "voice": "persona-match-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "spec-table",
+        "product-single"
+      ],
+      "polish": null
+    },
+    "27": {
+      "voice": "persona-match-review",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare"
+      ],
+      "polish": null
+    },
+    "28": {
+      "voice": "first-person-journey",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo",
+        "screenshot"
+      ],
+      "polish": null
+    },
+    "29": {
+      "voice": "persona-match-review",
+      "placement": "hard",
+      "body_carries": "image-only",
+      "art": [
+        "product-single"
+      ],
+      "polish": null
+    },
+    "30": {
+      "voice": "structured-guide",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo",
+        "screenshot"
+      ],
+      "polish": null
+    },
+    "31": {
+      "voice": "meme-remix",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "32": {
+      "voice": "conflict-story",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "33": {
+      "voice": "meme-remix",
+      "placement": "medium",
+      "body_carries": "self-contained",
+      "art": [
+        "product-single"
+      ],
+      "polish": null
+    },
+    "34": {
+      "voice": "first-person-journey",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo",
+        "screenshot"
+      ],
+      "polish": null
+    },
+    "35": {
+      "voice": "conflict-story",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "product-single"
+      ],
+      "polish": null
+    },
+    "36": {
+      "voice": "conflict-story",
+      "placement": "soft",
+      "body_carries": "self-contained",
+      "art": [
+        "install-photo"
+      ],
+      "polish": null
+    },
+    "37": {
+      "voice": "meme-remix",
+      "placement": "hard",
+      "body_carries": "self-contained",
+      "art": [
+        "product-single"
+      ],
+      "polish": null
+    },
+    "38": {
+      "voice": "conflict-story",
+      "placement": "medium",
+      "body_carries": "self-contained",
+      "art": [
+        "chart-compare"
+      ],
+      "polish": null
+    }
+  },
+  "$comment_polish": "pgc-polished 精致专业 / ugc-raw 粗糙真实 / mixed 混用。取值决定 render_mode，而非文字密度决定。"
 }

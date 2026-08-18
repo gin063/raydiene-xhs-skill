@@ -28,6 +28,7 @@
       "chart-compare",
       "cost-breakdown"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/003-800_4000全价位充电桩选购指南_速通版_.txt"
   },
@@ -62,6 +63,7 @@
       "spec-table",
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/004-过来人真心建议_不安全的充电桩千万别碰_.txt"
   },
@@ -92,12 +94,13 @@
     ],
     "voice": "structured-guide",
     "placement": "medium",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "chart-compare",
       "spec-table",
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/005-户外安装家用充电桩_选购要当心.txt"
   },
@@ -127,10 +130,11 @@
     ],
     "voice": "hardcore-review",
     "placement": "medium",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/006-花费1W_的3C充电桩超硬核测评_选购指南.txt"
   },
@@ -158,11 +162,12 @@
     ],
     "voice": "hardcore-review",
     "placement": "medium",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "teardown-photo",
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/007-10台充电桩_耗费过万_20项测评_选购必看.txt"
   },
@@ -192,12 +197,12 @@
     ],
     "voice": "structured-guide",
     "placement": "soft",
-    "body_carries": "image-dependent",
+    "body_carries": "image-only",
     "art": [
       "chart-compare",
       "spec-table"
     ],
-    "quality_flag": "正文疑似截断，仅210字且末尾无收束，不要当模板用",
+    "polish": "mixed",
     "conversion": null,
     "note_file": "notes/008-买充电桩怕踩雷_这样选择越看越满意_.txt"
   },
@@ -232,6 +237,7 @@
       "spec-table",
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/009-5年老司机真心建议_热门家用充电桩这样买_.txt"
   },
@@ -265,6 +271,7 @@
       "memo-text",
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/010-别乱买充电桩了_看完这篇不花冤枉钱.txt"
   },
@@ -300,6 +307,7 @@
       "spec-table",
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/011-别再盲目花钱了_3c家用充电桩这么选才对_.txt"
   },
@@ -335,6 +343,7 @@
       "memo-text",
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/012-原来是这款赢了_26年机皇榜最全版.txt"
   },
@@ -364,6 +373,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/013-亲测_我的900块充电桩vs邻居的千元款.txt"
   },
@@ -397,6 +407,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/014-亲测_我的百元充电桩pk朋友的千元充电桩.txt"
   },
@@ -427,6 +438,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/015-亲测_我的900元充电桩vs邻居的千元款.txt"
   },
@@ -458,6 +470,7 @@
     "art": [
       "teardown-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/016-充电桩榜单前四_自用比较.txt"
   },
@@ -492,6 +505,7 @@
     "art": [
       "teardown-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/017-特斯拉_公牛_雷迪恩_挚达充电桩前四对拆.txt"
   },
@@ -524,6 +538,7 @@
       "product-single",
       "teardown-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/018-销量前三的充电桩全拆了_差价2000差在哪.txt"
   },
@@ -552,10 +567,11 @@
     ],
     "voice": "nanny-guide",
     "placement": "soft",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "memo-text"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/019-26年买充电桩的_骂醒一个算一个_.txt"
   },
@@ -590,6 +606,7 @@
     "art": [
       "memo-text"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/020-给电车车主的装桩建议.txt"
   },
@@ -626,6 +643,7 @@
     "art": [
       "memo-text"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/021-618听劝_5_6月买家用充电桩的注意了_.txt"
   },
@@ -658,11 +676,12 @@
     ],
     "voice": "nanny-guide",
     "placement": "hard",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "memo-text",
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/022-本人新手_决定要买家用充电桩了_.txt"
   },
@@ -693,11 +712,12 @@
     ],
     "voice": "first-person-journey",
     "placement": "hard",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "product-single",
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/023-家用充电桩榜单前四_自用大测评_.txt"
   },
@@ -728,6 +748,7 @@
     "art": [
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/024-买前不看必后悔_家用充电桩选购攻略.txt"
   },
@@ -758,10 +779,11 @@
     ],
     "voice": "nanny-guide",
     "placement": "medium",
-    "body_carries": "image-dependent",
+    "body_carries": "image-led",
     "art": [
       "memo-text"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/025-装充电桩后才知道的30件事_新手避坑指南.txt"
   },
@@ -797,6 +819,7 @@
       "spec-table",
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/026-4款家用充电桩横评_哪款更适合你_.txt"
   },
@@ -829,6 +852,7 @@
     "art": [
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/027-5款家用充电桩_极限5选1_.txt"
   },
@@ -863,6 +887,7 @@
       "install-photo",
       "screenshot"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/028-安充电桩距离电表太远_已解决_超省钱版.txt"
   },
@@ -891,10 +916,11 @@
     ],
     "voice": "persona-match-review",
     "placement": "hard",
-    "body_carries": "image-dependent",
+    "body_carries": "image-only",
     "art": [
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/029-雷迪恩充电桩家族_一篇找到你的本命那台_.txt"
   },
@@ -930,6 +956,7 @@
       "install-photo",
       "screenshot"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/030-普通人装家用充电桩做的一些小攻略.txt"
   },
@@ -958,6 +985,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/031-装充电桩后很难和用商充的朋友产生共情了.txt"
   },
@@ -987,6 +1015,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/032-邻居说充电桩有辐射_不让装怎么办_.txt"
   },
@@ -1016,6 +1045,7 @@
     "art": [
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/033-没人觉得家用充电桩充的电更纯吗_.txt"
   },
@@ -1046,6 +1076,7 @@
       "install-photo",
       "screenshot"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/034-后悔了_没有家充桩真的不能买电车_.txt"
   },
@@ -1075,6 +1106,7 @@
     "art": [
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/035-充电桩装上后_我和师傅都沉默了_.txt"
   },
@@ -1106,6 +1138,7 @@
     "art": [
       "install-photo"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/036-装家充被邻居道德绑架_为了孩子你必须拆了.txt"
   },
@@ -1135,6 +1168,7 @@
     "art": [
       "product-single"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/037-再冷漠的人买到这样的充电桩都会笑出声吧_.txt"
   },
@@ -1166,6 +1200,7 @@
     "art": [
       "chart-compare"
     ],
+    "polish": null,
     "conversion": null,
     "note_file": "notes/038-物业逼交2000装桩费_吃哑巴亏_附维权攻略.txt"
   }

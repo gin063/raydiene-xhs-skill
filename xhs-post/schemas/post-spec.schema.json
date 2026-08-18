@@ -3,28 +3,54 @@
   "title": "post-spec",
   "description": "调度 skill 的唯一产出，画风 skill 的唯一输入。改动本文件 = 破坏契约，需同步 registry 与两侧文档。",
   "type": "object",
-  "required": ["meta", "axes", "copy", "images"],
+  "required": [
+    "meta",
+    "axes",
+    "copy",
+    "images"
+  ],
   "properties": {
     "meta": {
       "type": "object",
-      "required": ["workflow"],
+      "required": [
+        "workflow"
+      ],
       "properties": {
         "workflow": {
-          "enum": ["new", "rewrite"],
+          "enum": [
+            "new",
+            "rewrite"
+          ],
           "description": "new=写新内容；rewrite=爆文库复写。两条流程逻辑不同，见 references/workflows/"
         },
         "source_template_id": {
-          "type": ["integer", "null"],
+          "type": [
+            "integer",
+            "null"
+          ],
           "description": "rewrite 时必填，指向 data/templates.json 的 tpl_id"
         },
-        "source_note_file": { "type": ["string", "null"] },
-        "created": { "type": "string" }
+        "source_note_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created": {
+          "type": "string"
+        }
       }
     },
     "axes": {
       "type": "object",
       "description": "三条正交轴。混用会导致新增画风时被迫重写文风文档。",
-      "required": ["voice", "art_style", "placement"],
+      "required": [
+        "voice",
+        "art_style",
+        "placement",
+        "polish",
+        "body_carries"
+      ],
       "properties": {
         "voice": {
           "type": "string",
@@ -35,26 +61,57 @@
           "description": "画风 id，必须存在于 styles.registry.json"
         },
         "placement": {
-          "enum": ["soft", "medium", "hard"],
+          "enum": [
+            "soft",
+            "medium",
+            "hard"
+          ],
           "description": "植入强度。soft=结尾一句带过；medium=参数清单；hard=竞品并列后落到雷迪恩"
         },
         "rationale": {
           "type": "string",
           "description": "为什么选这三个值。人工复盘和后续调优要看这段，不能省。"
+        },
+        "polish": {
+          "enum": [
+            "pgc-polished",
+            "ugc-raw",
+            "mixed"
+          ],
+          "description": "质感层级，与 render_mode 独立。匹配 voice 人设，不是越精致越好——素人体走精致会破坏真实感。"
+        },
+        "body_carries": {
+          "enum": [
+            "self-contained",
+            "image-led",
+            "image-only"
+          ],
+          "description": "正文承载度。image-only 是成立的独立形态而非残缺；选它时配图内容设计是主要工作量。"
         }
       }
     },
     "copy": {
       "type": "object",
-      "required": ["title", "body", "tags"],
+      "required": [
+        "title",
+        "body",
+        "tags"
+      ],
       "properties": {
-        "title": { "type": "string", "maxLength": 20 },
-        "body": { "type": "string" },
+        "title": {
+          "type": "string",
+          "description": "样本实测 10-23 字，中位 20。平台真实上限未核实，故不设 schema 硬约束，由 validate_post.py 软提醒。"
+        },
+        "body": {
+          "type": "string"
+        },
         "tags": {
           "type": "array",
-          "items": { "type": "string", "pattern": "^#" },
-          "minItems": 4,
-          "maxItems": 10
+          "items": {
+            "type": "string",
+            "pattern": "^#"
+          },
+          "description": "样本实测 3-10 个，中位 7。上限未核实。"
         }
       }
     },
@@ -63,18 +120,37 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["role", "index", "render_mode"],
+        "required": [
+          "role",
+          "index",
+          "render_mode"
+        ],
         "properties": {
-          "role": { "enum": ["cover", "page"] },
-          "index": { "type": "integer", "minimum": 1 },
-          "render_mode": { "enum": ["html-screenshot", "image-gen"] },
+          "role": {
+            "enum": [
+              "cover",
+              "page"
+            ]
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "render_mode": {
+            "enum": [
+              "html-screenshot",
+              "image-gen"
+            ]
+          },
           "prompt": {
             "type": "string",
             "description": "image-gen 模式必填。要渲染的文字必须用「」精确括出并单独成行。"
           },
           "text_on_image": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "image-gen 模式必填。图上应当出现的文字清单，交付后供人工逐条核对——生图模型会写错字。"
           },
           "content": {
@@ -82,12 +158,30 @@
             "description": "html-screenshot 模式必填。结构化内容，字段随画风而定，见该画风 vendor 目录下的文档。"
           },
           "reserved_area": {
-            "type": ["object", "null"],
+            "type": [
+              "object",
+              "null"
+            ],
             "description": "需要后期人工贴实拍产品图的留白区",
             "properties": {
-              "desc": { "type": "string" },
-              "purpose": { "enum": ["product-photo", "logo", "other"] }
+              "desc": {
+                "type": "string"
+              },
+              "purpose": {
+                "enum": [
+                  "product-photo",
+                  "logo",
+                  "other"
+                ]
+              }
             }
+          },
+          "polish": {
+            "enum": [
+              "pgc-polished",
+              "ugc-raw"
+            ],
+            "description": "可选，覆盖 axes.polish。同一篇里不同图可以不同质感（行8 实测：参数大表规整 + 产品图实拍叠字 + 榜单用电商截图）。"
           }
         }
       }
@@ -101,21 +195,40 @@
           "items": {
             "type": "object",
             "properties": {
-              "item": { "type": "string" },
-              "status": { "enum": ["pass", "needs-human", "fail"] },
-              "note": { "type": "string" }
+              "item": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "needs-human",
+                  "fail"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
             }
           }
         }
       }
     },
     "conversion": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "description": "预留。发布后回填 uuid 追踪到的搜索/进店转化数据，用于反向调优 voice 与 placement 的选择。互动量不填在这里。",
       "properties": {
-        "searches": { "type": "integer" },
-        "store_visits": { "type": "integer" },
-        "measured_at": { "type": "string" }
+        "searches": {
+          "type": "integer"
+        },
+        "store_visits": {
+          "type": "integer"
+        },
+        "measured_at": {
+          "type": "string"
+        }
       }
     }
   }
