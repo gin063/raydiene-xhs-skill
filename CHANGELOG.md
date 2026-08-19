@@ -1,5 +1,40 @@
 # CHANGELOG — 小红书图文生成 skill
 
+## 2026-08-19 · 10 份 voice 规格补齐 + vendor 依赖管理
+
+**voice 规格 3/10 → 10/10**
+
+新增 7 份：`structured-guide` `persona-match-review` `hardcore-review` `head-to-head` `first-person-journey` `meme-remix` `first-principles`。每份都挂了实测 tier 和样本行号。
+
+写规格过程中从数据里读出来的几条，都写进了对应文件：
+
+1. **`structured-guide` 样本最多（7）但 S 率最低（3/7）。** 三篇 S 全是 soft/medium，最长且 hard 的 r30 只拿 A。⚑ 说明书体加硬植入更像广告，中立姿态和明确推荐互相拆台。已把它的默认植入定为 soft，并写明「不建议当默认 voice——定不下来时它最容易被选中，因为最好写，这正是要警惕的」。
+
+2. **`persona-match-review` 5 篇全是 hard，S 率却只有 2/5。** 全 hard 不等于高转化。已建议下一篇试 medium 做对照——这个体现在缺一个非 hard 样本来判断问题出在哪。
+
+3. **`hardcore-review` 最短的 r18（487字）是 S，最长的 r16（1124字）是 A。** ⚑ 精简的拆解优于冗长的：正文只留结论和关键型号，密集参数推到图上。
+
+4. **`first-person-journey` 3/3 满分，且 soft 到 hard 都有、字数 561–981 跨度大。** ⚑ 推测这个体的转化不靠植入强度靠可信度——**经历本身就是说服**。已把「碰壁那一段不能省」写成命门。
+
+5. **`first-principles` 是唯一几乎不带货却拿 S 的**（正文连型号都没提）。它卖的是判断框架不是产品，读者自己推导出结论。**这决定了它只能 soft——说服力来自「我不卖你东西」。**
+
+**索引新增两条**
+
+- `persona-profile` 补进矩阵（此前只有文件没进索引）
+- 明确 `persona-match-review` 与 `persona-profile` 的**对号入座对象相反**：前者是产品（挑一个），后者是人的行为错误（认领一个）。标题含「几类人/避坑」走后者，含「X款/怎么选」走前者
+
+**样本缺失的两个体已标红**：`first-principles`(1篇) 和 `persona-profile`(0篇)，规格里逐条标注了推断处，要求用后回填 tier。
+
+**vendor 依赖管理（setup_vendor.mjs）**
+
+推 GitHub 后外部依赖怎么配：**不入库、不用 submodule**。
+- 上游代码提交进本库 → 版权与更新都会乱，diff 里全是别人的代码
+- submodule → 要记得 `clone --recursive`，忘了是**静默缺失**，生产环境危险
+- registry 本身已是清单（`upstream` + `vendor_path`），读它就不用维护第二份
+
+顺带补上 `swiss-ikb` 漏掉的 `upstream` 字段，并标注它目前实际未使用（已改用自有 ios-memo 模板），保留为需要瑞士风时的备选。
+
+
 ## 2026-08-19 · 自有模板体系 + 素人身份约束 + 双端部署
 
 **素人身份是这轮最重要的约束（compliance.md 6.5 新增）**

@@ -85,7 +85,8 @@
       "pros": "专业、克制",
       "cons": "偏冷",
       "vendor_path": "vendor/guizang-social-card-skill",
-      "note": "guizang skill 的 Swiss 视觉系统可直接复用"
+      "note": "guizang skill 的 Swiss 视觉系统可直接复用 目前实际未使用（已改用自有 ios-memo 模板），保留为需要瑞士风时的备选。",
+      "upstream": "https://github.com/op7418/guizang-social-card-skill"
     },
     {
       "id": "liquid-glass",
