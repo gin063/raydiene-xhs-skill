@@ -52,6 +52,29 @@
       "verified": "2026-08-19 实测出图 7 张，1080×1440，中文零错字"
     },
     {
+      "id": "checklist",
+      "label": "编号清单卡",
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "visual": "居中大标题 + 副标 + 方块✓编号行，**关键词**自动高亮为强调色",
+      "art": [
+        "memo-text"
+      ],
+      "good_for": [
+        "nanny-guide",
+        "structured-guide",
+        "persona-profile"
+      ],
+      "pros": "信息密度高、扫读友好、编号跨卡连续",
+      "cons": "单张超过10条就该拆",
+      "template": "xhs-post/templates/checklist.html",
+      "data_schema": "{latinFont, startAt, cards:[{id,head,subhead,items[]}]} —— items 里用 **双星号** 包裹关键词自动加粗着色",
+      "render_cmd": "node xhs-post/scripts/render_cards.mjs xhs-post/templates/checklist.html --data <cards.json> <输出目录>",
+      "content_schema": "fixed",
+      "note": "nanny-guide 的主力图式（5篇样本全是 memo-text）。编号跨卡连续，不是每张从1开始。含降配字段级拦截。",
+      "verified": "2026-08-19 复写模板14 实测出图 3 张，内容占比 66-79%"
+    },
+    {
       "id": "warm-journal",
       "label": "暖黄手账测评",
       "render_mode": "html-screenshot",

@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 """交付前自动检查。只查能机器判定的项，人工项见 references/compliance.md 第 9 节。
 
-用法: python validate_post.py <post-spec.json 或 交付的 .md>
+用法:
+  python validate_post.py <post-spec.json 或 交付的 .md>
+  python validate_post.py <交付的 .md> --against <原文.txt>   # 复写时查重
+
 退出码: 0 全过 / 1 有 FAIL
 """
 import json
@@ -62,6 +65,38 @@ def check_text(text, where, issues):
             issues.append(("FAIL", where, f"监管口径 — {msg}"))
 
 
+def check_duplication(new_text, orig_text, where, issues, n=8):
+    """复写查重：连续 n 个汉字与原文重合即判重。
+
+    只比汉字——标点、数字、英文在改写中天然会保留（参数值本来就不许动），
+    把它们算进去会淹没真正的照搬。
+    """
+    clean = lambda t: re.sub(r"[^一-鿿]", "", t)
+    o, m = clean(orig_text), clean(new_text)
+
+    # 逐位找**最长**重合串，命中后跳到串尾——否则一处照搬会拆成十几条
+    # 长度 n 的碎片，读起来全是噪音，也看不出到底哪句要改。
+    runs = []
+    i = 0
+    while i <= len(m) - n:
+        if m[i:i + n] not in o:
+            i += 1
+            continue
+        j = i + n
+        while j < len(m) and m[i:j + 1] in o:
+            j += 1
+        runs.append(m[i:j])
+        i = j
+
+    if not runs:
+        issues.append(("OK", where, f"与原文无连续 {n} 汉字重合"))
+        return
+    for h in runs[:6]:
+        issues.append(("FAIL", where, f"与原文重合 {len(h)} 字「{h}」— 同义替换或换句式"))
+    if len(runs) > 6:
+        issues.append(("FAIL", where, f"…另有 {len(runs) - 6} 处重合"))
+
+
 def check_spec(spec, issues):
     copy = spec.get("copy", {})
     title = copy.get("title", "")
@@ -109,10 +144,16 @@ def check_spec(spec, issues):
 
 
 def main():
-    if len(sys.argv) != 2:
+    argv = sys.argv[1:]
+    against = None
+    if "--against" in argv:
+        i = argv.index("--against")
+        against = Path(argv[i + 1])
+        argv = argv[:i] + argv[i + 2:]
+    if len(argv) != 1:
         print(__doc__)
         sys.exit(2)
-    p = Path(sys.argv[1])
+    p = Path(argv[0])
     issues = []
     if p.suffix == ".json":
         check_spec(json.loads(p.read_text(encoding="utf-8")), issues)
@@ -127,10 +168,15 @@ def main():
                            "未找到 ```publish 代码块 — 可发布成品应用该标记，本次未检查正文"))
         for i, b in enumerate(blocks):
             check_text(b, f"{p.name} publish块{i + 1}", issues)
+        if against and blocks:
+            # 第一个 publish 块约定是正文 caption
+            body = blocks[0].replace("publish", "", 1)
+            check_duplication(body, against.read_text(encoding="utf-8"), "查重", issues)
         if not p.name.isascii():
             issues.append(("FAIL", p.name, "文件名含非 ASCII 字符，前端会加载失败"))
 
     fails = [i for i in issues if i[0] == "FAIL"]
+    oks = len([i for i in issues if i[0] == "OK"])
     for lvl, where, msg in issues:
         print(f"[{lvl}] {where}: {msg}")
     if not issues:

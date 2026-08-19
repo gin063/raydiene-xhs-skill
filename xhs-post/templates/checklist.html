@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>checklist cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+/* 编号清单卡：nanny-guide 的主力图式（memo-text）。
+   一张 8–10 条，超了拆张——缩字号读不清等于白做。 */
+.poster{padding:72px 68px}
+.head{
+  font-size:82px; font-weight:900; letter-spacing:-.01em;
+  text-align:center; margin-bottom:14px;
+}
+.subhead{
+  text-align:center; font-size:30px; color:var(--ink-dim);
+  letter-spacing:.16em; margin-bottom:44px;
+}
+.rows{display:flex; flex-direction:column; gap:30px}
+.row{display:flex; gap:20px; align-items:flex-start; font-size:37px; line-height:1.46}
+.row .tick{
+  flex:none; width:46px; height:46px; margin-top:4px; border-radius:12px;
+  background:var(--accent); color:#fff; font-size:28px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.row .n{flex:none; font-weight:700; min-width:52px}
+.row b{color:var(--accent); font-weight:700}
+</style>
+</head>
+<body>
+<script id="card-data" type="application/json">
+{"cards":[{"id":"demo","head":"占位标题","items":["占位条目"]}]}
+</script>
+<script>
+(function(){
+var d = JSON.parse(document.getElementById('card-data').textContent);
+if (d.latinFont) {
+  document.documentElement.style.setProperty('--font-latin', "'" + d.latinFont + "'");
+  document.getElementById('fontlink').href += '&family=' + d.latinFont.replace(/ /g,'+') + ':wght@400;500;700;900';
+}
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
+/* **关键词** → <b>：让扫读的人一眼抓到重点，不用整条读完 */
+var mark = function(s){ return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); };
+
+/* 字段级约束：不暴露降配（compliance.md 第 4 节）。
+   清单体最容易在这里翻车——把"看内存"写成选购标准，
+   等于把读者注意力引到我们不占优的维度上。 */
+var BANNED = [/运行内存/, /内存/, /功能接口/, /I\s*\/?\s*O\b/i];
+var problems = [];
+
+/* 编号跨卡连续：整套清单是一条流水号，不是每张从 1 开始 */
+var n = d.startAt || 1;
+
+document.body.innerHTML = (d.cards || []).map(function(c){
+  var rows = (c.items || []).filter(function(t){
+    var hit = BANNED.some(function(re){ return re.test(String(t)); });
+    if (hit) problems.push('剔除违规条目：' + t);
+    return !hit;
+  }).map(function(t){
+    var i = n++;
+    return '<div class="row"><span class="tick">✓</span><span class="n">' + i +
+           '</span><span>' + mark(t) + '</span></div>';
+  }).join('');
+  if ((c.items || []).length > 10)
+    problems.push('卡「' + (c.id||'') + '」有 ' + c.items.length + ' 条，建议拆到 10 条以内');
+  return '<section class="poster" id="' + esc(c.id || '') + '"><div class="body">' +
+    '<div class="head">' + esc(c.head) + '</div>' +
+    (c.subhead ? '<div class="subhead">' + esc(c.subhead) + '</div>' : '') +
+    '<div class="rows">' + rows + '</div>' +
+    '</div></section>';
+}).join('');
+
+if (problems.length) console.warn(problems.join('\n'));
+})();
+</script>
+</body>
+</html>
