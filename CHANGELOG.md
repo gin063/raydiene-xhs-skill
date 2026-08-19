@@ -1,5 +1,52 @@
 # CHANGELOG — 小红书图文生成 skill
 
+## 2026-08-19 · 分支②（模板渲染出图）验证通过
+
+**结论：成立。** 首张 PNG 已出，1080×1440，**中文零错字**。
+
+**做了什么**
+- `vendor/guizang-social-card-skill` clone 完成
+- `xhs-post/scripts/render_cards.mjs`：截取 `.poster` 节点出 PNG + 轻量版式自查
+- `INSTALL.md`：本机 skill 安装位置实测 + GitHub 手动安装流程
+
+**关键决策：用系统 Chrome，不下载 Chromium**
+
+playwright 的 Chromium 二进制在本网络环境下载不下来——第一次 27 分钟只到 80MB（≈50KB/s），第二次卡在 0.32MB 停滞 8 分钟。诊断过程见下方「踩坑」。
+
+改用 `chromium.launch({ channel: 'chrome' })` 驱动系统已装的 Chrome **151.0.7922.140**，与 playwright 需要的 Chrome for Testing **151.0.7922.34** 同一大版本。
+- 代价：结果依赖本机 Chrome 版本，跨机器可能有细微差异
+- 判断：对「截一张 CSS 卡片」可接受——要的是像素级准确的中文，不是跨版本一致的 WebGL
+- 需要严格可复现时，装好 Chromium 后设 `PW_CHANNEL=` 空值即可回退
+
+**⚠️ 踩坑：我误判了下载进度并 kill 了一个已下 80MB 的任务**
+
+判断「进度为 0」时查的是 `ms-playwright\` 目录和进程的 `ReadTransferCount`——**两个指标都不反映真实进度**。playwright 下载落在 `%TEMP%\playwright-download-*\`，且 socket 读取不计入进程 I/O 计数器。
+**以后查 playwright 下载进度，只看 `%TEMP%\playwright-download-*` 下的 zip 文件大小与 LastWriteTime。**
+
+另：两次下的 revision 不同（vendor 的 playwright 要 1223，项目根的要 1234），所以那 80MB 对第二次也用不上。
+
+**⚠️ guizang 的三个约束（文档里没写的）**
+1. **不自带截图脚本。** SKILL.md:209 只说「用 Playwright 导出 .poster 节点」，渲染这一环留给调用方实现
+2. **模板从 Google Fonts 拉字体**，离线会**静默回退**到系统字体、版式变化但不报错
+3. **自带的 `validate-social-deck.mjs` 硬编码 `chromium.launch()`**，用系统 Chrome 的方案绕不过它。已在 `render_cards.mjs` 里实现等价的两项核心检查（底部留白、右侧溢出），不改 vendor 代码
+
+**版式自查踩的两个坑**（记下来免得重犯）
+- 按所有子元素算底部间隙 → 恒为 0，因为 `.content` 容器被 flex 撑满整卡
+- 排除 absolute 元素还不够 → 页脚条自身 absolute 但子 span 是 static，要**顺祖先链**排
+- 正确做法：只量「有文字的叶子节点」，且祖先链上无 absolute/fixed
+
+**首张卡的实测问题**
+- ✅ 中文全部正确，零错字（分支②的核心价值）
+- ⚠️ **底部留白 42%** — 把 ios-memo 的短内容塞进 editorial 长文模板导致，QA 已能自动抓出
+- ⚠️ WebGL 背景未渲染（canvas 空白），headless 下可能不生效，待查
+- ⚠️ **脱敏的 `*` 在衬线字体下渲染成 `★`**（`雷*恩` → `雷★恩`）。语义仍是脱敏，但视觉不一致，多张图混用不同字体时会更明显
+
+**未验证**
+- 仅渲染了 1 张测试卡，7 张全量未跑
+- guizang 的 Swiss 模板未测（只用了 editorial）
+- 版式问题未修——需要为 ios-memo 这类短内容卡另配模板，或调 editorial 的 content 布局
+
+
 ## 2026-08-18 · 框架主体完成
 
 **做了什么**
