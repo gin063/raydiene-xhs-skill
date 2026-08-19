@@ -39,7 +39,22 @@
 
 ## 分支 ② 模板渲染出图（无 AI）
 
-适用：`swiss-ikb`（vendor/guizang-social-card-skill）
+适用：`ios-memo`（**自有模板**，推荐）· `swiss-ikb`（vendor/guizang-social-card-skill）
+
+### 自有模板（首选）
+
+```bash
+node xhs-post/scripts/render_cards.mjs xhs-post/templates/ios-memo.html      --data <cards.json> <输出目录>
+```
+
+`cards.json` 的形状见 `styles.registry.json` 的 `data_schema`。产出 PNG 的同时会跑版式自查（内容占比、上下留白均衡、右侧溢出）。
+
+**字体规则（重要）**：`font-family` 必须**西文在前、中文在后**。ASCII 字符——包括脱敏用的 `*`、数字、IP65 里的字母——走西文字体，中文自动 fallback 到思源。反过来写会让 `*` 在衬线中文字体里渲染成 `★`（2026-08-19 实测踩过）。
+Google Fonts 的简中只有思源黑体/思源宋体两个选择；西文可按语境换（Inter / Michroma / Playwrite / Gothic A1 …），在 `cards.json` 里设 `latinFont` 即可。
+
+**复写换配色**：模板 `:root` 里的 CSS 变量就是全部主题——改 `--paper` `--ink` `--accent` 即可，构图完全不动。正好对应 `workflows/rewrite.md` 的「封面小改不重做」。
+
+### vendor 模板
 
 **已核实：guizang 的 `package.json` 唯一依赖是 `playwright ^1.60.0`，零 AI / 生图库。** 流程是 HTML 模板 → 填数据 → 无头浏览器截图 → PNG，全程不经过图像模型。
 

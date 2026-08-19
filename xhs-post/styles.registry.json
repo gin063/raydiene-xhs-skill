@@ -44,7 +44,12 @@
       ],
       "pros": "真实感强、信息量大",
       "cons": "不高级",
-      "prompt_style": "iOS Notes app aesthetic, warm off-white background #f7f3ea, near-black text, orange checkmarks, thin dashed separators, generous line spacing, flat and clean."
+      "prompt_style": "iOS Notes app aesthetic, warm off-white background #f7f3ea, near-black text, orange checkmarks, thin dashed separators, generous line spacing, flat and clean.",
+      "template": "xhs-post/templates/ios-memo.html",
+      "data_schema": "cards.json —— {latinFont, footL, footR, cards:[{id,type,kicker,title,lead,items[]}]}",
+      "render_cmd": "node xhs-post/scripts/render_cards.mjs xhs-post/templates/ios-memo.html --data <cards.json> <输出目录>",
+      "note": "自有模板，不依赖 vendor。配色/字体全在 :root 的 CSS 变量里——复写换主题只改变量，构图不动。",
+      "verified": "2026-08-19 实测出图 7 张，1080×1440，中文零错字"
     },
     {
       "id": "warm-journal",
@@ -268,5 +273,22 @@
       "reason": "16:9 横版与小红书 3:4 冲突，且其构图系统（大留白、主体占40-60%）按横版设计，强行竖排会散；文字承载弱（README 自述『中文越短越稳定』），参数表用不了。",
       "conditional_use": "唯一可能场景：first-principles 类讲原理的抽象概念可视化（如『充电桩=会判断的开关』）。用前须先解决比例问题。"
     }
-  ]
+  ],
+  "fonts": {
+    "$comment": "Google Fonts 的简体中文只有思源黑体/思源宋体两个可用选择；西文字体很多，按语境自选。",
+    "cn": {
+      "sans": "Noto Sans SC（思源黑体）",
+      "serif": "Noto Serif SC（思源宋体）"
+    },
+    "latin_options": [
+      "Inter",
+      "Michroma",
+      "Playwrite",
+      "Gothic A1",
+      "Playfair Display",
+      "IBM Plex Mono"
+    ],
+    "rule": "font-family 必须**西文在前、中文在后**。ASCII 字符（脱敏用的 * 、数字、IP65 里的字母）走西文字体，中文自动 fallback。反过来写会让 * 在衬线中文字体里渲染成 ★（2026-08-19 实测踩过）。",
+    "how_to_switch": "cards.json 里设 latinFont 字段，模板会自动追加对应的 Google Fonts 请求。"
+  }
 }

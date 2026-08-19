@@ -19,14 +19,35 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
-const htmlPath = process.argv[2];
-const outDir = process.argv[3] || path.join(path.dirname(htmlPath || '.'), 'png');
+const args = process.argv.slice(2);
+const dataIdx = args.indexOf('--data');
+const dataPath = dataIdx >= 0 ? args[dataIdx + 1] : null;
+const rest = args.filter((_, i) => i !== dataIdx && i !== dataIdx + 1);
+const htmlPath = rest[0];
+const outDir = rest[1] || path.join(path.dirname(htmlPath || '.'), 'png');
 
 if (!htmlPath || !fs.existsSync(htmlPath)) {
-  console.error('用法: node render_cards.mjs <html文件> [输出目录]');
+  console.error('用法: node render_cards.mjs <模板.html> [--data 数据.json] [输出目录]');
   process.exit(2);
 }
 fs.mkdirSync(outDir, { recursive: true });
+
+// 把数据注入模板的 <script id="card-data">，写成同目录的临时 html 再渲染。
+// 同目录是为了让模板里的相对路径（字体、图片）仍然有效。
+let renderTarget = htmlPath;
+if (dataPath) {
+  const tpl = fs.readFileSync(htmlPath, 'utf8');
+  const data = fs.readFileSync(dataPath, 'utf8');
+  const injected = tpl.replace(
+    /(<script id="card-data" type="application\/json">)[\s\S]*?(<\/script>)/,
+    (_m, a, b) => a + '\n' + data.trim() + '\n' + b);
+  if (injected === tpl) {
+    console.error('模板里没找到 <script id="card-data" type="application/json"> 块');
+    process.exit(2);
+  }
+  renderTarget = path.join(path.dirname(htmlPath), '.render-tmp.html');
+  fs.writeFileSync(renderTarget, injected, 'utf8');
+}
 
 const CHANNEL = process.env.PW_CHANNEL ?? 'chrome';
 let browser;
@@ -39,7 +60,7 @@ try {
 }
 const page = await browser.newPage({ deviceScaleFactor: 1 });
 
-await page.goto(pathToFileURL(path.resolve(htmlPath)).href, { waitUntil: 'networkidle' });
+await page.goto(pathToFileURL(path.resolve(renderTarget)).href, { waitUntil: 'networkidle' });
 // 等 Web 字体就位，否则会截到回退字体
 await page.evaluate(() => document.fonts.ready);
 await page.waitForTimeout(600); // WebGL 背景绘制
@@ -63,13 +84,16 @@ async function qa(node) {
     });
     if (!visible.length) return { bottomGap: 0, overflow: 0 };
 
-    // 底部留白只能用「有文字的叶子节点」来量，两个坑：
+    // 底部留白只能用「有文字的叶子节点」来量，三个坑：
     // 1) 容器（如 .content）常被 flex 撑满整卡，按它算间隙恒为 0
-    // 2) 页脚条钉在底边（自身 absolute，子 span 却是 static），要顺祖先链排掉
+    // 2) 页脚条钉在底边（自身 absolute，子 span 却是 static），要顺祖先链排
+    // 3) 页脚也可能用 margin-top:auto 待在文档流里 —— 位置检测抓不到，
+    //    所以模板需显式打 data-qa-ignore，这里同样顺祖先链排
     const pinned = (c) => {
       for (let n = c; n && n !== el; n = n.parentElement) {
         const pos = getComputedStyle(n).position;
         if (pos === 'absolute' || pos === 'fixed') return true;
+        if (n.hasAttribute && n.hasAttribute('data-qa-ignore')) return true;
       }
       return false;
     };
@@ -78,10 +102,16 @@ async function qa(node) {
              c.textContent.trim().length > 0 && !pinned(c));
 
     const base = leaves.length ? leaves : visible;
+    const top = Math.min(...base.map((c) => c.getBoundingClientRect().top));
     const bottom = Math.max(...base.map((c) => c.getBoundingClientRect().bottom));
     const right = Math.max(...visible.map((c) => c.getBoundingClientRect().right));
+    const pct = (v) => Math.round((v / pr.height) * 100);
     return {
-      bottomGap: Math.round(((pr.bottom - bottom) / pr.height) * 100),
+      // 内容占卡片高度的比例。居中布局下单看底部间隙会误报——
+      // 上下各留 30% 是刻意的均衡留白，不是"没填满"。
+      fill: pct(bottom - top),
+      topGap: pct(top - pr.top),
+      bottomGap: pct(pr.bottom - bottom),
       overflow: Math.round(Math.max(0, right - pr.right)),
     };
   });
@@ -94,15 +124,20 @@ for (const [i, node] of posters.entries()) {
   const file = path.join(outDir, `${id}.png`);
   await node.screenshot({ path: file });
 
-  const { bottomGap, overflow } = await qa(node);
+  const { fill, topGap, bottomGap, overflow } = await qa(node);
+  const isCover = (await node.getAttribute('class') || '').includes('cover');
   const flags = [];
-  if (bottomGap > 20) flags.push(`底部留白 ${bottomGap}% — 内容没填满，考虑加内容或调版式`);
+  // 封面是大字+副标，天生就空，不参与内容占比检查
+  if (!isCover && fill < 45) flags.push(`内容仅占 ${fill}% — 太空，加内容或放大字号`);
+  if (Math.abs(topGap - bottomGap) > 15)
+    flags.push(`上下留白失衡 ${topGap}% / ${bottomGap}% — 观感像被截断`);
   if (overflow > 0) flags.push(`右侧溢出 ${overflow}px — 文字超框`);
-  console.log(`${file}  ${Math.round(box.width)}x${Math.round(box.height)}` +
+  console.log(`${file}  ${Math.round(box.width)}x${Math.round(box.height)}  内容占比 ${fill}%` +
               (flags.length ? `\n   ⚠️ ${flags.join('\n   ⚠️ ')}` : ''));
   warned += flags.length;
 }
 
 await browser.close();
+if (dataPath) fs.rmSync(renderTarget, { force: true });
 console.log(`\n${posters.length} 张已导出到 ${outDir}` +
             (warned ? `，${warned} 项版式告警` : '，版式自查通过'));
