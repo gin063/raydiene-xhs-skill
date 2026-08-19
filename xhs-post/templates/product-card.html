@@ -73,7 +73,7 @@ document.body.innerHTML = (d.cards || []).map(function(c){
     shot +
     (chips ? '<div class="chips">' + chips + '</div>' : '') +
     (fits ? '<div class="fit-h">' + esc(c.fitLabel || '适合谁') + '</div><div class="fits">' + fits + '</div>' : '') +
-    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '') +
+    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '')  /* 单张卡场景才手填；成组渲染时用 ios-memo 的自动编号 */ +
     '</section>';
 }).join('');
 

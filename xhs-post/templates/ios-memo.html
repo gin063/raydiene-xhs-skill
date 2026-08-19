@@ -39,12 +39,20 @@
       l.href = l.href + '&family=' + d.latinFont.replace(/ /g,'+') + ':wght@400;500;700;900';
   }
   var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
+  /* 页码由模板自动计算，**不读数据里的 page 字段**。
+     手填过一次就会错一次（2026-08-19 实测：7 张卡的序号全填成了 /05）。 */
+  var total = d.cards.filter(function(x){ return x.type !== 'cover'; }).length;
+  var seq = 0;
   var html = d.cards.map(function(c){
     var cls = 'poster' + (c.serif ? ' serif' : '') + (c.type === 'cover' ? ' cover' : '');
     // 页脚只出页码。刻意不支持自定义文本 —— 素人账号不能有固定署名。
-    var foot = c.type === 'cover' ? '' :
-      '<div class="foot" data-qa-ignore><span></span><span>' +
-      esc(c.page || '') + '</span></div>';
+    var foot = '';
+    if (c.type !== 'cover') {
+      seq += 1;
+      var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+      foot = '<div class="foot" data-qa-ignore><span></span><span>' +
+             pad(seq) + ' / ' + pad(total) + '</span></div>';
+    }
     if (c.type === 'cover')
       return '<section class="' + cls + '" id="' + esc(c.id || 'cover') + '"><div class="body">' +
         '<div class="big-num">' + esc(c.bigNum) + '</div>' +

@@ -22,6 +22,9 @@ tbody th{
 }
 tbody tr:nth-child(even){background:var(--zebra)}
 td.hl{color:var(--accent); font-weight:700}
+/* note 是给读者看的补充说明。
+   ⚠️ 不要写"数据来自XX参数表"这类来源声明 —— 那是内部引用，
+   写出来既像官方口径又暴露有内部资料。素人不会声明数据出处。 */
 .note{margin-top:30px; font-size:26px; color:var(--ink-dim); line-height:1.6}
 .warn{background:#ffe9e9; color:#a11; padding:28px; font-size:30px; line-height:1.6}
 </style>
@@ -83,7 +86,7 @@ document.body.innerHTML = cards.map(function(c){
     '<h1 class="title">' + esc(c.title) + '</h1>' +
     '<table><thead>' + head + '</thead><tbody>' + body + '</tbody></table>' +
     (c.note ? '<div class="note">' + esc(c.note) + '</div>' : '') + dense +
-    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '') +
+    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '')  /* 单张卡场景才手填；成组渲染时用 ios-memo 的自动编号 */ +
     '</section>';
 }).join('');
 
