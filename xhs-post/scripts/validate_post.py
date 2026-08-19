@@ -5,6 +5,7 @@
 用法:
   python validate_post.py <post-spec.json 或 交付的 .md>
   python validate_post.py <交付的 .md> --against <原文.txt>   # 复写时查重
+  python validate_post.py <交付的 .md> --cards <cards.json>   # 数字承诺比对条目数
 
 退出码: 0 全过 / 1 有 FAIL
 """
@@ -23,8 +24,22 @@ BANNED_AGGRESSIVE = {"智商税": "冤枉钱 / 品牌溢价", "杂牌": "冷门�
 EXEMPT = ["最大负载", "第一台", "第一行", "第一步", "最后", "最新"]
 
 # --- compliance.md 第 6 节：脱敏。型号名不脱敏 ---
-BRAND_RAW = {"雷迪恩": "雷*恩", "公牛": "*牛", "挚达": "*达",
-             "理想": "*想", "小米": "*米", "特斯拉": "特*拉", "比亚迪": "比*迪"}
+# 竞品：任何情况下都要脱敏
+COMPETITOR_RAW = {"公牛": "*牛", "挚达": "*达", "理想": "*想",
+                  "小米": "*米", "特斯拉": "特*拉", "比亚迪": "比*迪"}
+# 本品：**只在同篇出现竞品时**才脱敏。
+#   脱敏雷迪恩的唯一理由是「只给竞品打码而自家不打 = 此地无银」，
+#   这个理由在没有竞品同框时不成立 —— 自己的品牌不存在侵权风险。
+SELF_RAW, SELF_MASKED = "雷迪恩", "雷*恩"
+COMPETITOR_MASKED = list(COMPETITOR_RAW.values())
+
+def strip_tags(text):
+    """摘掉话题标签再查脱敏。
+
+    标签是搜索与聚合的键，`#雷*恩充电桩` 会让标签直接失效 ——
+    带星号的话题根本聚合不到。所以标签内一律写全称，不参与脱敏检查。
+    """
+    return re.sub(r"#[^\s#]+", "", text)
 
 # --- compliance.md 第 4 节：不暴露降配 ---
 LEAK_PATTERNS = [
@@ -54,9 +69,16 @@ def check_text(text, where, issues):
     for w, alt in BANNED_AGGRESSIVE.items():
         if w in text:
             issues.append(("FAIL", where, f"攻击性词「{w}」→ 改为：{alt}"))
-    for raw, masked in BRAND_RAW.items():
-        if re.search(raw, text):
-            issues.append(("FAIL", where, f"品牌未脱敏「{raw}」→ 应为「{masked}」（型号名不脱敏）"))
+    body = strip_tags(text)          # 标签内不查脱敏
+    for raw, masked in COMPETITOR_RAW.items():
+        if raw in body:
+            issues.append(("FAIL", where, f"竞品未脱敏「{raw}」→ 应为「{masked}」（型号名不脱敏）"))
+    # 本品脱敏是条件性的：只有竞品同框时才要求
+    has_rival = any(r in body for r in COMPETITOR_RAW) or                 any(m in body for m in COMPETITOR_MASKED)
+    if SELF_RAW in body and has_rival:
+        issues.append(("FAIL", where,
+                       f"本篇出现竞品，「{SELF_RAW}」也要脱敏为「{SELF_MASKED}」"
+                       f"（只给竞品打码而自家不打 = 此地无银）"))
     for pat, msg in LEAK_PATTERNS:
         if re.search(pat, text):
             issues.append(("FAIL", where, f"降配泄露 — {msg}"))
@@ -95,6 +117,24 @@ def check_duplication(new_text, orig_text, where, issues, n=8):
         issues.append(("FAIL", where, f"与原文重合 {len(h)} 字「{h}」— 同义替换或换句式"))
     if len(runs) > 6:
         issues.append(("FAIL", where, f"…另有 {len(runs) - 6} 处重合"))
+
+
+COUNT_CLAIM = re.compile(r"(\d{1,3})\s*(条|件|个坑|个点|件事|种|步|招|个雷|个坑)")
+
+
+def check_count_claim(text, actual, where, issues):
+    """正文/标题里的数字承诺必须等于实际条目数。
+
+    2026-08-19 实测：标题和封面都写「28个坑」，实际 29 条。
+    两边写的是同一个错数，自查时看着一致、根本看不出来 ——
+    成因是先编数字再让内容去凑。所以这条**不能靠声明**，必须从文本里揪。
+    """
+    for m in COUNT_CLAIM.finditer(text):
+        n = int(m.group(1))
+        if 3 <= n <= 99 and n != actual:
+            issues.append(("FAIL", where,
+                           f"数字承诺「{m.group(0)}」与实际 {actual} 条不符 —— "
+                           f"数字要从内容数出来，不能先定后凑"))
 
 
 def check_spec(spec, issues):
@@ -146,6 +186,11 @@ def check_spec(spec, issues):
 def main():
     argv = sys.argv[1:]
     against = None
+    cards = None
+    if "--cards" in argv:
+        i = argv.index("--cards")
+        cards = Path(argv[i + 1])
+        argv = argv[:i] + argv[i + 2:]
     if "--against" in argv:
         i = argv.index("--against")
         against = Path(argv[i + 1])
@@ -168,6 +213,12 @@ def main():
                            "未找到 ```publish 代码块 — 可发布成品应用该标记，本次未检查正文"))
         for i, b in enumerate(blocks):
             check_text(b, f"{p.name} publish块{i + 1}", issues)
+        if cards and blocks:
+            data = json.loads(cards.read_text(encoding="utf-8"))
+            actual = sum(len(c.get("items", [])) for c in data.get("cards", []))
+            if actual:
+                for i, b in enumerate(blocks):
+                    check_count_claim(b, actual, f"{p.name} publish块{i + 1}", issues)
         if against and blocks:
             # 第一个 publish 块约定是正文 caption
             body = blocks[0].replace("publish", "", 1)

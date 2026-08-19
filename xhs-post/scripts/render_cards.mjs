@@ -48,20 +48,13 @@ if (dataPath) {
   renderTarget = path.join(path.dirname(htmlPath), '.render-tmp.html');
   fs.writeFileSync(renderTarget, injected, 'utf8');
 
-  // 数字类承诺必须从内容数出来，不能先定后凑。
-  // 2026-08-19 实测：标题和封面都写「28个坑」，实际渲染 29 条 —— 我先编了数字
-  // 再让内容去凑，两边同时错。在 cards.json 里声明 claimedTotal 就能挡住。
+  // 渲染时把条目数打出来，方便写标题时直接取用。
+  // 硬性比对在 validate_post.py --cards 里做，且不需要任何声明——
+  // 需要人记得声明的检查，人就会忘（claimedTotal 试过，删了）。
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
     const actual = (data.cards || []).reduce((n, c) => n + (c.items || []).length, 0);
-    if (actual && data.claimedTotal == null) {
-      console.log(`ℹ️ 条目共 ${actual} 条。正文/封面若声明了数量，须与此一致；`
-                + `可在 cards.json 加 "claimedTotal": ${actual} 让脚本替你把关。`);
-    } else if (data.claimedTotal != null && data.claimedTotal !== actual) {
-      console.error(`❌ 条目数不符：cards.json 声明 ${data.claimedTotal} 条，实际 ${actual} 条。`);
-      console.error(`   正文和封面的数字承诺会跟着错。改内容或改声明，不要两边都不动。`);
-      process.exitCode = 1;
-    }
+    if (actual) console.log(`ℹ️ 条目共 ${actual} 条 —— 标题/封面里的数字承诺按此写。`);
   } catch { /* 数据不是清单形态就跳过 */ }
 }
 
