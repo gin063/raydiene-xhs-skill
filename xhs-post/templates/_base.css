@@ -1,0 +1,62 @@
+/* 卡片模板共享基座。三个模板都 <link> 这个文件——字体规则和主题变量只有一份，
+   免得在各模板里各写一遍然后逐渐走样。 */
+
+:root{
+  /* ===== 主题：复写换配色 / 素人账号隔离，都只改这几个变量，构图不动 =====
+     ⚠️ 同一套配色不要连发多篇，也不要跨素人账号复用 —— 跨篇一致性是身份破绽。
+     见 references/compliance.md 第 6.5 节。 */
+  --paper:   #f7f3ea;
+  --ink:     #1a1a1a;
+  --ink-dim: #6b6660;
+  --accent:  #2d9ed0;
+  --rule:    #d8d2c6;
+  --zebra:   rgba(0,0,0,.028);
+
+  --card-w: 1080px;
+  --card-h: 1440px;
+  --pad: 92px;
+
+  /* 字体栈：**西文在前、中文在后**，顺序不能颠倒。
+     ASCII 字符（脱敏用的 * 、数字、IP65 里的字母）走西文字体；
+     中文在西文字体里没有字形，自动 fallback 到思源。
+     反过来写会让 * 在衬线中文字体里渲染成 ★（2026-08-19 实测踩过）。
+     中文只有思源黑/宋两个可选（Google Fonts 简中就这些）；西文按语境换。 */
+  --font-latin: 'Inter';
+  --font-cn: 'Noto Sans SC';
+  --font-cn-serif: 'Noto Serif SC';
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e5e2dc;display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px}
+
+.poster{
+  width:var(--card-w); height:var(--card-h);
+  background:var(--paper); color:var(--ink);
+  padding:var(--pad);
+  display:flex; flex-direction:column;
+  font-family:var(--font-latin),var(--font-cn),'Microsoft YaHei',sans-serif;
+  font-feature-settings:"tnum" 1;   /* 数字等宽，多张卡的参数列能对齐 */
+  position:relative; overflow:hidden;
+}
+.poster.serif{font-family:var(--font-latin),var(--font-cn-serif),serif}
+
+/* 内容区吃掉剩余高度并垂直居中：内容少时是上下均衡留白，
+   而不是"顶部堆满、底部空一块"那种像被截断的观感 */
+.body{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0}
+
+.kicker{font-size:34px; font-weight:500; color:var(--accent); letter-spacing:.14em; margin-bottom:26px}
+.title{font-size:96px; font-weight:900; line-height:1.16; letter-spacing:-.01em; margin-bottom:44px}
+.title.sm{font-size:76px}
+.title.xs{font-size:62px}
+.lead{font-size:42px; line-height:1.62; color:var(--ink-dim);
+      padding-bottom:40px; margin-bottom:44px; border-bottom:2px dashed var(--rule)}
+
+/* 底部条：只放页码。
+   ⚠️ 禁止写品牌名或任何固定署名 —— 笔记发素人账号做软植入，
+   每张卡盖同一个署名等于自曝身份。见 compliance.md 第 6.5 节。
+   data-qa-ignore 让版式自查把它排除在"内容"之外，否则内容占比会算错。 */
+.foot{
+  padding-top:36px; border-top:2px solid var(--rule);
+  display:flex; justify-content:flex-end;
+  font-size:30px; color:var(--ink-dim); letter-spacing:.06em;
+}

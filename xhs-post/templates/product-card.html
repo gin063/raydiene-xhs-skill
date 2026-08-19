@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>product-card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+.title{font-size:76px; margin-bottom:16px}
+.tagline{font-size:36px; color:var(--ink-dim); margin-bottom:40px}
+/* 产品图：用实拍。⚠️ 不要用电商详情页的白底渲染图 ——
+   那是官方素材，素人拍不出来，一眼暴露身份（compliance.md 6.5） */
+.shot{
+  width:100%; height:520px; margin-bottom:44px;
+  background:#e9e4da; border-radius:24px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.shot img{width:100%; height:100%; object-fit:cover}
+.shot .ph{font-size:30px; color:var(--ink-dim)}
+/* 参数胶囊 */
+.chips{display:flex; flex-wrap:wrap; gap:16px; margin-bottom:40px}
+.chip{
+  font-size:30px; padding:14px 26px; border-radius:999px;
+  border:2px solid var(--rule); color:var(--ink);
+}
+.chip b{color:var(--accent); font-weight:700}
+/* 适合谁 */
+.fit-h{font-size:32px; color:var(--accent); letter-spacing:.1em; margin-bottom:20px}
+.fits{display:flex; flex-direction:column; gap:22px}
+.fit{display:flex; gap:20px; font-size:38px; line-height:1.5}
+.fit .tick{color:var(--accent); font-weight:700; flex:none}
+</style>
+</head>
+<body>
+<script id="card-data" type="application/json">
+{"cards":[{"id":"demo","title":"占位型号","tagline":"占位定位",
+ "chips":[["价位","900+"]],"fits":["占位适合人群"]}]}
+</script>
+<script>
+(function(){
+var d = JSON.parse(document.getElementById('card-data').textContent);
+if (d.latinFont) {
+  document.documentElement.style.setProperty('--font-latin', "'" + d.latinFont + "'");
+  document.getElementById('fontlink').href += '&family=' + d.latinFont.replace(/ /g,'+') + ':wght@400;500;700;900';
+}
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
+
+/* 字段级约束：不暴露降配（compliance.md 第 4 节） */
+var BANNED_CHIPS = [/运行内存/, /内存/, /功能接口/, /I\s*\/?\s*O/i, /参考价/, /拿货/, /渠道价/];
+var problems = [];
+
+document.body.innerHTML = (d.cards || []).map(function(c){
+  var chips = (c.chips || []).filter(function(p){
+    var hit = BANNED_CHIPS.some(function(re){ return re.test(String(p[0])); });
+    if (hit) problems.push('卡「' + (c.id || '') + '」剔除参数：' + p[0]);
+    return !hit;
+  }).map(function(p){
+    return '<span class="chip">' + esc(p[0]) + ' <b>' + esc(p[1]) + '</b></span>';
+  }).join('');
+  var shot = c.image
+    ? '<div class="shot"><img src="' + esc(c.image) + '" alt=""></div>'
+    : (c.imagePlaceholder === false ? ''
+       : '<div class="shot"><span class="ph">此处贴实拍图 —— 不要用电商白底渲染图</span></div>');
+  var fits = (c.fits || []).map(function(t){
+    return '<div class="fit"><span class="tick">✓</span><span>' + esc(t) + '</span></div>';
+  }).join('');
+  return '<section class="poster" id="' + esc(c.id || '') + '"><div class="body">' +
+    (c.kicker ? '<div class="kicker">' + esc(c.kicker) + '</div>' : '') +
+    '<h1 class="title">' + esc(c.title) + '</h1>' +
+    (c.tagline ? '<div class="tagline">' + esc(c.tagline) + '</div>' : '') +
+    shot +
+    (chips ? '<div class="chips">' + chips + '</div>' : '') +
+    (fits ? '<div class="fit-h">' + esc(c.fitLabel || '适合谁') + '</div><div class="fits">' + fits + '</div>' : '') +
+    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '') +
+    '</section>';
+}).join('');
+
+if (problems.length) console.warn(problems.join('\n'));
+})();
+</script>
+</body>
+</html>

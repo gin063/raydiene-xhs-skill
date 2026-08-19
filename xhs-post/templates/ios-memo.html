@@ -8,77 +8,17 @@
 <!-- 中文只有思源黑/宋两个选择（Google Fonts 简中字体就这些）。
      西文可换：Inter / Michroma / Playwrite / Gothic A1 等，见 __LATIN_FONT__ -->
 <link id="fontlink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="_base.css">
 <style>
-:root{
-  /* ===== 复写时只改这一段：换配色 = 换主题，构图完全不动 ===== */
-  --paper:   #f7f3ea;
-  --ink:     #1a1a1a;
-  --ink-dim: #6b6660;
-  --accent:  #e8622c;
-  --rule:    #d8d2c6;
-  --card-w: 1080px;
-  --card-h: 1440px;
-  --pad: 92px;
-
-  /* 字体栈：西文在前，中文在后。
-     `*` 数字 英文 走西文字体 —— 这是脱敏星号不被渲染成 ★ 的关键；
-     中文字符在西文字体里没有字形，自动 fallback 到思源。 */
-  --font-latin: 'Inter';
-  --font-cn: 'Noto Sans SC';
-  --font-cn-serif: 'Noto Serif SC';
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#e5e2dc;display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px}
-
-.poster{
-  width:var(--card-w); height:var(--card-h);
-  background:var(--paper); color:var(--ink);
-  padding:var(--pad);
-  display:flex; flex-direction:column;
-  font-family:var(--font-latin),var(--font-cn),'Microsoft YaHei',sans-serif;
-  font-feature-settings:"tnum" 1;   /* 数字等宽，多张卡参数列能对齐 */
-  position:relative; overflow:hidden;
-}
-.poster.serif{font-family:var(--font-latin),var(--font-cn-serif),serif}
-
-/* 顶部小标 */
-.kicker{
-  font-size:34px; font-weight:500; color:var(--accent);
-  letter-spacing:.14em; margin-bottom:26px;
-}
-/* 主标题 */
-.title{
-  font-size:96px; font-weight:900; line-height:1.16;
-  letter-spacing:-.01em; margin-bottom:44px;
-}
-.title.sm{font-size:76px}
-/* 现象描述 */
-.lead{
-  font-size:42px; line-height:1.62; color:var(--ink-dim);
-  padding-bottom:40px; margin-bottom:44px;
-  border-bottom:2px dashed var(--rule);
-}
-/* ✅ 条目 */
+/* ios-memo 专有：✅ 条目列表与封面变体。共享部分见 _base.css */
 .items{display:flex; flex-direction:column; gap:34px}
 .item{display:flex; gap:22px; font-size:42px; line-height:1.55}
 .item .tick{color:var(--accent); font-weight:700; flex:none}
 .item b{font-weight:700}
-
-/* 封面变体 */
-/* 内容区吃掉剩余高度并垂直居中：内容少时变成上下均衡留白，
-   而不是"顶部堆满、底部空一大块"那种像截断的观感 */
-.body{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0}
 .poster.cover .body{align-items:flex-start}
 .big-num{font-size:280px; font-weight:900; line-height:.94; letter-spacing:-.04em}
 .cover-sub{font-size:52px; font-weight:500; line-height:1.5; margin-top:36px}
 .cover-note{font-size:38px; color:var(--ink-dim); margin-top:22px}
-
-/* 底部条：flex 推到底，不用绝对定位——绝对定位会让版式自查算不出底部留白 */
-.foot{
-  padding-top:36px; border-top:2px solid var(--rule);
-  display:flex; justify-content:space-between;
-  font-size:30px; color:var(--ink-dim); letter-spacing:.06em;
-}
 </style>
 </head>
 <body>
@@ -101,8 +41,10 @@ body{background:#e5e2dc;display:flex;flex-direction:column;align-items:center;ga
   var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
   var html = d.cards.map(function(c){
     var cls = 'poster' + (c.serif ? ' serif' : '') + (c.type === 'cover' ? ' cover' : '');
-    var foot = '<div class="foot" data-qa-ignore><span>' + esc(c.footL || d.footL || '') +
-               '</span><span>' + esc(c.footR || d.footR || '') + '</span></div>';
+    // 页脚只出页码。刻意不支持自定义文本 —— 素人账号不能有固定署名。
+    var foot = c.type === 'cover' ? '' :
+      '<div class="foot" data-qa-ignore><span></span><span>' +
+      esc(c.page || '') + '</span></div>';
     if (c.type === 'cover')
       return '<section class="' + cls + '" id="' + esc(c.id || 'cover') + '"><div class="body">' +
         '<div class="big-num">' + esc(c.bigNum) + '</div>' +

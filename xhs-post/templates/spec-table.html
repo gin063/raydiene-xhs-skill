@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>spec-table cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="fontlink" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="_base.css">
+<style>
+.title{font-size:66px; margin-bottom:34px}
+table{width:100%; border-collapse:collapse; font-size:30px; line-height:1.34}
+th,td{padding:20px 14px; text-align:center; border-bottom:2px solid var(--rule); vertical-align:middle}
+thead th{
+  font-size:28px; font-weight:700; padding:0 8px 24px; border-bottom:3px solid var(--ink);
+  letter-spacing:-.02em; white-space:nowrap;   /* 表头折行很难看，宁可小一号 */
+}
+td{font-size:29px}
+tbody th{
+  text-align:left; font-weight:500; color:var(--ink-dim);
+  white-space:nowrap; padding-left:0; width:1%;
+}
+tbody tr:nth-child(even){background:var(--zebra)}
+td.hl{color:var(--accent); font-weight:700}
+.note{margin-top:30px; font-size:26px; color:var(--ink-dim); line-height:1.6}
+.warn{background:#ffe9e9; color:#a11; padding:28px; font-size:30px; line-height:1.6}
+</style>
+</head>
+<body>
+<!-- 数据由 render_cards.mjs 注入 -->
+<script id="card-data" type="application/json">
+{"cards":[{"id":"demo","title":"占位对比表","cols":["A","B"],
+ "rows":[["项目","值1","值2"]],"note":"用 --data 传入真实数据"}]}
+</script>
+<script>
+(function(){
+var d = JSON.parse(document.getElementById('card-data').textContent);
+if (d.latinFont) {
+  document.documentElement.style.setProperty('--font-latin', "'" + d.latinFont + "'");
+  var l = document.getElementById('fontlink');
+  l.href += '&family=' + d.latinFont.replace(/ /g,'+') + ':wght@400;500;700;900';
+}
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); };
+/* 空值归一：xlsx 里"无"的写法有 None / - / × / 空串好几种，
+   混在一张表里很显眼。统一成「—」，"有"统一成「✓」。 */
+var NORM = { '-':'—', '－':'—', '×':'—', 'x':'—', 'X':'—', '':'—', 'None':'—', 'null':'—', '√':'✓', '✔':'✓' };
+var cell = function(v){ var t = String(v == null ? '' : v).trim(); return NORM[t] != null ? NORM[t] : t; };
+
+/* ===== 字段级约束：不暴露降配（compliance.md 第 4 节）=====
+   这些参数不允许出现在对比表里。写死在模板而不是靠人记 ——
+   固定结构图式的价值就在于把规则变成机器约束。 */
+var BANNED_ROWS = [/运行内存/, /内存/, /功能接口/, /I\s*\/?\s*O/i, /参考价/, /拿货/, /渠道价/];
+var problems = [];
+
+var cards = d.cards.map(function(c){
+  var rows = (c.rows || []).filter(function(r){
+    var label = String(r[0] || '');
+    var hit = BANNED_ROWS.some(function(re){ return re.test(label); });
+    if (hit) problems.push('卡「' + (c.id || '') + '」剔除了违规参数行：' + label);
+    return !hit;
+  });
+  return Object.assign({}, c, { rows: rows });
+});
+
+document.body.innerHTML = cards.map(function(c){
+  var head = '<tr><th></th>' + (c.cols || []).map(function(x){
+    return '<th>' + esc(x) + '</th>'; }).join('') + '</tr>';
+  var body = (c.rows || []).map(function(r){
+    var cells = r.slice(1).map(function(v, i){
+      /* ⚠️ highlight 默认不开。中立对比表里给自家那列描色 = 明显偏好，
+         读者一眼看出这篇是谁写的（compliance.md 6.5 素人身份）。
+         只有当本篇人称明确是「我选了这款」时才考虑开。 */
+      var hl = (c.highlight != null && i === c.highlight) ? ' class="hl"' : '';
+      return '<td' + hl + '>' + esc(cell(v)) + '</td>';
+    }).join('');
+    return '<tr><th>' + esc(r[0]) + '</th>' + cells + '</tr>';
+  }).join('');
+  // 行数过多时字号会顶不住，宁可提示拆图也不缩到看不清
+  var dense = (c.rows || []).length > 10
+    ? '<div class="note">⚠️ 本表 ' + c.rows.length + ' 行，建议拆成两张</div>' : '';
+  return '<section class="poster" id="' + esc(c.id || '') + '"><div class="body">' +
+    (c.kicker ? '<div class="kicker">' + esc(c.kicker) + '</div>' : '') +
+    '<h1 class="title">' + esc(c.title) + '</h1>' +
+    '<table><thead>' + head + '</thead><tbody>' + body + '</tbody></table>' +
+    (c.note ? '<div class="note">' + esc(c.note) + '</div>' : '') + dense +
+    '</div>' + (c.page ? '<div class="foot" data-qa-ignore><span>' + esc(c.page) + '</span></div>' : '') +
+    '</section>';
+}).join('');
+
+if (problems.length) {
+  var box = document.createElement('div');
+  box.className = 'warn';
+  box.textContent = '⚠️ 已按合规规则剔除以下行：' + problems.join('；');
+  document.body.insertBefore(box, document.body.firstChild);
+  console.warn(problems.join('\n'));
+}
+})();
+</script>
+</body>
+</html>
