@@ -4,12 +4,12 @@
 
 | 位置 | 用途 | 现状 |
 |---|---|---|
-| `C:\Users\gin_\.codex\skills\` | **Codex 个人级** | ✅ 存在，装了 `img2threejs` |
-| `C:\Users\gin_\.claude\skills\` | **Claude Code 个人级** | ❌ 不存在（没装过任何个人 skill） |
+| `C:\Users\gin_\.codex\skills\` | **Codex 个人级** | ✅ `img2threejs` + `xhs-post`（联接），另有 `.system/` 内置 skill |
+| `C:\Users\gin_\.claude\skills\` | **Claude Code 个人级** | ✅ 已建，`xhs-post` 联接到本仓库 |
 | `<项目>\.codex\skills\` | Codex 项目级 | 未使用 |
 | `<项目>\.claude\skills\` | Claude Code 项目级 | 未使用 |
 | `%APPDATA%\Claude\local-agent-mode-sessions\skills-plugin\<uuid>\<uuid>\skills\` | 应用内置 | 10 个 anthropic-skills，**应用托管，勿手改**，更新会被覆盖 |
-| `C:\Users\gin_\.agents\skills\` | 跨工具约定路径 | 存在但为空 |
+| `C:\Users\gin_\.agents\skills\` | 传闻的跨工具路径 | ❌ **不存在**，两个 agent 都不读它 |
 
 **优先级**：项目级 > 个人级。同名时项目级覆盖个人级。
 
@@ -187,10 +187,10 @@ guizang 的 description 含触发词「做一套小红书图文」，装进 `~/.
 cd xhs-skill/vendor && git clone --depth 1 https://github.com/op7418/guizang-social-card-skill.git
 ```
 
-需要装的只有 `xhs-post` 本身：
+需要装的只有 `xhs-post` 本身，用仓库根的脚本一次装到两侧：
 
-```bash
-cp -R xhs-skill/xhs-post ~/.codex/skills/xhs-post
+```powershell
+.\install.ps1
 ```
 
 ---
