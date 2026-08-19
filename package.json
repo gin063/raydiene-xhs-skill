@@ -1,0 +1,12 @@
+{
+  "name": "xhs-skill",
+  "private": true,
+  "type": "module",
+  "description": "配图分支②模板渲染所需。playwright 装在本项目根，不依赖 vendor 的 node_modules——上游 git pull 不会影响渲染。",
+  "scripts": {
+    "render": "node xhs-post/scripts/render_cards.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}
