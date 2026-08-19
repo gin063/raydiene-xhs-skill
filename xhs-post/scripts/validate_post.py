@@ -117,7 +117,16 @@ def main():
     if p.suffix == ".json":
         check_spec(json.loads(p.read_text(encoding="utf-8")), issues)
     else:
-        check_text(p.read_text(encoding="utf-8"), p.name, issues)
+        # 溯源文档的说明性文字不脱敏（compliance.md 第 6 节），只扫可发布内容。
+        # 约定：会公开发布的成品用 ```publish 围栏标记；其余代码块（自查清单、
+        # 命令行、示例）是内部文字，含违禁词属正常描述，不检查。
+        md = p.read_text(encoding="utf-8")
+        blocks = [b for b in md.split("```")[1::2] if b.lstrip().startswith("publish")]
+        if not blocks:
+            issues.append(("WARN", p.name,
+                           "未找到 ```publish 代码块 — 可发布成品应用该标记，本次未检查正文"))
+        for i, b in enumerate(blocks):
+            check_text(b, f"{p.name} publish块{i + 1}", issues)
         if not p.name.isascii():
             issues.append(("FAIL", p.name, "文件名含非 ASCII 字符，前端会加载失败"))
 

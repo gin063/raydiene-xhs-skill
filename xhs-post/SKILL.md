@@ -30,7 +30,7 @@ description: 生成雷迪恩（RAYDIENE）家用充电桩的小红书图文笔�
 ## 第二步：四段流程，每段之间有确认闸
 
 ```
-PLAN ──确认──> DRAFT ──> 去AI味 ──确认──> IMAGE PLAN ──确认──> RENDER
+PLAN ──确认──> DRAFT ──> 去AI味 ──确认──> IMAGE PLAN ──确认──> RENDER（四分支）
 ```
 
 用户明确说"直接做完不用等我"时可连跑，但 **PLAN 段仍要写进最终 MD 的开头**，作为决策留痕。
@@ -65,6 +65,7 @@ PLAN ──确认──> DRAFT ──> 去AI味 ──确认──> IMAGE PLAN �
 | `platform-rules.md` | 每次都读。标题<20字、caption≤1000字符、3:4、单图中文≤80字 |
 | `humanize.md` | 正文定稿后必读。去 AI 味 + **小红书语境豁免清单**（emoji 密集和编号清单在小红书是常态，别按通用规则清掉） |
 | `image-plan.md` | 进入 IMAGE PLAN 段时读。**大多数配图不需要外部 skill**，先定最优方案，该用才用 |
+| `image-production.md` | 配图方案确认后读。四条落地分支 + prompt 用自然语言不用 JSON 的理由 |
 | `cover.md` | 做封面时读。封面独立于内页建模 |
 | `workflows/*.md` | 按分流结果读一份 |
 
