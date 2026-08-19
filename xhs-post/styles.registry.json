@@ -1,6 +1,6 @@
 {
   "$comment": "画风注册表 = 适配层。vendor/ 下的上游仓库 git pull 不会碰它。新增画风只改本文件，SKILL.md 与 post-spec schema 都不用动。",
-  "version": 3,
+  "version": 4,
   "render_modes": {
     "html-screenshot": {
       "desc": "HTML/CSS 模板经无头浏览器截图出 PNG",
@@ -49,7 +49,8 @@
       "data_schema": "cards.json —— {latinFont, footL, footR, cards:[{id,type,kicker,title,lead,items[]}]}",
       "render_cmd": "node xhs-post/scripts/render_cards.mjs xhs-post/templates/ios-memo.html --data <cards.json> <输出目录>",
       "note": "自有模板，不依赖 vendor。配色/字体全在 :root 的 CSS 变量里——复写换主题只改变量，构图不动。",
-      "verified": "2026-08-19 实测出图 7 张，1080×1440，中文零错字"
+      "verified": "2026-08-19 实测出图 7 张，1080×1440，中文零错字",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "checklist",
@@ -72,7 +73,8 @@
       "render_cmd": "node xhs-post/scripts/render_cards.mjs xhs-post/templates/checklist.html --data <cards.json> <输出目录>",
       "content_schema": "fixed",
       "note": "nanny-guide 的主力图式（5篇样本全是 memo-text）。编号跨卡连续，不是每张从1开始。含降配字段级拦截。",
-      "verified": "2026-08-19 复写模板14 实测出图 3 张，内容占比 66-79%"
+      "verified": "2026-08-19 复写模板14 实测出图 3 张，内容占比 66-79%",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "warm-journal",
@@ -89,7 +91,8 @@
         "head-to-head"
       ],
       "pros": "亲和、女性向",
-      "cons": "偏轻，撑不住硬核参数"
+      "cons": "偏轻，撑不住硬核参数",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "swiss-ikb",
@@ -108,8 +111,10 @@
       "pros": "专业、克制",
       "cons": "偏冷",
       "vendor_path": "vendor/guizang-social-card-skill",
-      "note": "guizang skill 的 Swiss 视觉系统可直接复用 目前实际未使用（已改用自有 ios-memo 模板），保留为需要瑞士风时的备选。",
-      "upstream": "https://github.com/op7418/guizang-social-card-skill"
+      "note": "目前实际未使用（已改用自有 ios-memo/checklist/spec-table/product-card 模板）。保留为需要瑞士风时的备选。",
+      "upstream": "https://github.com/op7418/guizang-social-card-skill",
+      "license": "AGPL-3.0（上游另有商业授权渠道，见其 COMMERCIAL_LICENSING.md）",
+      "commercial_use": "⚠️ 受限。仅用它生成图片、不分发软件，一般不触发 AGPL 义务；但**复制其模板/CSS 进我们自己的模板，会让我们的模板成为衍生作品并被 AGPL 传染**。要用前先与作者确认商业授权。"
     },
     {
       "id": "liquid-glass",
@@ -127,7 +132,8 @@
       "pros": "高级、科技感",
       "cons": "排版要求高",
       "prompt_style": "ultra-minimal premium tech, off-white base, semi-transparent frosted liquid-glass panels in ocean blue #2d9ed0, soft inner glow, subtle edge highlights, generous negative space, Apple product page aesthetic, soft diffused shadows.",
-      "tip": "同色多块时用透明度阶梯（12%→25%）做『入门→旗舰』的层次递进"
+      "tip": "同色多块时用透明度阶梯（12%→25%）做『入门→旗舰』的层次递进",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "note-app-screenshot",
@@ -145,7 +151,8 @@
       ],
       "pros": "有梗、亲切",
       "cons": "略山寨感",
-      "warning": "工具栏小图标容易画糊。糊了就裁掉工具栏，或用自备 SVG 补"
+      "warning": "工具栏小图标容易画糊。糊了就裁掉工具栏，或用自备 SVG 补",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "spec-table-card",
@@ -163,7 +170,8 @@
       "pros": "信息权威",
       "cons": "单独用枯燥",
       "content_schema": "fixed",
-      "note": "固定字段结构。参数自动比对产品 xlsx，并自动执行『不暴露降配』。转置版方便左侧贴产品图。"
+      "note": "固定字段结构。参数自动比对产品 xlsx，并自动执行『不暴露降配』。转置版方便左侧贴产品图。",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "product-card",
@@ -179,7 +187,8 @@
       ],
       "pros": "好看、易复用",
       "cons": "需官方产品图",
-      "content_schema": "fixed"
+      "content_schema": "fixed",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "cart-screenshot",
@@ -196,7 +205,8 @@
       ],
       "pros": "真实、种草强",
       "cons": "每条短评 ≤16 字/行",
-      "warning": "电商截图极易夹带 618 字样与真实订单号，必须遮挡"
+      "warning": "电商截图极易夹带 618 字样与真实订单号，必须遮挡",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "chat-screenshot",
@@ -212,7 +222,8 @@
         "meme-remix"
       ],
       "pros": "强真实感",
-      "cons": "零品牌露出"
+      "cons": "零品牌露出",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "photo-realistic",
@@ -232,21 +243,8 @@
       ],
       "pros": "生活感、可信度最高",
       "cons": "需实拍素材",
-      "note": "首选真实照片。无素材时可 image-gen，但禁止生成竞品外观。"
-    },
-    {
-      "id": "gathered-scenes-zine",
-      "label": "拼贴纸艺 zine 海报",
-      "render_mode": "image-gen",
-      "polish": "pgc-polished",
-      "vendor_path": "vendor/gathered-scenes-zine-skill",
-      "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
-      "invoke": "$scenes-gathered-zine-v1-3",
-      "art": [
-        "install-photo"
-      ],
-      "good_for": [],
-      "note": "需要一张源照片。文字由模型绘制，必须走 text_on_image 核对。目前无匹配场景，备用。 与 gc-minimal-zine-poster 定位重叠，两者均属氛围海报，与充电桩测评/攻略调性冲突。"
+      "note": "首选真实照片。无素材时可 image-gen，但禁止生成竞品外观。",
+      "license": "自有，无外部依赖"
     },
     {
       "id": "native-image-gen",
@@ -257,7 +255,30 @@
       "art": [
         "*"
       ],
-      "note": "无匹配画风时的兜底。GPT Image 2 中文可用但仍会写错，必须核对。"
+      "note": "无匹配画风时的兜底。GPT Image 2 中文可用但仍会写错，必须核对。",
+      "license": "自有，无外部依赖"
+    },
+    {
+      "id": "xiaohei-illustration",
+      "label": "小黑手绘插画（Ian）",
+      "render_mode": "image-gen",
+      "polish": "ugc-raw",
+      "vendor_path": "vendor/ian-xiaohei-illustrations",
+      "upstream": "https://github.com/helloianneo/ian-xiaohei-illustrations",
+      "invoke": "$ian-xiaohei-illustrations",
+      "license": "MIT",
+      "commercial_use": "✅ 允许。NOTICE 要求：**再分发或改编本仓库时**需保留名称或署名 Ian。我们只用它出图、不再分发仓库，故不触发；但若把它的 references 抄进自有模板，要署名。",
+      "visual": "纯白背景 + 黑色手绘线稿 + 大量留白 + 少量红橙蓝手写中文批注，小黑 IP 角色",
+      "art": [
+        "concept-illustration"
+      ],
+      "good_for": [
+        "first-principles"
+      ],
+      "pros": "抽象概念可视化强，与充电桩测评类内容形成反差",
+      "cons": "⚠️ **原生 16:9 横版**，与小红书 3:4 冲突；其构图系统（大留白、主体占 40-60%）按横版设计，强行竖排会散。文字承载弱（作者自述『中文越短越稳定』），参数表用不了。",
+      "when": "仅 first-principles 这类讲原理的抽象概念图。用前必须先解决比例问题——建议让它出方图或竖版再验证构图是否还成立。",
+      "verified": "未实跑"
     }
   ],
   "$comment_auto_trigger": "vendor/ 下的外部 skill 一律不装进 ~/.codex/skills 或 ~/.claude/skills。guizang 上游 description 含触发词『做一套小红书图文』，装进 skills 目录会静默抢走调度权——照样出图，但文风选择、卖点决策、合规自查全部跳过且不报错。只以 vendor 目录按路径读取。",
@@ -270,7 +291,9 @@
       "vendor_path": "vendor/awesome-gpt-image-2",
       "license": "MIT",
       "content": "520+ 逆向工程 prompt 案例（信息图52 / 海报排版82 / UI73 / 摄影75），20+ 工业模板，含中文解释模块支持",
-      "when": "需要一种现有 styles[] 覆盖不到的视觉方向时，来这里查参考，抄结构与风格措辞后填入业务变量。不是每次配图都要来。"
+      "when": "需要一种现有 styles[] 覆盖不到的视觉方向时，来这里查参考，抄结构与风格措辞后填入业务变量。不是每次配图都要来。",
+      "commercial_use": "✅ 允许，无限制",
+      "vendor_note": "已 sparse clone，只取 docs/ 与 agents/（完整仓库含前端应用与 500+ 图，克隆易断）。docs/templates.md 有 21 套工业级 prompt 模板。"
     },
     "humanizer-zh": {
       "kind": "文案后处理",
@@ -278,7 +301,8 @@
       "vendor_path": "vendor/humanizer-zh",
       "license": "MIT",
       "content": "24 项中文 AI 痕迹检测与改写",
-      "when": "DRAFT 之后强制执行。用法与小红书语境豁免清单见 references/humanize.md。"
+      "when": "DRAFT 之后强制执行。用法与小红书语境豁免清单见 references/humanize.md。",
+      "commercial_use": "✅ 允许，无限制"
     }
   },
   "evaluated_rejected": [
@@ -290,12 +314,20 @@
       "reason": "3:5 竖幅（非小红书 3:4）；70–90% 负空间承载不了任何参数；README 明确『不适合商业产品推广』；与 vendor 已有的 gathered-scenes-zine 定位重叠。"
     },
     {
-      "id": "ian-xiaohei-illustrations",
-      "upstream": "https://github.com/helloianneo/ian-xiaohei-illustrations",
-      "date": "2026-08-18",
-      "verdict": "备选，不进常规池",
-      "reason": "16:9 横版与小红书 3:4 冲突，且其构图系统（大留白、主体占40-60%）按横版设计，强行竖排会散；文字承载弱（README 自述『中文越短越稳定』），参数表用不了。",
-      "conditional_use": "唯一可能场景：first-principles 类讲原理的抽象概念可视化（如『充电桩=会判断的开关』）。用前须先解决比例问题。"
+      "id": "gathered-scenes-zine-skill",
+      "upstream": "https://github.com/Zeejay0/gathered-scenes-zine-skill",
+      "date": "2026-08-19",
+      "verdict": "🔴 不可用 —— 许可证禁止商用",
+      "reason": "许可为「Gathered Scenes Zine Personal Non-Commercial License」，明确限定 personal, non-commercial use，并排除 'use on behalf of another person or organization' 与 'business benefit'。本项目是品牌推广，属商业使用，**用了就是违约**。已从 vendor/ 删除。",
+      "note": "与许可无关的问题另有：3:5 竖幅非 3:4、70–90% 负空间承载不了参数。但许可证这条是硬的，不需要再讨论适配。"
+    },
+    {
+      "id": "photo-abstract-editorial",
+      "upstream": "https://github.com/ZzzLc0405/photo-abstract-editorial",
+      "date": "2026-08-19",
+      "verdict": "🔴 不安装 —— 许可证禁止商用",
+      "reason": "CC BY-NC-SA 4.0，NC = NonCommercial，禁止商业使用。",
+      "note": "即使许可允许也不适配：成品只保留一个原创英文标题、不做中文渲染；上下两栏（照片+抽象面板）的编辑风格与充电桩测评/攻略调性不符。"
     }
   ],
   "fonts": {
@@ -314,5 +346,6 @@
     ],
     "rule": "font-family 必须**西文在前、中文在后**。ASCII 字符（脱敏用的 * 、数字、IP65 里的字母）走西文字体，中文自动 fallback。反过来写会让 * 在衬线中文字体里渲染成 ★（2026-08-19 实测踩过）。",
     "how_to_switch": "cards.json 里设 latinFont 字段，模板会自动追加对应的 Google Fonts 请求。"
-  }
+  },
+  "$comment_license": "⚠️ 装任何外部 skill 前先看许可证。本项目是品牌商业推广，**非商用许可（NC / Personal Non-Commercial）一律不能用**。AGPL 可以用来出图，但不能把它的代码/样式抄进自有模板——那会让自有模板被传染。"
 }

@@ -1,5 +1,41 @@
 # CHANGELOG — 小红书图文生成 skill
 
+## 2026-08-19 · vendor 全量安装 + 许可证审计（发现两个不能用）
+
+**🔴 许可证审计是我一直没做的检查，一做就出问题**
+
+本项目是品牌商业推广，非商用许可一律不能用。逐个看 LICENSE 正文后：
+
+| skill | 许可 | 结论 |
+|---|---|---|
+| `Humanizer-zh` | MIT | ✅ 已装 |
+| `awesome-gpt-image-2` | MIT | ✅ 已装（sparse clone，只取 docs/+agents/） |
+| `ian-xiaohei-illustrations` | MIT | ✅ 已装，但保留 16:9 比例约束 |
+| `guizang-social-card-skill` | **AGPL-3.0** | ⚠️ 保留但受限，见下 |
+| `gathered-scenes-zine-skill` | **Personal Non-Commercial** | 🔴 **已从 vendor 删除** |
+| `photo-abstract-editorial` | **CC BY-NC-SA 4.0** | 🔴 **未安装** |
+
+被删那个的许可证原文明确排除 "use on behalf of another person or organization" 和 "business benefit"——品牌推广正是这两条，**用了就是违约**。
+
+**🔴 registry 里有一句危险建议，已改**
+
+原文写着 guizang 的「Swiss 视觉系统**可直接复用**」。AGPL 下这是错的：**复制它的模板/CSS 进自有模板，会让自有模板成为衍生作品并被 AGPL 传染**。已改为明确的受限说明——用它出图可以（不分发软件），抄它的代码不行。
+
+好在我们已经改用自有模板（`_base.css` 是从头写的，没抄它），实际没有踩到。
+
+**检查前移**
+
+`setup_vendor.mjs` 拉取后自动扫 LICENSE 并对非商用许可告警——**这次是事后想起来才审，下次拉的时候就该拦住**。registry 每条补了 `license` 和 `commercial_use` 字段，compliance 新增第 8.5 节，交付清单加一条。
+
+⚠️ 自动检查只认关键词，最终判断仍需人工看正文。
+
+**其他**
+
+- `awesome-gpt-image-2` 完整仓库含前端应用与 500+ 图，直接 clone 反复断流；改用 `--filter=blob:none --sparse` 只取 `docs/` + `agents/`，5.8MB。`docs/templates.md` 有 21 套工业级 prompt 模板
+- `ian-xiaohei` 的 NOTICE 要求再分发或改编时署名 Ian。我们只用它出图不再分发，不触发；但抄它的 references 进自有模板要署名
+- `gathered-scenes-zine` 从 styles 移除，两个禁商用的都记进 `evaluated_rejected` 留档，避免以后重复评估
+
+
 ## 2026-08-19 · 四条规则修订（脱敏条件化 / 标签豁免 / 数字承诺自动校验 / emoji 功能位）
 
 **① 数字承诺：从「手动声明」改成「自动揪」**

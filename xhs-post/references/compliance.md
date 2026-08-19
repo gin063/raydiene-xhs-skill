@@ -237,6 +237,27 @@
 
 ---
 
+## 8.5 外部依赖的许可证（2026-08-19 新增）
+
+**本项目是品牌商业推广。装任何外部 skill / 模板 / 素材前先看许可证。**
+
+| 许可类型 | 能不能用 |
+|---|---|
+| MIT / Apache-2.0 / BSD | ✅ 无限制 |
+| **CC BY-NC-\*** · **Personal Non-Commercial** | 🔴 **不能用**。NC = NonCommercial，品牌推广就是商业使用，用了是违约 |
+| **AGPL-3.0** | ⚠️ 受限。**用它出图可以**（不分发软件）；**把它的代码/样式抄进自有模板不行**——自有模板会成为衍生作品被传染 |
+| 无 LICENSE 文件 | ⚠️ 默认「保留所有权利」，先确认再用 |
+
+### 实测踩到的（2026-08-19）
+
+- `gathered-scenes-zine-skill`：Personal Non-Commercial License，明确排除 "use on behalf of another person or organization" 与 "business benefit" → **已删除**
+- `photo-abstract-editorial`：CC BY-NC-SA 4.0 → **未安装**
+- `guizang-social-card-skill`：AGPL-3.0，且上游另有商业授权渠道。我们已改用自有模板，**不复用它的 CSS**
+
+`setup_vendor.mjs` 拉取后会自动扫 LICENSE 并对非商用许可告警。**但自动检查只认关键词，最终判断仍需人工看正文。**
+
+---
+
 ## 9. 交付前自查清单
 
 ```
@@ -261,4 +282,5 @@
 □ caption 字符数已统计且 ≤1000（目标 850），含换行与话题标签
 □ 文件名为纯 ASCII
 □ 数据冲突/缺失已写入「待确认」
+□ 用到的外部素材/模板许可证允许商用（见第 8.5 节）
 ```

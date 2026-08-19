@@ -57,6 +57,27 @@ for (const e of entries) {
   }
 }
 
+// 许可证体检。本项目是品牌商业推广——非商用许可（NC / Personal Non-Commercial）
+// 一律不能用。2026-08-19 实测：拉下来才发现 gathered-scenes-zine 是
+// Personal Non-Commercial，已删；photo-abstract-editorial 是 CC BY-NC-SA，未装。
+// 这个检查放在拉取之后立刻跑，别等事后想起来才审。
+const NC = [/non-?commercial/i, /\bNC\b/, /BY-NC/i, /personal use only/i];
+const bad = [];
+for (const e of entries) {
+  const abs = path.join(repo, e.dir);
+  if (!fs.existsSync(abs)) continue;
+  const lf = fs.readdirSync(abs).find((f) => /^licen[cs]e/i.test(f));
+  if (!lf) { bad.push(`${e.id}: 未找到 LICENSE 文件 —— 手动确认许可后再用`); continue; }
+  const head = fs.readFileSync(path.join(abs, lf), 'utf8').slice(0, 3000);
+  if (NC.some((re) => re.test(head))) {
+    bad.push(`${e.id}: 疑似**非商用**许可 —— 本项目是商业推广，不能用。核对后从 registry 移除`);
+  }
+}
+if (bad.length) {
+  console.log('\n🔴 许可证告警：');
+  bad.forEach((b) => console.log('   ' + b));
+}
+
 if (listOnly) {
   console.log(`\n共 ${entries.length} 项，缺失 ${missing} 项。`);
   console.log('拉取：node xhs-post/scripts/setup_vendor.mjs');
