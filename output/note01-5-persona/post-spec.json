@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "workflow": "new",
+    "source_template_id": null,
+    "created": "2026-08-18"
+  },
+  "axes": {
+    "track": "conversion",
+    "selling_point": "性价比(主)+无隐性支出(辅)",
+    "voice": "persona-profile",
+    "art_style": "ios-memo",
+    "placement": "medium",
+    "polish": "ugc-raw",
+    "body_carries": "image-led",
+    "rationale": "选题「几类人」只有人物画像体能承接，persona-match-review 对号入座的是产品而非人的行为错误。placement 取 medium 因本体逻辑是『我在帮你省钱』，指出错误后立刻硬推销会自相矛盾。image-led 让每类人独立成卡，读者可只截自己中的那张转发。防护论点从桩体转到枪头，因 *达开拓者桩体 IP66 高于磐石Pro，只比桩体会被读者反驳。"
+  },
+  "copy": {
+    "title": "装桩花冤枉钱的5类人，有你吗",
+    "body": "装桩这事，钱花错地方太容易了😮‍💨\n\n我自己中过第3条，白扔了小两千。整理了5种常见的花冤枉钱方式——按你实际会遇到的顺序排，详细的都放图里了👇\n\n1️⃣ 没想清该不该装就下单\n2️⃣ 先买桩、后办电表\n3️⃣ 只认原厂和大牌\n4️⃣ 只看裸桩价\n5️⃣ 露天车位买低防护\n\n-\n\n说句实在的，避开这些不难，下单前盯三样就够：\n\n✅ 3C编号能不能在 cx.cnca.cn 查到\n✅ 枪头的防护等级（别只看桩体）\n✅ 流量是送几年还是终身\n\n第二条多说一句：很多人只比桩体IP，但枪头才是天天插拔、直接淋雨的那个。*达开拓者桩体IP66比不少桩都高，枪头是IP55；雷*恩磐石Pro桩体IP65、枪头IP67——露天的话这个差别更要紧。\n\n我自己装的就是磐石Pro，964裸桩，终身免费流量、2年只换不修再送2年维修。不是说它有多厉害，是这三样都对得上。\n\n你中了几条？这几个问题我评论区都答过😅",
+    "tags": [
+      "#充电桩",
+      "#家用充电桩",
+      "#充电桩避坑",
+      "#雷*恩充电桩",
+      "#3C认证",
+      "#新能源车",
+      "#装桩攻略",
+      "#第三方充电桩"
+    ]
+  },
+  "images": [
+    {
+      "role": "cover",
+      "index": 1,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "layout": "数字承诺型",
+        "big_text": "5类人",
+        "subtitle": "装桩花冤枉钱的5种方式"
+      },
+      "text_on_image": [
+        "5类人",
+        "装桩花冤枉钱的5种方式",
+        "按你会遇到的顺序排"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 2,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "persona_label": "没想清该不该装就下单",
+        "phenomenon": "车位是租的、一年跑不了几千公里，装完用不上几次",
+        "knowledge": "租赁车位一般租期≥1年才能报装；公司或商场充电方便的话，家充没那么刚需"
+      },
+      "text_on_image": [
+        "没想清该不该装就下单",
+        "车位是租的、一年跑不了几千公里，装完用不上几次",
+        "租赁车位一般租期≥1年才能报装；公司或商场充电方便的话，家充没那么刚需"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 3,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "persona_label": "先买桩、后办电表",
+        "phenomenon": "桩到家了电表还没申请，晾着吃灰",
+        "knowledge": "顺序是先办电表再买桩。申请、勘测、安装全程免费，走「网上国网」APP"
+      },
+      "text_on_image": [
+        "先买桩、后办电表",
+        "桩到家了电表还没申请，晾着吃灰",
+        "顺序是先办电表再买桩。申请、勘测、安装全程免费，走「网上国网」APP"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 4,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "persona_label": "只认原厂和大牌",
+        "phenomenon": "3699买原厂，参数比一比其实差不多",
+        "knowledge": "价格含品牌溢价、设计与营销成本。同为7kW、同样过3C，先比参数再比牌子"
+      },
+      "text_on_image": [
+        "只认原厂和大牌",
+        "3699买原厂，参数比一比其实差不多",
+        "价格含品牌溢价、设计与营销成本。同为7kW、同样过3C，先比参数再比牌子"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 5,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "persona_label": "只看裸桩价",
+        "phenomenon": "裸桩800，装完花了2000+",
+        "knowledge": "总价=裸桩+安装+超距费+流量续费。流量送4年和送终身，长期算下来差不少"
+      },
+      "text_on_image": [
+        "只看裸桩价",
+        "裸桩800，装完花了2000+",
+        "总价=裸桩+安装+超距费+流量续费。流量送4年和送终身，长期算下来差不少"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 6,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "persona_label": "露天车位买低防护",
+        "phenomenon": "淋了半年，枪头开始接触不良",
+        "knowledge": "桩体和枪头是两个IP值。枪头天天插拔又直接淋雨，比桩体更要紧"
+      },
+      "text_on_image": [
+        "露天车位买低防护",
+        "淋了半年，枪头开始接触不良",
+        "桩体和枪头是两个IP值。枪头天天插拔又直接淋雨，比桩体更要紧"
+      ]
+    },
+    {
+      "role": "page",
+      "index": 7,
+      "render_mode": "html-screenshot",
+      "polish": "ugc-raw",
+      "content": {
+        "style": "ios-memo",
+        "heading": "下单前盯三样",
+        "items": [
+          "3C编号能不能在 cx.cnca.cn 查到",
+          "枪头的防护等级，别只看桩体",
+          "流量是送几年还是终身"
+        ]
+      },
+      "text_on_image": [
+        "下单前盯三样",
+        "3C编号能不能在 cx.cnca.cn 查到",
+        "枪头的防护等级，别只看桩体",
+        "流量是送几年还是终身"
+      ]
+    }
+  ],
+  "compliance": {
+    "checks": [
+      {
+        "item": "超距费与流量续费单价不在产品xlsx内",
+        "status": "needs-human",
+        "note": "已改为定性表述，待补口径"
+      }
+    ]
+  },
+  "conversion": null
+}
