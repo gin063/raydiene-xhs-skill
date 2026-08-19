@@ -115,6 +115,66 @@ npx skills add https://github.com/<owner>/<repo> --skill <skill-name>
 
 ---
 
+## Claude 和 Codex 能共用一份 skill 吗？
+
+**默认不能，但可以让它们指向同一份文件。**
+
+两个 agent 读各自独立的路径，本机没有生效的共用约定（`~/.agents/` 根本不存在）：
+
+| Agent | 路径 |
+|---|---|
+| Claude Code | `%USERPROFILE%\.claude\skills\` |
+| Codex | `$CODEX_HOME\skills\`，`CODEX_HOME` 默认 `%USERPROFILE%\.codex` |
+
+### 推荐：目录联接（junction）
+
+不用装两份，让两侧都联接到仓库里的同一个目录：
+
+```powershell
+.\install.ps1
+```
+
+**为什么用 junction 而不是复制：**
+- 改仓库里的文件，两侧立刻生效，**没有同步步骤，不会版本漂移**
+- Windows 上 junction **不需要管理员权限**（符号链接才需要）
+
+实测（2026-08-19）：
+
+```
+C:\Users\gin_\.claude\skills\xhs-post -> E:\Raydiene\app\xhs-skill\xhs-post
+C:\Users\gin_\.codex\skills\xhs-post  -> E:\Raydiene\app\xhs-skill\xhs-post
+```
+
+改仓库文件后两侧同步可见。
+
+其他用法：`-Copy`（跨盘或不支持联接时）· `-Only codex` · `-Uninstall`
+
+### ⚠️ 不要联接整个 skills 目录
+
+只联接**单个 skill**，别把 `~/.codex/skills` 整个联到 `~/.claude/skills`。Codex 的 `skills/.system/` 下有它自己的内置 skill（`imagegen` `skill-installer` `review-agent` `plugin-creator` 等），整目录互联会让两边互相看到对方的内置 skill，触发冲突且难排查。
+
+### ⚠️ 出图工具链不随 skill 走
+
+`render_cards.mjs` 依赖仓库根的 `node_modules`（playwright），而 skills 目录下没有——Node 的模块解析是**从脚本位置向上找**，联接过去也找不到。
+
+**渲染命令必须在仓库根执行。** skill 本身是「指令 + 数据」，构建工具留在仓库里。
+
+### Codex 自带 skill-installer
+
+Codex 的 `.system/skill-installer` 支持直接从 GitHub 装，**而且支持仓库子目录**：
+
+```bash
+scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill>
+```
+
+等仓库推上 GitHub 后，Codex 侧可以用它装 `xhs-post` 子目录，不必手工拷。
+
+### ⚠️ .ps1 必须存成 UTF-8 with BOM
+
+Windows PowerShell 5.1 默认按 ANSI 读 `.ps1`，无 BOM 的中文注释会被当成乱码导致**解析失败**（不是显示乱码，是脚本直接跑不起来）。本仓库的 `install.ps1` 已带 BOM。
+
+---
+
 ## ⚠️ 本项目的例外：外部画风 skill 一律不装进 skills 目录
 
 `vendor/` 下的 guizang 等**不要**按上面的流程装。原因见 `xhs-post/styles.registry.json` 的 `$comment_auto_trigger`：
