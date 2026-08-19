@@ -159,7 +159,7 @@
 **构图保留**：大标题在上 / 插画居中 / 底部单独一条。**换**：配色（原蓝白 → 暖白+青蓝）、插画视角、标题文案。
 
 ```publish
-A clean flat-illustration style Xiaohongshu cover card, vertical 3:4 aspect ratio, 1080x1440.
+A clean flat-illustration style Xiaohongshu cover card, vertical 3:4 aspect ratio.
 
 LAYOUT:
 - Top third: large bold Chinese headline on two lines reading 「家充桩踩过的28个坑」 and 「一次说完」, near-black text on warm off-white
@@ -170,13 +170,18 @@ STYLE:
 flat vector illustration, soft muted palette of warm off-white #f7f3ea, teal blue #2d9ed0 accents, light grey concrete, minimal linework, no gradients, friendly and plain
 
 CONSTRAINTS:
-Render all Chinese text crisply and accurately. No brand logos, no watermarks, no readable license plate, no extra text beyond what is specified. Do not render any bracket, quotation mark, or label name from this prompt.
+Render all specified Chinese text crisply and accurately. No brand logos, no watermarks, no readable license plate, no shop or community names. Do not render any bracket, quotation mark, or label name from this prompt. Incidental garage signage a real scene would have (level markers like B1, bay numbers, height-limit signs, floor arrows) is fine and welcome — keep it short and generic.
 ```
 
 **text_on_image 核对清单**（出图后逐条比对）：
 - 家充桩踩过的28个坑
 - 一次说完
 - 1、固定车位和物业同意先搞定
+
+**出图结果（2026-08-19，Codex imagegen）**：
+- 首版三处指定中文全部正确，柱子上多出「B1」→ **采用首版**。B1 是车库层号，属于场景里天然该有的标识，不是违规
+- 二版按旧约束去掉 B1 → 柱子只剩一块无意义蓝色，像刷漆刷了一半，**场景反而更假，弃用**
+- 已据此修正 `image-production.md` 分支④ 的 CONSTRAINTS 写法，见「「无多余文字」不能一刀切」
 
 ### 图2–4 · 清单卡（分支②，已出图）
 

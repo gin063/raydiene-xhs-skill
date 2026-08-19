@@ -128,29 +128,48 @@ Google Fonts 的简中只有思源黑体/思源宋体两个选择；西文可按
 ### 模板
 
 ```
-A [风格描述] Xiaohongshu infographic card, vertical 3:4 aspect ratio, 1080x1440.
+A [风格描述] Xiaohongshu card, vertical 3:4 aspect ratio.
 
 LAYOUT:
 - Top band: large bold Chinese headline reading 「装桩花冤枉钱的5类人」
 - Below headline: smaller subtitle reading 「按你会遇到的顺序排」
-- Middle: five stacked rounded cards, evenly spaced
-- Each card: a small numbered badge on the left, then Chinese text reading 「...」
-- Bottom right: small watermark-free caption reading 「...」
+- Middle: [产品图位置 / 表格 / 要点列表]
+- Bottom band: one line of Chinese text reading 「...」
 
 STYLE:
 [配色、材质、字体感觉、参考美学 —— 整套图逐字复用同一段]
 
 CONSTRAINTS:
-Render all Chinese text crisply and accurately.
-No competitor logos, no watermarks, no extra text beyond what is specified.
+Render all specified Chinese text crisply and accurately.
+No brand logos, no watermarks, no readable license plate, no shop or community names.
 Do not render any bracket, quotation mark, or label name from this prompt.
+Incidental signage a real scene would have (level markers like B1, bay numbers,
+height-limit signs, floor arrows) is fine — keep it short and generic.
 ```
+
+### 🔴 「无多余文字」不能一刀切
+
+`no extra text` 这种写法会连场景里天然该有的标识一起禁掉，**而那正是真实感的来源**。
+
+| ❌ 必须禁 | ✅ 应当保留 |
+|---|---|
+| prompt 残留（括号、引号、`LAYOUT:` 之类标签名） | 车库层号 B1/B2、车位编号 |
+| 品牌 logo、水印、原作者名 | 限高牌、疏散指示、地面导向箭头 |
+| 可读的车牌 | 消防栓、编号立柱 |
+| 可识别的门店名 / 小区名 | 路面划线、减速带 |
+| 模型编的假参数、乱码中文 | —— |
+
+**判定标准：这段文字是画面里的东西，还是画上去的东西？** 前者留，后者禁。
+
+> 2026-08-19 实测：封面首版车库立柱上有「B1」，按旧约束判为违规重出；**去掉之后柱子只剩一块无意义的蓝色，像刷漆刷了一半，场景反而更假**。旧约束改回来了。
+
+一个没有任何标识的地下车库，看着就是渲染图不是照片——这和 `../compliance.md` 6.5 的素人身份是同一件事。
 
 ### 四条要点
 
 1. **要渲染的中文用「」括起来并单独成行。** 这是模型区分"要画的字"和"描述文字"的唯一依据。
 2. **STYLE 段整套图逐字复用。** 一套 7 张卡的视觉一致性来自这里，不来自任何结构化格式。
-3. **比例写死** `vertical 3:4 aspect ratio, 1080x1440`。
+3. **只写比例 `vertical 3:4 aspect ratio`，不写死像素。** 分辨率由生图模型决定——写死 `1080x1440` 只会让模型在 1086×1448 这类尺寸上被判"不合格"，而这个差异对小红书毫无影响。像素是**模板渲染（分支②）**才需要固定的，那是 CSS 的要求。
 4. **必须同时产出 `text_on_image` 清单** —— 出图后逐条核对。GPT Image 2 的中文渲染质量已经足够好，但"足够好"不等于"不用核"，参数数字错一位就是事故。
 
 ### 为什么不用 JSON
@@ -264,11 +283,12 @@ CONSTRAINTS: no charging equipment, no logos, no text anywhere.
 不分分支，全部适用：
 
 ```
-□ 比例 3:4（1080×1440）
-□ 中文逐字校对，重点核参数数字（IP65/IP67、5000V、26重、964）
+□ 比例 3:4（模板渲染固定 1080×1440；AI 生成不卡具体像素）
+□ **指定的**中文逐字校对，重点核参数数字（IP65/IP67、5000V、26重、964）
 □ 品牌名已脱敏（雷*恩 / *牛 / *达 / *想 / *米 / 特*拉 / 比*迪），型号名保留全称
 □ 无 AI 生成的竞品外观、logo、内部结构
 □ 无水印、无原作者名、无 prompt 残留字符
+□ 场景标识（B1／车位号／限高牌）**保留**，不当违规处理；只查有没有可读车牌、门店名、小区名
 □ 无 618（含截图素材内）
 □ 封面标题与正文标题一致
 ```
