@@ -2,3 +2,10 @@ __pycache__/
 *.pyc
 vendor/
 node_modules/
+
+# 出图临时文件
+xhs-post/templates/.render-tmp.html
+
+# output/ 只留验收产出示例（两次实跑留档，作为 skill 效果的参考）。
+# 日常生产的笔记不要往这里堆——每篇 2MB 左右的 PNG，攒多了仓库会很难受。
+# 生产产出建议输出到仓库外的目录。
